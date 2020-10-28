@@ -1,0 +1,321 @@
+﻿
+@model HomeVM
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Book.cshtml";
+    int SliderCount = 0;
+}
+
+<    <!-- Main Start -->
+<main>
+
+    <!-- Slider Start -->
+    <div id="carouselExampleControls" class="carousel slide book-bootstrap-slider" data-ride="carousel">
+        <div class="carousel-inner">
+            @foreach (var slide in Model.BookSliders)
+            {
+                @if (SliderCount == 0)
+                {
+                   <div class="carousel-item boot-slider-wh active">
+                   <img class="d-block w-100" src="~/img/@slide.Image" alt="First slide">
+                   </div>
+                }
+                else
+                {
+                     <div class="carousel-item boot-slider-wh">
+                     <img class="d-block w-100" src="~/img/@slide.Image" alt="First slide">
+                     </div>
+                }
+                SliderCount++;
+            }
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- Slider End -->
+
+    <!-- Search Box Start -->
+    <div class="main-searchBox-container">
+        <div class="searchbox">
+            <input type="email" required placeholder="Serach Books...">
+            <button>
+                <a href="">
+                    <i class="fas fa-cannabis"></i>
+                </a>
+            </button>
+        </div>
+
+    </div>
+    <!-- Search Box End -->
+
+    <!-- Left Category  Start -->
+    <div class="book-tips-container">
+        <div class="left-category-side-container">
+            @foreach (var ctgry in Model.BookCategories.Take(6))
+            {
+                <div data-aos="fade-right" class="left-categories">
+                    <div class="left-text-div">
+                        <p><a href="">@ctgry.CategoryName</a></p>
+
+                        @if (ctgry.Books == null)
+                        {
+                            <p><a href="">(0)</a></p>
+                        }
+                        else
+                        {
+                          <p><a href="">(@ctgry.Books.Count)</a></p>
+                        }
+                    </div>
+
+                    <img src="~/img/@ctgry.Image" alt="">
+                </div>
+            }
+
+        </div>
+        <!-- Left Category  End -->
+
+        <!-- Middle Container Start -->
+        <div class="middle-body-container">
+
+            <!-- Must Read Books Start -->
+            <div class="mustRead-container">
+
+                <div class="must-read-text-header">
+                    <p>Must Read Classics</p>
+                </div>
+
+                <div class="must-read-books-container">
+                    <div class="must-read-books-row">
+                        @foreach (var book in Model.MRClassics.OrderByDescending(x => x.Id))
+                        {
+                            <div class="must-read-books-body">
+                                <div class="must-read-img">
+                                    <div class="img-and-basket">
+                                        <img src="~/img/@book.Image" alt="">
+                                        <div class="mustread-basket">
+                                            <a href="">Add To Basket</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="must-read-text">
+                                    <h1><a href="">@book.Name</a></h1>
+                                    <h5>by: @book.AuthorName</h5>
+                                    <p>$ @book.Price</p>
+                                    <h4><a href="">Read More</a></h4>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <!--Must Read Books  End -->
+
+            <!--Mythology Books  Start -->
+            <div class="mythology-container">
+                <div class="mustRead-container">
+
+                    <div class="must-read-text-header">
+                        <p>Special Books of Secrets</p>
+                    </div>
+
+                    <div class="must-read-books-container">
+                        <div class="must-read-books-row">
+                            @foreach (var book in Model.SpecialBooks.OrderByDescending(x=>x.Id))
+                            {
+                                <div class="must-read-books-body">
+                                    <div class="must-read-img">
+                                        <div class="img-and-basket">
+                                            <img src="~/img/@book.Image" alt="">
+                                            <div class="mustread-basket">
+                                                <a href="">Add To Basket</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="must-read-text">
+                                        <h1><a href="">@book.Name</a></h1>
+                                        <h5>by: @book.AuthorName</h5>
+                                        <p>$ @book.Price</p>
+                                        <h4><a href="">Read More</a></h4>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--Mythology Books  End -->
+
+        </div>
+        <!-- Middle Container End -->
+
+        <!-- Right Category  Start -->
+        <div class="right-category-book-container">
+            <div class="bestseller-books-container">
+
+                <div data-aos="fade-left" class="best-seller-title">
+                    <p>Best Seller</p>
+                </div>
+                @foreach (var book in Model.Books.OrderByDescending(x => x.Id).Take(7))
+                {
+                    <div data-aos="fade-left" class="bestseller-books-body">
+                        <div class="books-body-img">
+                            <img src="~/img/@book.BookImage" alt="">
+                        </div>
+                        <div class="books-body-text">
+                            <h1><a href="">@book.BookName</a></h1>
+                            <h1>by: @book.Author.AuthorName</h1>
+                            <p>$ @book.BookPrice</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+    <!-- Right Category  End -->
+    <!-- All Books Container  Start -->
+    <div class="allbooks-filter-container">
+        <div class="book-filter-container">
+            <div class="price-filter">
+                <p>Price Filter</p>
+                <label>From (Azn)</label>
+                <input type="number" name="min" required />
+                <label>To (Azn)</label>
+                <input id="max" type="number" name="max" required />
+                <br>
+                <button type="submit">Show</button>
+            </div>
+
+            <div class="show-view-book">
+                <select name="Id">
+                    <option value="">Books Count</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+                <button type="submit">Show</button>
+            </div>
+
+            <div class="sorting-books-container">
+                <div id="selected">
+                    <p>Sorting By</p>
+                    <form method="post" asp-controller="Home" asp-action="Alpha">
+                        <select name="sorting">
+                            <option value="1">Alphabetic</option>
+                            <option value="2">Price High to Low</option>
+                            <option value="3">Price Low to High</option>
+                        </select>
+                        <button type="submit">Show</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="filter-area-search">
+                <input type="search">
+                <button type="submit">Search</button>
+            </div>
+        </div>
+        <!--All Left Categorys Start-->
+        <div class="allbooks-left-categories-container">
+            <h1>Categories</h1>
+            @foreach (var ctgry in Model.BookCategories)
+            {
+                @if (ctgry.Books == null)
+                {
+                    <p><a href="">@ctgry.CategoryName (0)</a></p>
+                }
+                else
+                {
+                    <p><a href="">@ctgry.CategoryName (@ctgry.Books.Count)</a></p>
+                }
+            }
+
+
+        </div>
+        <!--All Left Categorys End-->
+
+        <div class="allbooks-all-books-container">
+            @foreach (var book in Model.Books.OrderByDescending(x=>x.Id).Take(16))
+            {
+
+                <div data-aos="zoom-out" class="top-book-container">
+                    <div class="top-book-image">
+                        <img src="~/img/@book.BookImage" alt="">
+                        <div class="top-image-hover-row">
+                            <a href="">
+                                <i class="fas fa-cart-arrow-down"></i>
+                            </a>
+                            <p><a href="">Book Details</a></p>
+                        </div>
+                    </div>
+                    <h1>@book.BookName</h1>
+                    <h5>@book.Author.AuthorName</h5>
+                    <p>$ @book.BookPrice</p>
+                </div>
+            }
+
+        </div>
+
+        <div class="top-book-pagination">
+            <h3>For Pagination</h3>
+        </div>
+    </div>
+    </div>
+    <!-- All Books Container End -->
+    <!-- Timer Modal Subs Start -->
+    <div id="main" class="timer-modal-info-container">
+        <div class="timer-info-modal">
+            <button id="close-btn-btn">X</button>
+            <h1>Subscribe for new <span>Books</span> and <span>Blogs</span></h1>
+            <input type="email" required placeholder="Email...">
+            <button id="email-button" type="submit">
+                <a href="">
+                    <i class="fas fa-cannabis"></i>
+                </a>
+            </button>
+        </div>
+    </div>
+    <!-- Timer Modal Subs End -->
+    <!-- Must Read Author and Blogs Start -->
+    <p id="mustReadAuthor">Must Read Author</p>
+    <div class="must-read-container">
+        <div class="must-read-author-container">
+            <img src="~/img/mr-rowling.jpg" alt="">
+            <div class="author-about">
+                <h1>Joanne Rowling</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, perspiciatis quod molestiae pariatur beatae reprehenderit quae et. Ab maxime, quis corrupti magnam pariatur nobis labore vero minus! Incidunt, nam sint!
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores excepturi odio iure architecto, fuga quibusdam! Ut harum blanditiis tempora consectetur facilis dicta eveniet doloribus libero nihil voluptas nesciunt, fuga accusantium?
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Must Read Author and Blogs End -->
+    <!-- Our Services Start -->
+    <h1 id="ourServices">Our Services</h1>
+    <div class="our-services-container">
+        <div class="books-icon">
+            <i class="fas fa-book-open"></i>
+        </div>
+        <div class="books-icon">
+            <i class="fas fa-newspaper"></i>
+        </div>
+        <div class="books-icon">
+            <i class="fas fa-file-pdf"></i>
+        </div>
+        <!-- Our Services End -->
+
+
+    </div>
+</main>
+<!-- Main End -->

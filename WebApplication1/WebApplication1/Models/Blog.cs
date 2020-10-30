@@ -14,5 +14,8 @@ namespace WebApplication1.Models
         public string FrontText { get; set; }
         public string BlogText { get; set; }
         public DateTime DateTime { get; set; }
+        public int BlogCategoryId { get; set; }
+        public BlogCategory BlogCategory { get; set; }
+
     }
 }

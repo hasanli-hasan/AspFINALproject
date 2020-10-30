@@ -30,3 +30,4 @@ C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\net
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Blog\Index.g.cshtml.cs
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Author.g.cshtml.cs
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Author\Index.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_BlogPartial.g.cshtml.cs

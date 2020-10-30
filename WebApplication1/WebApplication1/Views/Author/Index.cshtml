@@ -1,151 +1,91 @@
 ﻿
+@model HomeVM
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Author.cshtml";
 }
 
-<main>
-    <div class="last-author-container">
-        <div class="grey-side-header"></div>
+    <main>
+        <!--New Author Start-->
+        <div class="last-author-container">
+            <div class="grey-side-header"></div>
+            @foreach (var author in Model.AuthorAbouts.OrderByDescending(x=>x.Id).Take(1))
+            {
 
-        <div class="last-author-image-row">
-            <img src="~/img/la1.jpg" alt="">
+                <div class="last-author-image-row">
+                    <img src="~/img/@author.Image" alt="">
+                </div>
+
+                <div class="last-author-bio-row">
+                    <p id="new">New</p>
+
+                    <div id="newAuthorBio">
+                        <p>
+                            @author.FrontTitle
+                        </p>
+                    </div>
+
+                        <a href="">Read More</a>
+                    </div>
+
+                    <div class="author-name-row">
+                        <h1>@author.NameSurname</h1>
+                    </div>
+                    }
+
+                    <div class="name-under-black-line"></div>
+                </div>
+
+        <!--New Author End-->
+
+        <div class="author-searchbox-container">
+            <input type="text" placeholder=" Search...">
+            <button type="submit">Search</button>
         </div>
 
-        <div class="last-author-bio-row">
-            <p id="new">New</p>
+        <div id="blogListAll" class="all-authors-container">
+            @foreach (var author in Model.AuthorAbouts)
+            {
+                <div class="author-body-row">
+                    <div class="author-body-image">
+                        <img src="~/img/@author.Image" alt="">
+                    </div>
 
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo quidem recusandae rerum fuga eum
-                voluptatibus impedit, facere iure quam autem exercitationem porro earum repellendus vitae temporibus
-                harum, architecto, quasi assumenda?
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo quidem recusandae rerum fuga eum
-                voluptatibus impedit, facere iure quam autem exercitationem porro earum repellendus vitae temporibus
-                harum, architecto, quasi assumenda?
-            </p>
-            <a href="">Read More</a>
+                    <div class="author-body-info">
+                        <h5>@author.NameSurname</h5>
+
+                        <div id="allAuthorFrontText">
+                            <p>
+                                @author.FrontTitle
+                            </p>
+                        </div>
+                    </div>
+
+                    <a href="../html/authorDetail.html">See More</a>
+                </div>
+            }
+
+        </div>
+        <input type="hidden" id="AuthorCount" name="name" value="@ViewBag.AuthorCount" />
+        <div id="authors-load-more-button" class="authors-load-more-button">
+            <button id="authorLoadMore">More</button>
         </div>
 
-        <div class="author-name-row">
-            <h1>Joannah Rowling</h1>
+        <!-- Timer Modal Subs Start -->
+        <div id="main" class="timer-modal-info-container">
+            <div class="timer-info-modal">
+                <button id="close-btn-btn">X</button>
+                <h1>Subscribe for new <span>Books</span> and <span>Blogs</span></h1>
+                <input type="email" required placeholder="Email...">
+                <button id="email-button" type="submit">
+                    <a href="">
+                        <i class="fas fa-cannabis"></i>
+                    </a>
+                </button>
+            </div>
         </div>
+        <!-- Timer Modal Subs End -->
 
-        <div class="name-under-black-line"></div>
-
-        <div class="last-author-books-row">
-            <h5>Books</h5>
-            <li>Harry Potter 1</li>
-            <li>Harry Potter 2</li>
-            <li>Harry Potter 3</li>
-            <li>Harry Potter 4</li>
-            <li>Harry Potter 5</li>
-        </div>
-    </div>
-
-    <div class="author-searchbox-container">
-        <input type="text" placeholder=" Search...">
-        <button type="submit">Search</button>
-    </div>
-
-    <div class="all-authors-container">
-
-        <div class="author-body-row">
-            <div class="author-body-image">
-                <img src="~/img/y7.jpg" alt="">
-            </div>
-
-            <div class="author-body-info">
-                <h5>Janna Dark</h5>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero molestias natus nihil sed modi nulla, nostrum quam perferendis velit rem rerum ab dolore quia, molestiae fuga dicta porro obcaecati quas.</p>
-            </div>
-
-            <a href="../html/authorDetail.html">See More</a>
-        </div>
-
-        <div class="author-body-row">
-            <div class="author-body-image">
-                <img src="~/img/y7.jpg" alt="">
-            </div>
-
-            <div class="author-body-info">
-                <h5>Janna Dark</h5>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero molestias natus nihil sed modi nulla, nostrum quam perferendis velit rem rerum ab dolore quia, molestiae fuga dicta porro obcaecati quas.</p>
-            </div>
-
-            <a href="../html/authorDetail.html">See More</a>
-        </div>
-
-        <div class="author-body-row">
-            <div class="author-body-image">
-                <img src="~/img/y7.jpg" alt="">
-            </div>
-
-            <div class="author-body-info">
-                <h5>Janna Dark</h5>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero molestias natus nihil sed modi nulla, nostrum quam perferendis velit rem rerum ab dolore quia, molestiae fuga dicta porro obcaecati quas.</p>
-            </div>
-
-            <a href="../html/authorDetail.html">See More</a>
-        </div>
-
-        <div class="author-body-row">
-            <div class="author-body-image">
-                <img src="~/img/y7.jpg" alt="">
-            </div>
-
-            <div class="author-body-info">
-                <h5>Janna Dark</h5>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero molestias natus nihil sed modi nulla, nostrum quam perferendis velit rem rerum ab dolore quia, molestiae fuga dicta porro obcaecati quas.</p>
-            </div>
-
-            <a href="../html/authorDetail.html">See More</a>
-        </div>
-
-        <div class="author-body-row">
-            <div class="author-body-image">
-                <img src="~/img/y7.jpg" alt="">
-            </div>
-
-            <div class="author-body-info">
-                <h5>Janna Dark</h5>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero molestias natus nihil sed modi nulla, nostrum quam perferendis velit rem rerum ab dolore quia, molestiae fuga dicta porro obcaecati quas.</p>
-            </div>
-
-            <a href="../html/authorDetail.html">See More</a>
-        </div>
-
-        <div class="author-body-row">
-            <div class="author-body-image">
-                <img src="~/img/y7.jpg" alt="">
-            </div>
-
-            <div class="author-body-info">
-                <h5>Janna Dark</h5>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero molestias natus nihil sed modi nulla, nostrum quam perferendis velit rem rerum ab dolore quia, molestiae fuga dicta porro obcaecati quas.</p>
-            </div>
-
-            <a href="../html/authorDetail.html">See More</a>
-        </div>
-    </div>
-
-    <div class="authors-load-more-button">
-        <button>More</button>
-    </div>
-
-    <!-- Timer Modal Subs Start -->
-    <div id="main" class="timer-modal-info-container">
-        <div class="timer-info-modal">
-            <button id="close-btn-btn">X</button>
-            <h1>Subscribe for new <span>Books</span> and <span>Blogs</span></h1>
-            <input type="email" required placeholder="Email...">
-            <button id="email-button" type="submit">
-                <a href="">
-                    <i class="fas fa-cannabis"></i>
-                </a>
-            </button>
-        </div>
-    </div>
-    <!-- Timer Modal Subs End -->
-
-</main>
+    </main>
 

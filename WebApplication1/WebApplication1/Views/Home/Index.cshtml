@@ -26,7 +26,7 @@
                 <a href="">Philosophy</a>
                 <a href="">Pyschology</a>
             </div>
-
+       
             <div class="showbox-new-books">
                 @foreach (var book in Model.Books.OrderByDescending(x => x.Id).Take(3))
                 {

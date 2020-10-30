@@ -21,6 +21,7 @@ namespace WebApplication1.DAL
         public DbSet<BookSlider> BookSliders { get; set; }
         public DbSet<MRClassics> MRClassics { get; set; }
         public DbSet<SpecialBooks> SpecialBooks { get; set; }
+        public DbSet<BlogCategory> BlogCategories { get; set; }
 
     }
 }

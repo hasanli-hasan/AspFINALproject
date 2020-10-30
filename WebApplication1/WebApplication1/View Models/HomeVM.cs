@@ -15,6 +15,7 @@ namespace WebApplication1.View_Models
         public IEnumerable<DiscountBooks> DiscountBooks { get; set; }
         public DiscountText DiscountText { get; set; }
         public IEnumerable<Blog> Blogs { get; set; }
+        public IEnumerable<BlogCategory> BlogCategories { get; set; }
         public IEnumerable<AuthorAbout> AuthorAbouts { get; set; }
         public IEnumerable<BookSlider> BookSliders { get; set; }
         public IEnumerable<MRClassics> MRClassics { get; set; }

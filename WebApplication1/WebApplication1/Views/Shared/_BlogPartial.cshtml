@@ -1,0 +1,23 @@
+﻿
+@model IEnumerable<AuthorAbout>
+
+@foreach (var author in Model)
+{
+    <div class="author-body-row">
+        <div class="author-body-image">
+            <img src="~/img/@author.Image" alt="">
+        </div>
+
+        <div class="author-body-info">
+            <h5>@author.NameSurname</h5>
+
+            <div id="allAuthorFrontText">
+                <p>
+                    @author.FrontTitle
+                </p>
+            </div>
+        </div>
+
+        <a href="../html/authorDetail.html">See More</a>
+    </div>
+} 

@@ -54,6 +54,12 @@ left: 29%;
     transform: rotate(20deg);
 }
 
+#newAuthorBio {
+    width: 620px;
+    height: 240px;
+    overflow: hidden;
+}
+
 .last-author-container .last-author-bio-row p{
     font-size: 19px;
     padding-top: 28px;
@@ -145,7 +151,6 @@ top: 58%;
 
 .all-authors-container{
     width: 100%;
-    height: 1000px;
     background: rgb(214, 211, 211);
     margin: 0 auto;
     display: flex;
@@ -160,21 +165,24 @@ height: 420px;
 background: rgb(255, 255, 255);
 margin-top: 15px;
 margin-left: 20px;
+margin-bottom:25px;
+
 }
 
 .author-body-row .author-body-image{
 width: 100%;
-height: 150px;
+height: 220px;
 }
 
 .author-body-row .author-body-image img{
     width: 100%;
     height: 100%;
+    object-fit:cover;
 }
 
 .author-body-row .author-body-info{
 width: 100%;
-height: 220px;
+height: 150px;
 margin-bottom: 9px;
 }
 
@@ -183,8 +191,15 @@ text-align: center;
 padding-top: 6px;
 }
 
-.author-body-row .author-body-info p{
-text-align: center;
+#allAuthorFrontText{
+    width:90%;
+    height:100px;
+    margin:0 auto;
+    overflow:hidden;
+}
+
+.author-body-row .author-body-info p {
+    text-align: center;
 }
 
 .author-body-row a{
@@ -194,6 +209,11 @@ font-size: 19px;
 border: 1px black solid;
 padding: 5px 15px;
 margin-left: 93px;
+}
+
+.author-body-row a:hover {
+  background:black;
+  color:white;
 }
 
 .authors-load-more-button{

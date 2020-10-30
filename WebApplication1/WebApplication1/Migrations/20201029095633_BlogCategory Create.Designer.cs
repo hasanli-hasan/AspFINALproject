@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.DAL;
 
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201029095633_BlogCategory Create")]
+    partial class BlogCategoryCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,8 +61,6 @@ namespace WebApplication1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BlogCategoryId");
-
                     b.Property<string>("BlogText");
 
                     b.Property<DateTime>("DateTime");
@@ -72,8 +72,6 @@ namespace WebApplication1.Migrations
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BlogCategoryId");
 
                     b.ToTable("Blogs");
                 });
@@ -241,14 +239,6 @@ namespace WebApplication1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SpecialBooks");
-                });
-
-            modelBuilder.Entity("WebApplication1.Models.Blog", b =>
-                {
-                    b.HasOne("WebApplication1.Models.BlogCategory", "BlogCategory")
-                        .WithMany("Blogs")
-                        .HasForeignKey("BlogCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Book", b =>

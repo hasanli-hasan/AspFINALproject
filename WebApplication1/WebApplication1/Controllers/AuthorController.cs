@@ -25,6 +25,7 @@ namespace WebApplication1.Controllers
                 AuthorAbouts=_db.AuthorAbouts.Take(6)
             };
             ViewBag.AuthorCount = _db.AuthorAbouts.Count();
+           
             return View(homeVM);
         }
 
@@ -37,6 +38,14 @@ namespace WebApplication1.Controllers
 
             IEnumerable<AuthorAbout> model = _db.AuthorAbouts.Skip(skip).Take(6);
             return PartialView("_BlogPartial",model);
+        }
+
+        public IActionResult Search(string search)
+        {
+            IEnumerable<AuthorAbout> author =
+                _db.AuthorAbouts.Where(a => a.NameSurname.Contains(search)).OrderByDescending(x=>x.Id).Take(4);
+
+            return PartialView("_SearchAuthorPartial",author);
         }
     }
 }

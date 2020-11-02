@@ -11,6 +11,7 @@ namespace WebApplication1.Models
         public string BookName { get; set; }
         public string BookImage { get; set; }
         public decimal BookPrice { get; set; }
+        public int BookCount { get; set; }
         public int AuthorId { get; set; }
         public Author Author { get; set; }
         public int BookCategoryId { get; set; }

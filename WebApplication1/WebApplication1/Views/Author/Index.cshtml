@@ -10,7 +10,7 @@
         <!--New Author Start-->
         <div class="last-author-container">
             <div class="grey-side-header"></div>
-            @foreach (var author in Model.AuthorAbouts.OrderByDescending(x=>x.Id).Take(1))
+            @foreach (var author in Model.AuthorAbouts.OrderByDescending(x => x.Id).Take(1))
             {
 
                 <div class="last-author-image-row">
@@ -26,66 +26,81 @@
                         </p>
                     </div>
 
-                        <a href="">Read More</a>
-                    </div>
-
-                    <div class="author-name-row">
-                        <h1>@author.NameSurname</h1>
-                    </div>
-                    }
-
-                    <div class="name-under-black-line"></div>
+                    <a href="">Read More</a>
                 </div>
+
+                <div class="author-name-row">
+                    <h1>@author.NameSurname</h1>
+                </div>
+            }
+
+            <div class="name-under-black-line"></div>
+        </div>
 
         <!--New Author End-->
 
         <div class="author-searchbox-container">
-            <input type="text" placeholder=" Search...">
+            <input id="authorSearchInput" type="text" placeholder=" Search...">
             <button type="submit">Search</button>
-        </div>
+            <div class="author-search-container-search">
+                <i id="searchWindowFull" class="fas fa-expand"> </i>
+                <i id="authorSearchXXX" class="fas fa-times"></i>
 
-        <div id="blogListAll" class="all-authors-container">
-            @foreach (var author in Model.AuthorAbouts)
-            {
-                <div class="author-body-row">
-                    <div class="author-body-image">
-                        <img src="~/img/@author.Image" alt="">
-                    </div>
 
-                    <div class="author-body-info">
-                        <h5>@author.NameSurname</h5>
-
-                        <div id="allAuthorFrontText">
-                            <p>
-                                @author.FrontTitle
-                            </p>
-                        </div>
-                    </div>
-
-                    <a href="../html/authorDetail.html">See More</a>
-                </div>
-            }
-
-        </div>
-        <input type="hidden" id="AuthorCount" name="name" value="@ViewBag.AuthorCount" />
-        <div id="authors-load-more-button" class="authors-load-more-button">
-            <button id="authorLoadMore">More</button>
-        </div>
-
-        <!-- Timer Modal Subs Start -->
-        <div id="main" class="timer-modal-info-container">
-            <div class="timer-info-modal">
-                <button id="close-btn-btn">X</button>
-                <h1>Subscribe for new <span>Books</span> and <span>Blogs</span></h1>
-                <input type="email" required placeholder="Email...">
-                <button id="email-button" type="submit">
-                    <a href="">
-                        <i class="fas fa-cannabis"></i>
-                    </a>
-                </button>
             </div>
-        </div>
-        <!-- Timer Modal Subs End -->
+            </div>
 
-    </main>
+            <div id="blogListAll" class="all-authors-container">
+                @foreach (var author in Model.AuthorAbouts)
+                {
+                    <div class="author-body-row">
+                        <div class="author-body-image">
+                            <img src="~/img/@author.Image" alt="">
+                        </div>
+
+                        <div class="author-body-info">
+                            <h5>@author.NameSurname</h5>
+
+                            <div id="allAuthorFrontText">
+                                <p>
+                                    @author.FrontTitle
+                                </p>
+                            </div>
+                        </div>
+
+                        <a href="../html/authorDetail.html">See More</a>
+                    </div>
+                }
+                
+            </div>
+
+            <input type="hidden" id="AuthorCount" name="name" value="@ViewBag.AuthorCount" />
+            <div id="authors-load-more-button" class="authors-load-more-button">
+                <button id="authorLoadMore">More</button>
+            </div>
+
+            <!-- Our Services Start -->
+            <div class="cash-blog-div"></div>
+
+            <h1 id="ourServices">Our Services</h1>
+            <div class="our-services-container">
+                @await Component.InvokeAsync("OurServices")
+            </div>
+            <!-- Our Services End -->
+            <!-- Timer Modal Subs Start -->
+            <div id="main" class="timer-modal-info-container">
+                <div class="timer-info-modal">
+                    <button id="close-btn-btn">X</button>
+                    <h1>Subscribe for new <span>Books</span> and <span>Blogs</span></h1>
+                    <input type="email" required placeholder="Email...">
+                    <button id="email-button" type="submit">
+                        <a href="">
+                            <i class="fas fa-cannabis"></i>
+                        </a>
+                    </button>
+                </div>
+            </div>
+            <!-- Timer Modal Subs End -->
+
+</main>
 

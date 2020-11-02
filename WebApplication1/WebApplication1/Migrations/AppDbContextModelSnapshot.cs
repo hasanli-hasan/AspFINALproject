@@ -53,6 +53,37 @@ namespace WebApplication1.Migrations
                     b.ToTable("AuthorAbouts");
                 });
 
+            modelBuilder.Entity("WebApplication1.Models.Bio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("address");
+
+                    b.Property<string>("behance");
+
+                    b.Property<string>("email");
+
+                    b.Property<string>("facebook");
+
+                    b.Property<string>("github");
+
+                    b.Property<string>("instagram");
+
+                    b.Property<string>("logo");
+
+                    b.Property<int>("number");
+
+                    b.Property<string>("pinterest");
+
+                    b.Property<string>("twitter");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bios");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -102,6 +133,8 @@ namespace WebApplication1.Migrations
                     b.Property<int>("AuthorId");
 
                     b.Property<int>("BookCategoryId");
+
+                    b.Property<int>("BookCount");
 
                     b.Property<string>("BookImage");
 
@@ -201,6 +234,19 @@ namespace WebApplication1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MRClassics");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.OurServices", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("icon");
+
+                    b.HasKey("id");
+
+                    b.ToTable("OurServices");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.RecommendationBook", b =>

@@ -39,7 +39,7 @@
                         <h1>@book.BookName</h1>
                         <h5> by: @book.Author.AuthorName</h5>
                         <p>$ @book.BookPrice</p>
-                        <p><a href="">Add To Cart</a></p>
+                        <p><a class="addBasket-Books" data-id="@book.Id">Add To Cart</a></p>
 
                     </div>
                 }
@@ -82,7 +82,7 @@
                                 <figure>
                                     <img src="~/img/@book.BookImage" alt="">
                                     <div class="carousel-clip-path-add-cart">
-                                        <a href="">Add To Cart</a>
+                                        <a class="addBasket-Books" data-id="@book.Id">Add To Cart</a>
 
                                     </div>
                                 </figure>
@@ -113,11 +113,11 @@
         <!-- Discount Area Start  -->
         <div class="discount-main-container">
             <div data-aos="fade-right" class="discount-books-side">
-                @foreach (var discBook in Model.DiscountBooks )
+                @foreach (var discBook in Model.Books.Where(b=>b.BookCategory.CategoryName=="BBB").OrderByDescending(x=>x.Id).Take(3) )
                 {
                 <div class="discount-books">
-                    <img src="~/@discBook.Image" alt="">
-                    <a href="">Add To Cart</a>
+                    <img src="~/img/@discBook.BookImage" alt="">
+                    <a class="addBasket-Books" data-id="@discBook.Id">Add To Cart</a>
                 </div>
                 }
                 
@@ -140,16 +140,16 @@
 
                 <div id="bookAnimate" class='modalInline-book-animation d-none'>
                     <div class='center modalInline-row flex-column'>
-                        @foreach (var discB in Model.DiscountBooks)
+                        @foreach (var discBook in Model.Books.Where(b=>b.BookCategory.CategoryName=="BBB").OrderByDescending(x=>x.Id).Take(3))
                         {
                             if (Discount == 0)
                             {
                                 <div class='bookAnimation-Card flex-row open'>
-                                    <img src='../@discB.Image' class='book'>
+                                    <img src='~/img/@discBook.BookImage' class='book'>
                                     <div class='flex-column info'>
-                                        <h1>@discB.Author</h1>
-                                        <h5>@discB.Name</h5>
-                                        <p>Today Price : $ @discB.Price</p>
+                                        <h1>@discBook.Author.AuthorName</h1>
+                                        <h5>@discBook.BookName</h5>
+                                        <p>Today Price : $ @discBook.BookPrice</p>
                                         <a href="../html/bookDetail.html">Book Detail</a>
                                     </div>
                                 </div>
@@ -157,11 +157,11 @@
                             else
                             {
                     <div class='bookAnimation-Card flex-row '>
-                        <img src='../@discB.Image' class='book'>
+                        <img src='~/img/@discBook.BookImage' class='book'>
                         <div class='flex-column info'>
-                            <h1>@discB.Author</h1>
-                            <h5>@discB.Name</h5>
-                            <p>Today Price : $ @discB.Price</p>
+                            <h1>@discBook.Author.AuthorName</h1>
+                            <h5>@discBook.BookName</h5>
+                            <p>Today Price : $ @discBook.BookPrice</p>
                             <a href="../html/bookDetail.html">Book Detail</a>
                         </div>
                     </div>
@@ -210,6 +210,7 @@
             }
         </div>
         <!-- Blog Example End -->
+
         <!-- Famous Authors Start -->
         <div class="famous-author-container">
             <div class="famous-text">
@@ -227,6 +228,7 @@
             }
         </div>
         <!-- Famous Authors End -->
+
         <!-- E-book Reclam Start -->
         <div class="e-book-title">
             <p>Enjoy From E-Books</p>

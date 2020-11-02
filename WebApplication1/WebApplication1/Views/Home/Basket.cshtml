@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BasketBookVM>
+@{
+    ViewData["Title"] = "Basket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    decimal Total = 0;
+}
+
+
+
+
+<!-- basket area start -->
+    <div class="basket-products-container">
+
+        @foreach (var book in Model)
+        {
+            decimal total = book.BookPrice * book.Count;
+            Total += total;
+
+        <div class="basket-product-row">
+            <div class="basket-image-name-row">
+                <li class='book'>
+                    <img src='~/img/@book.BookImage' />
+                </li>
+            </div>
+
+            <div class="basket-image-name-row">
+                <h1>
+                    <a href="">@book.BookName</a>
+                </h1>
+            </div>
+
+            <div class="basket-price-count-totalPrice">
+                <p>Book Price:</p>
+                <p>$ @book.BookPrice</p>
+            </div>
+
+            <div class="basket-price-count-totalPrice">
+                <p>Book Count:</p>
+                <p> @book.Count</p>
+            </div>
+
+            <div class="basket-price-count-totalPrice">
+                <p>Count</p>
+                <p id="basketplusMinus">
+                    <a asp-controller="Home" asp-action="Upcrease" asp-route-id="@book.Id">+</a>
+                    <a asp-controller="Home" asp-action="Decrease"  asp-route-id="@book.Id">-</a>
+                </p>
+            </div>
+
+            <div class="basket-price-count-totalPrice">
+                <p>Total Price:</p>
+                <p>$ @total</p>
+            </div>
+
+            <div class="basket-product-delete-icon">
+                <a asp-controller="Home" asp-action="DeleteBasket" asp-route-id="@book.Id">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </div>
+        </div>
+
+        }
+
+        <div class="basket-all-products-total">
+            <h1>Total Price: <span>$ @Total</span></h1>
+
+        </div>
+
+    </div>
+<!-- basket area end -->

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Blog>
+
+@foreach (var blog in Model)
+{
+    <div class="blog-search-info-row">
+        <div class="blog-search-image-row">
+            <img src="~/img/@blog.Image" alt="">
+        </div>
+        <div class="blog-search-text-row">
+            <p>
+                <a href="">@blog.Title</a>
+
+            </p>
+            <div class="blog-text-row-texts">
+                <p>@blog.FrontText</p>
+            </div>
+        </div>
+    </div>
+}

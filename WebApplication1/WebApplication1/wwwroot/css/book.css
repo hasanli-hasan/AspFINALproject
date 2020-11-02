@@ -77,6 +77,10 @@ text-align: center;
 font-weight: 500;
 }
 
+.addBasket-Books {
+    cursor: pointer;
+}
+
 .boot-slider-information-container .information-container-text p a:hover{
  background: rgb(58, 57, 57);
 }
@@ -834,3 +838,130 @@ top: 0;
       font-size: 80px;
       padding-top: 20px;
       }
+
+/* search book start  */
+
+.bk-search-container-search {
+    width: 790px;
+    min-height: 60px;
+    background: rgb(255, 255, 255);
+    z-index: 200;
+    position: absolute;
+    left: 22%;
+    top: 277%;
+    -webkit-box-shadow: 3px 2px 50px 50px rgba(0, 0, 0, 0.829);
+    box-shadow: 3px 2px 50px 50px rgba(0, 0, 0, 0.822);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    display:none;
+}
+
+
+.specialbkClass {
+    width: 1300px;
+    height: 600px;
+    background: rgb(231, 230, 230);
+    z-index: 200;
+    position: absolute;
+    left: 23px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    box-shadow: none !important;
+}
+
+
+.bk-search-container-search i {
+    font-size: 20px;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    cursor:pointer;
+}
+
+    .bk-search-container-search i:nth-child(1) {
+        margin-right: 25px;
+    }
+
+.bk-search-info-row {
+    width: 367px;
+    height: 160px;
+    background: rgb(201, 200, 200);
+    margin-top: 35px;
+    margin-left: 5px;
+    margin-bottom:7px;
+    display: inline-flex;
+    justify-content: space-evenly;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 2px 23px 5px #000000;
+    box-shadow: 0px 2px 23px 5px #000000;
+}
+
+    .bk-search-info-row .bk-search-image-row {
+        width: 115px;
+        height: 160px;
+    }
+
+        .bk-search-info-row .bk-search-image-row img {
+            width: 100%;
+            height: 100%;
+        }
+
+    .bk-search-info-row .bk-search-text-row {
+        width: 185px;
+        height: 160px;
+    }
+
+        .bk-search-info-row .bk-search-text-row h4 {
+            text-align: center;
+        }
+
+        .bk-search-info-row .bk-search-text-row h5 {
+            font-size: 15px;
+            text-align: center;
+        }
+
+        .bk-search-info-row .bk-search-text-row p {
+            text-align: center;
+            font-size: 20px;
+            color: rgb(255, 102, 0);
+        }
+
+        .bk-search-info-row .bk-search-text-row a {
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+        }
+
+.bk-search-text-row .bk-text-row-texts {
+    width: 185px;
+    height: 80px;
+    overflow: hidden;
+}
+
+    .bk-search-text-row .bk-text-row-texts p {
+        text-align: center;
+        font-size: 13px;
+    }
+
+/* Scroll Css Start*/
+.specialbkClass::-webkit-scrollbar {
+    width: 15px;
+    background: linear-gradient(to bottom,rgb(160, 158, 158),rgb(70, 69, 69),rgb(0, 0, 0));
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.specialbkClass::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom,rgb(255, 175, 25),rgb(255, 94, 0),red);
+    height: 20px !important;
+    border-radius: 10px;
+}
+
+.specialbkClass ::-webkit-scrollbar:horizontal {
+    display: none;
+}
+
+/*Scroll Css End */
+/* search book end

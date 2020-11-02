@@ -67,3 +67,26 @@ window.scrollTo({
     behavior:"smooth"
 })
 });
+
+//add-basket ajax start
+
+$(document).ready(function () {
+    $(document).on("click", ".addBasket-Books", function () {
+        let id = $(this).attr("data-id");
+
+
+        $.ajax({
+            url: "/Home/AddBasket?Id=" + id,
+            type: "Get",
+            success: function (res) {
+                //$(".basket-products-container").append(res);
+                
+                $(".basket-booksCountt").text(res)
+            }
+        });
+
+    });
+
+    });
+
+//add-basket ajax end

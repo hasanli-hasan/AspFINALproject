@@ -31,3 +31,10 @@ C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\net
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Author.g.cshtml.cs
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Author\Index.g.cshtml.cs
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_BlogPartial.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\OurServices\Default.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Header\Default.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Footer\Default.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_SearchAuthorPartial.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_SearchBlogPartial.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_SearchBookPartial.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Home\Basket.g.cshtml.cs

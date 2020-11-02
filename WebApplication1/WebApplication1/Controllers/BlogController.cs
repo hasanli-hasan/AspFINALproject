@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.DAL;
+using WebApplication1.Models;
 using WebApplication1.View_Models;
 
 namespace WebApplication1.Controllers
@@ -28,6 +29,13 @@ namespace WebApplication1.Controllers
             };
 
             return View(homeVM);
+        }
+
+        public IActionResult Search(string search)
+        {
+            IEnumerable<Blog> blog = _db.Blogs.Where(b => b.Title.Contains(search)).OrderByDescending(x => x.Id).Take(4);
+
+            return PartialView("_SearchBlogPartial",blog);
         }
 
         

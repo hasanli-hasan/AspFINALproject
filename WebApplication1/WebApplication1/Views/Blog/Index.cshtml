@@ -54,128 +54,128 @@
             </select>
             <button id="categoryButton" type="submit">Show</button>
 
-            <input type="search" placeholder="Search...">
+            <!-- blog search input start-->
+            <input id="blogSearchInput" type="search" placeholder="Search...">
             <button id="blog-search-btn" type="submit">Search</button>
-        </div>
-        <!-- All  Categorys End-->
+            <div class="blog-search-container-search">
+                <i id="blogWindowFull" class="fas fa-expand"> </i>
+                <i id="blogContDelete" class="fas fa-times"></i>
+            </div>
 
-        <div class="all-blogs-content-container">
-            <!-- left category Start-->
-            <div class="left-category-side-container">
-                @foreach (var ctgry in Model.BlogCategories.Take(6))
-                {
-                    @if (ctgry.Blogs == null)
+                <!--blog search input end-->
+
+            </div>
+            <!-- All  Categorys End-->
+
+            <div class="all-blogs-content-container">
+                <!-- left category Start-->
+                <div class="left-category-side-container">
+                    @foreach (var ctgry in Model.BlogCategories.Take(6))
                     {
-                        <div data-aos="fade-right" class="left-categories">
-                            <div class="left-text-div">
-                                <p><a href="">@ctgry.Name</a></p>
-                                <p><a href="">(0)</a></p>
+                        @if (ctgry.Blogs == null)
+                        {
+                            <div data-aos="fade-right" class="left-categories">
+                                <div class="left-text-div">
+                                    <p><a href="">@ctgry.Name</a></p>
+                                    <p><a href="">(0)</a></p>
+                                </div>
+                                <img src="~/img/@ctgry.Image" alt="">
                             </div>
-                            <img src="~/img/@ctgry.Image" alt="">
+                        }
+                        else
+                        {
+                            <div data-aos="fade-right" class="left-categories">
+                                <div class="left-text-div">
+                                    <p><a href="">@ctgry.Name</a></p>
+                                    <p><a href="">(@ctgry.Blogs.Count)</a></p>
+                                </div>
+                                <img src="~/img/@ctgry.Image" alt="">
+                            </div>
+                        }
+                    }
+                </div>
+                <!-- left category end-->
+                <!-- All Blogs Start-->
+                <div class="all-blog-row">
+                    @foreach (var blog in Model.Blogs.OrderByDescending(x => x.Id).Take(6))
+                    {
+                        <div class="blog-box">
+
+                            <div class="blog-box-image">
+                                <figure>
+                                    <img src="~/img/@blog.Image" alt="">
+                                </figure>
+                            </div>
+
+                            <div class="blog-box-text">
+                                <h1>@blog.Title</h1>
+                                <p>@blog.FrontText</p>
+                                <p>@blog.DateTime.ToString("dd/MM/yyyy")</p>
+
+                                <h5><a href="../html/blogDetail.html">More</a></h5>
+                            </div>
                         </div>
                     }
-                    else
+                </div>
+                <!-- All Blogs End-->
+
+            </div>
+            <div class="blog-pagination-container">
+                <h1>For Pagination</h1>
+            </div>
+            <!-- All  blogs End-->
+            <!-- Animated Subscribe Start-->
+            <div class="animated-Subscribe-row">
+                <div class="animated-Subscribe">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <input type="email">
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+
+            <!-- Animated Subscribe End-->
+            <!-- You Also Like This Start-->
+            <div class="also-like-this">
+                <h1>You Also Like This</h1>
+            </div>
+            <div class="also-like-beer-effect-container">
+
+                <div class="also-like-this-container-first">
+                    @foreach (var blog in Model.Blogs.Take(4))
                     {
-                        <div data-aos="fade-right" class="left-categories">
-                            <div class="left-text-div">
-                                <p><a href="">@ctgry.Name</a></p>
-                                <p><a href="">(@ctgry.Blogs.Count)</a></p>
+                        <div data-aos="zoom-out-down" class="like-this-row">
+                            <img src="~/img/@blog.Image" alt="">
+                            <div class="like-row-face">
+                                <p><a href="">Show</a></p>
                             </div>
-                            <img src="~/img/@ctgry.Image" alt="">
                         </div>
                     }
-                }
-            </div>
-            <!-- left category end-->
-            <!-- All Blogs Start-->
-            <div class="all-blog-row">
-                @foreach (var blog in Model.Blogs.OrderByDescending(x => x.Id).Take(6))
-                {
-                    <div class="blog-box">
+                </div>
 
-                        <div class="blog-box-image">
-                            <figure>
-                                <img src="~/img/@blog.Image" alt="">
-                            </figure>
+                <div class="also-like-this-container-second">
+                    @foreach (var blog in Model.Blogs.Skip(4).Take(3))
+                    {
+                        <div data-aos="zoom-out-down" class="like-this-row">
+                            <img src="~/img/@blog.Image" alt="">
+                            <div class="like-row-face">
+                                <p><a href="">Show</a></p>
+                            </div>
                         </div>
+                    }
+                </div>
 
-                        <div class="blog-box-text">
-                            <h1>@blog.Title</h1>
-                            <p>@blog.FrontText</p>
-                            <p>@blog.DateTime.ToString("dd/MM/yyyy")</p>
-
-                            <h5><a href="../html/blogDetail.html">More</a></h5>
-                        </div>
-                    </div>
-                }
-            </div>
-            <!-- All Blogs End-->
-
-        </div>
-        <div class="blog-pagination-container">
-            <h1>For Pagination</h1>
-        </div>
-        <!-- All  blogs End-->
-        <!-- Animated Subscribe Start-->
-        <div class="animated-Subscribe-row">
-            <div class="animated-Subscribe">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <input type="email">
-                <button type="submit">Subscribe</button>
-            </div>
-        </div>
-
-        <!-- Animated Subscribe End-->
-        <!-- You Also Like This Start-->
-        <div class="also-like-this">
-            <h1>You Also Like This</h1>
-        </div>
-        <div class="also-like-beer-effect-container">
-
-            <div class="also-like-this-container-first">
-                @foreach (var blog in Model.Blogs.Take(4))
-                {
-                    <div data-aos="zoom-out-down" class="like-this-row">
-                        <img src="~/img/@blog.Image" alt="">
-                        <div class="like-row-face">
-                            <p><a href="">Show</a></p>
-                        </div>
-                    </div>
-                }
             </div>
 
-            <div class="also-like-this-container-second">
-                @foreach (var blog in Model.Blogs.Skip(4).Take(3))
-                {
-                    <div data-aos="zoom-out-down" class="like-this-row">
-                        <img src="~/img/@blog.Image" alt="">
-                        <div class="like-row-face">
-                            <p><a href="">Show</a></p>
-                        </div>
-                    </div>
-                }
-            </div>
+            <!-- Our Services Start -->
+            <div class="cash-blog-div"></div>
 
-        </div>
-
-        <!-- Our Services Start -->
-        <div class="cash-blog-div"></div>
-
-        <h1 id="ourServices">Our Services</h1>
-        <div class="our-services-container">
-            <div class="books-icon">
-                <i class="fas fa-book-open"></i>
+            <h1 id="ourServices">Our Services</h1>
+            <div class="our-services-container">
+                @await Component.InvokeAsync("OurServices")
             </div>
-            <div class="books-icon">
-                <i class="fas fa-newspaper"></i>
-            </div>
-            <div class="books-icon">
-                <i class="fas fa-file-pdf"></i>
-            </div>
-        </div>
-        <!-- Our Services End -->
-    </main>
+            <!-- Our Services End -->
+</main>
 

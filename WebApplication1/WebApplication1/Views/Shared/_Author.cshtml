@@ -19,106 +19,11 @@
 
 <body>
     <!-- Header Start -->
-    <header>
-        <div class="header-logo-sosial-user-container">
-            <div class="header-sosial-icon-animation">
-                <div class="sosial-icon-wrapper-container">
-                    <div class="sosial-icon-button-circle-body">
-                        <div class="sosial-animation-circle-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </div>
-                        <span>Facebook</span>
-                    </div>
-                    <div class="sosial-icon-button-circle-body">
-                        <div class="sosial-animation-circle-icon">
-                            <i class="fab fa-instagram"></i>
-
-                        </div>
-                        <span>Instagram</span>
-                    </div>
-                    <div class="sosial-icon-button-circle-body">
-                        <div class="sosial-animation-circle-icon">
-                            <i class="fab fa-twitter"></i>
-
-                        </div>
-                        <span>Twitter</span>
-                    </div>
-                    <div class="sosial-icon-button-circle-body">
-                        <div class="sosial-animation-circle-icon">
-                            <i class="fab fa-github"></i>
-
-                        </div>
-                        <span>Github</span>
-                    </div>
-                </div>
-            </div>
-            <div class="header-logo-name">
-                <img src="../img/logo.jpg" alt="">
-                <h1>Pandora</h1>
-            </div>
-            <div class="header-username-login-side">
-                <div class="header-username-child-div">
-                    <h5>hasanli-hasan</h5>
-                </div>
-                <div class="header-login-show-word">
-                    <p><a href="">Log Out</a></p>
-                </div>
-            </div>
-        </div>
-        <nav>
-
-            <div class="main-navbar-container">
-                <div class="main-navbar-row">
-                    <div class="hover-nav">
-                        <p><a asp-controller="Home" asp-action="Index">Home</a></p>
-                    </div>
-                    <div class="hover-nav category">
-                        <p><a asp-controller="Book" asp-action="Index">Books</a></p>
-                    </div>
-                    <div class="hover-nav">
-                        <p><a asp-controller="Blog" asp-action="Index">Blog</a></p>
-                    </div>
-                    <div class="hover-nav">
-                        <p><a asp-controller="Author" asp-action="Index">Authors</a></p>
-                    </div>
-                    <div class="hover-nav">
-                        <p><a href="">About Us</a></p>
-                    </div>
-                </div>
-                <div class="basket-container">
-                    <a href=""> <i class="fas fa-shopping-bag"><sup>1</sup></i></a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    @await Component.InvokeAsync("Header")
     <!-- Header end -->
     @RenderBody()
     <!-- Footer Start -->
-    <div class="footer-container">
-        <div class="footer-logo footer-childs">
-            <h1>Pandora</h1>
-            <p>Book Store</p>
-            <p>2020</p>
-        </div>
-        <div class="footer-all-links footer-childs">
-            <h1><a href="">Books</a></h1>
-            <h1><a href="">Blogs</a></h1>
-            <h1><a href="">Authors</a></h1>
-            <h1><a href="">Shopping Cart</a></h1>
-        </div>
-        <div class="footer-contact footer-childs">
-            <h1>E-mail: example@gmail.com</h1>
-            <h1>Phone:055 000 00 00</h1>
-            <h1>Address: Baku Af Business Center  /Code Academy</h1>
-        </div>
-        <div class="footer-sosial-icons footer-childs">
-            <p><a href="">Instagram</a></p>
-            <p><a href="">Pinterest</a></p>
-            <p><a href="">Behance</a></p>
-            <p><a href="">Facebook</a></p>
-            <p><a href="">Twitter</a></p>
-        </div>
-    </div>
+    @await Component.InvokeAsync("Footer")
 
     <!-- Footer End -->
 

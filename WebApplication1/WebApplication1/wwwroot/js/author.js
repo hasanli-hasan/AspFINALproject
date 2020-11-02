@@ -10,6 +10,8 @@ window.scrollTo({
 })
 });
 
+$(document).ready(function () {
+
 let skip = 6;
 
 $(document).on('click', '#authorLoadMore', function () {
@@ -28,3 +30,54 @@ $(document).on('click', '#authorLoadMore', function () {
         }
     })
 });
+
+
+
+
+
+//search author start
+    $(document).on("keyup", "#authorSearchInput", function () {
+
+        $(".author-search-container-search").css("display","block")
+        $(".author-search-container-search .author-search-info-row").remove();
+
+        let search = $(this).val().trim();
+       
+        if (search.length > 0) {
+            $(".author-search-container-search i").css("display", "block")
+            $.ajax({
+                url: "/Author/Search?search=" + search,
+                type: "Get",
+                success: function (res) {
+                    $(".author-search-container-search").append(res)
+                }
+            })
+        }
+        else
+        {
+            $(".author-search-container-search").css("display", "none")
+            $(".author-search-container-search").removeClass("specialClass")
+        }
+    })
+
+    //search author end
+
+    //close search row start
+
+    $(document).on("click", "#authorSearchXXX", function () {
+        $(".author-search-container-search").css("display", "none")
+        $(".author-search-container-search").removeClass("specialClass")
+    })
+
+ //close search row end
+
+    //full ecran click start
+    $(document).on("click", "#searchWindowFull", function () {
+
+        $(".author-search-container-search").addClass("specialClass")
+    })
+
+    //full ecran click end
+
+ });
+

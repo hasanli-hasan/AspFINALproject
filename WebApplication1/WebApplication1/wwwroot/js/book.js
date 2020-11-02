@@ -34,7 +34,7 @@ $('.carousel').carousel({
 
   let upperBtn =document.getElementById('btnScrolltoTop');
 
-
+//window upper icon start
 
 upperBtn.addEventListener("click",function(){
 window.scrollTo({
@@ -43,3 +43,77 @@ window.scrollTo({
     behavior:"smooth"
 })
 });
+
+//window upper icon end
+
+//book search jquery start
+
+$(document).ready(function () {
+
+    $(document).on("keyup", "#bookSearchInput", function () {
+        let search = $(this).val().trim();
+        $(".bk-search-container-search .bk-search-info-row").remove();
+        $(".bk-search-container-search").css("display", "block")
+        
+        if (search.length > 0) {
+            $.ajax({
+                url: "/Book/Search?search=" + search,
+                type: "Get",
+                success: function (res) {
+                    $(".bk-search-container-search").append(res)
+
+                }
+            })
+        }
+        else
+        {
+            $(".bk-search-container-search").css("display", "none")
+            $(".bk-search-container-search").removeClass("specialbkClass")
+        }
+
+
+    });
+
+    //close search row start
+
+    $(document).on("click", "#bookTimes", function () {
+        $(".bk-search-container-search").css("display", "none")
+        $(".bk-search-container-search").removeClass("specialbkClass")
+    })
+
+    //close search row end
+
+    //full ecran click start
+    $(document).on("click", "#bookExpand", function () {
+
+        $(".bk-search-container-search").addClass("specialbkClass")
+    })
+
+    //full ecran click end
+
+
+
+});
+
+
+//add-basket ajax start
+
+$(document).ready(function () {
+    $(document).on("click", ".addBasket-Books", function () {
+        let id = $(this).attr("data-id");
+
+        $.ajax({
+            url: "/Home/AddBasket?Id=" + id,
+            type: "Get",
+            success: function (res) {
+                //$(".basket-products-container").append(res);
+
+                $(".basket-booksCountt").text(res)
+            }
+        });
+
+    });
+
+});
+
+//add-basket ajax end

@@ -1,0 +1,76 @@
+﻿@model Bio
+
+<header>
+    <div class="header-logo-sosial-user-container">
+        <div class="header-sosial-icon-animation">
+            <div class="sosial-icon-wrapper-container">
+                <div class="sosial-icon-button-circle-body">
+                    <div class="sosial-animation-circle-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <span>@Model.facebook</span>
+                </div>
+                <div class="sosial-icon-button-circle-body">
+                    <div class="sosial-animation-circle-icon">
+                        <i class="fab fa-instagram"></i>
+
+                    </div>
+                    <span>@Model.instagram</span>
+                </div>
+                <div class="sosial-icon-button-circle-body">
+                    <div class="sosial-animation-circle-icon">
+                        <i class="fab fa-twitter"></i>
+
+                    </div>
+                    <span>@Model.twitter</span>
+                </div>
+                <div class="sosial-icon-button-circle-body">
+                    <div class="sosial-animation-circle-icon">
+                        <i class="fab fa-github"></i>
+
+                    </div>
+                    <span>@Model.github</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-logo-name">
+            <img src="~/img/@Model.logo" alt="">
+            <h1>Pandora</h1>
+        </div>
+        <div class="header-username-login-side">
+            <div class="header-username-child-div">
+                <h5>hasanli-hasan</h5>
+            </div>
+            <div class="header-login-show-word">
+                <p><a href="">Log Out</a></p>
+            </div>
+        </div>
+    </div>
+    <nav>
+
+        <div class="main-navbar-container">
+            <div class="main-navbar-row">
+                <div class="hover-nav">
+                    <p><a asp-controller="Home" asp-action="Index">Home</a></p>
+                </div>
+                <div class="hover-nav category">
+                    <p><a asp-controller="Book" asp-action="Index">Books</a></p>
+                </div>
+                <div class="hover-nav">
+                    <p><a asp-controller="Blog" asp-action="Index">Blog</a></p>
+                </div>
+                <div class="hover-nav">
+                    <p><a asp-controller="Author" asp-action="Index">Authors</a></p>
+                </div>
+                <div class="hover-nav">
+                    <p><a href="">About Us</a></p>
+                </div>
+            </div>
+            <div class="basket-container">
+                <a asp-controller="Home" asp-action="Basket"> <i class="fas fa-shopping-bag">
+                    <sup class="basket-booksCountt">@ViewBag.BasketCount</sup></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -131,6 +131,7 @@ top: 58%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position:relative;
 }
 
 .author-searchbox-container input{
@@ -148,6 +149,98 @@ top: 58%;
     color: black;
     font-weight: 600;
 }
+
+/* author search container Start */
+
+.author-search-container-search {
+    width: 700px;
+    min-height: 60px;
+    background: rgb(255, 255, 255);
+    z-index: 30;
+    position: absolute;
+    top: 150%;
+    -webkit-box-shadow: 3px 2px 50px 50px rgba(0, 0, 0, 0.829);
+    box-shadow: 3px 2px 50px 50px rgba(0, 0, 0, 0.822);
+    display: flex;
+    flex-wrap: wrap;
+    display: none;
+}
+
+.specialClass {
+    width: 1300px;
+    min-height: 600px;
+    background: rgb(255, 255, 255);
+    z-index: 200;
+    position: absolute;
+    top: -260%;
+    -webkit-box-shadow: 3px 2px 50px 50px rgba(0, 0, 0, 0.829);
+    box-shadow: 3px 2px 50px 50px rgba(0, 0, 0, 0.822);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+    .author-search-container-search i {
+        font-size: 20px;
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        cursor:pointer;
+    }
+
+    .author-search-container-search i:nth-child(1) {
+            margin-right: 25px;
+    }
+
+.author-search-info-row {
+    width: 317px;
+    height: 160px;
+    margin-top: 45px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    display: inline-flex;
+    justify-content: space-evenly;
+    -webkit-box-shadow: 0px 1px 19px 4px #000000;
+    box-shadow: 0px 1px 19px 4px #000000;
+}
+
+    .author-search-info-row .author-search-image-row {
+        width: 115px;
+        height: 160px;
+    }
+
+        .author-search-info-row .author-search-image-row img {
+            width: 100%;
+            height: 100%;
+        }
+
+    .author-search-info-row .author-search-text-row {
+        width: 185px;
+        height: 160px;
+    }
+
+        .author-search-info-row .author-search-text-row p {
+            text-align: center;
+        }
+
+        .author-search-info-row .author-search-text-row a {
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+        }
+
+.author-search-text-row .author-text-row-texts {
+    width: 185px;
+    height: 80px;
+    overflow: hidden;
+}
+
+    .author-search-text-row .author-text-row-texts p {
+        text-align: center;
+        font-size: 13px;
+    }
+
+/* author search container End */
 
 .all-authors-container{
     width: 100%;

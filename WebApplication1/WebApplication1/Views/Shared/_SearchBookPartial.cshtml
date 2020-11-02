@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Book>
+
+@foreach (var book in Model)
+{
+    <div class="bk-search-info-row">
+        <div class="bk-search-image-row">
+            <img src="~/img/@book.BookImage" alt="">
+        </div>
+        <div class="bk-search-text-row">
+            <h4>
+                <a href="">@book.BookName</a>
+            </h4>
+            <h5>by: @book.Author</h5>
+            <p>$ @book.BookPrice</p>
+            <p><a class="addBasket-Books" data-id="@book.Id">Add to Cart</a></p>
+        </div>
+    </div>
+}

@@ -37,7 +37,7 @@ namespace WebApplication1.Controllers
             //}
 
             IEnumerable<AuthorAbout> model = _db.AuthorAbouts.Skip(skip).Take(6);
-            return PartialView("_BlogPartial",model);
+            return PartialView("_AuthorPartial",model);
         }
 
         public IActionResult Search(string search)
@@ -46,6 +46,12 @@ namespace WebApplication1.Controllers
                 _db.AuthorAbouts.Where(a => a.NameSurname.Contains(search)).OrderByDescending(x=>x.Id).Take(4);
 
             return PartialView("_SearchAuthorPartial",author);
+        }
+
+        public IActionResult AuthorDetail(int? id)
+        {
+            AuthorAbout author = _db.AuthorAbouts.Where(x => x.Id == id).FirstOrDefault();
+            return View(author);
         }
     }
 }

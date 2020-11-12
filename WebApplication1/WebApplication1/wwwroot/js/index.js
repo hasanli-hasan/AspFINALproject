@@ -73,8 +73,6 @@ window.scrollTo({
 $(document).ready(function () {
     $(document).on("click", ".addBasket-Books", function () {
         let id = $(this).attr("data-id");
-
-
         $.ajax({
             url: "/Home/AddBasket?Id=" + id,
             type: "Get",
@@ -82,6 +80,19 @@ $(document).ready(function () {
                 //$(".basket-products-container").append(res);
                 
                 $(".basket-booksCountt").text(res)
+               
+
+                function ShowWindow() {
+                    $('.basket-succesfully-alert').show();
+                   
+                    setTimeout(hideWindow, 830)
+                }
+              
+                function hideWindow() {
+                    $('.basket-succesfully-alert').hide();
+                }
+
+                setTimeout(ShowWindow, 140)
             }
         });
 

@@ -1,0 +1,63 @@
+﻿@model HomeVM
+
+@{
+    ViewData["Title"] = "CategoryBlog";
+    Layout = "~/Views/Shared/_Blog.cshtml";
+}
+
+<!-- All  Categorys Start-->
+    <div class="new-blogs-header-title selectCategory">
+        <form method="post" asp-controller="Blog" asp-action="CategoryBlog">
+            <select name="Id">
+                <option value="">All Categories</option>
+                @foreach (var ctgry in Model.BlogCategories)
+                {
+                    <option value="@ctgry.Id">@ctgry.Name</option>
+                }
+
+            </select>
+            <button id="categoryButton" type="submit">Show</button>
+        </form>
+    </div>
+<!-- All  Categorys End-->
+
+<div class="all-blogs-content-container">
+    <!-- left category Start-->
+    <div class="left-category-side-container">
+        @foreach (var ctgry in Model.BlogCategories.Take(6))
+        {
+
+                <div data-aos="fade-right" class="left-categories">
+                    <div class="left-text-div">
+                        <p><a asp-controller="Blog" asp-action="CategoryBlog" asp-route-id="@ctgry.Id">@ctgry.Name</a></p>
+                        
+                    </div>
+                    <img src="~/img/@ctgry.Image" alt="">
+                </div>
+        }
+    </div>
+    <!-- left category end-->
+    <!-- All Blogs Start-->
+    <div class="all-blog-row">
+        @foreach (var blog in Model.Blogs.OrderByDescending(x=>x.Id).Take(6))
+        {
+            <div class="blog-box">
+
+                <div class="blog-box-image">
+                    <figure>
+                        <img src="~/img/@blog.Image" alt="">
+                    </figure>
+                </div>
+
+                <div class="blog-box-text">
+                    <h1>@blog.Title</h1>
+                    <p>@blog.FrontText</p>
+                    <p>@blog.DateTime.ToString("dd/MM/yyyy")</p>
+
+                    <h5><a asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">More</a></h5>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- All Blogs End-->
+</div>

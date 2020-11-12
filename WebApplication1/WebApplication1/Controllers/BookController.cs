@@ -37,5 +37,25 @@ namespace WebApplication1.Controllers
             IEnumerable<Book> book = _db.Books.Where(b => b.BookName.Contains(search)).OrderByDescending(x => x.Id).Take(10);
             return PartialView("_SearchBookPartial",book);
         }
+
+        public IActionResult BookDetail(int? id)
+        {
+            Book book = _db.Books.Include(x => x.Author).Where(x => x.Id == id).FirstOrDefault();
+            return View(book);
+        }
+
+        public IActionResult CategoryBook(int? id)
+        {
+            HomeVM homeVM = new HomeVM
+            {
+                Books = _db.Books.Include(x => x.BookCategory).Where(c => c.BookCategoryId == id).ToList(),
+                Authors = _db.Authors.ToList(),
+                BookCategories =_db.BookCategories.Where(x=>x.Id==id)
+               
+            };
+
+          
+            return View(homeVM);
+        }
     }
 }

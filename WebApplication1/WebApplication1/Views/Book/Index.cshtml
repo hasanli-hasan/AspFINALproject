@@ -7,9 +7,11 @@
     int SliderCount = 0;
 }
 
-<    <!-- Main Start -->
+   <!-- Main Start -->
     <main>
-
+        <div class="succesfully-alert">
+            <p>Add Basket Succesfuly</p>   
+        </div>
         <!-- Slider Start -->
         <div id="carouselExampleControls" class="carousel slide book-bootstrap-slider" data-ride="carousel">
             <div class="carousel-inner">
@@ -61,19 +63,20 @@
                 {
                     <div data-aos="fade-right" class="left-categories">
                         <div class="left-text-div">
-                            <p><a href="">@ctgry.CategoryName</a></p>
+                            <p><a asp-controller="Book" asp-action="CategoryBook" asp-route-id="@ctgry.Id">@ctgry.CategoryName</a></p>
 
                             @if (ctgry.Books == null)
                             {
-                                <p><a href="">(0)</a></p>
+                                <p><a asp-controller="Book" asp-action="CategoryBook" asp-route-id="@ctgry.Id">(0)</a></p>
                             }
                             else
                             {
-                                <p><a href="">(@ctgry.Books.Count)</a></p>
+                                <p><a asp-controller="Book" asp-action="CategoryBook" asp-route-id="@ctgry.Id">(@ctgry.Books.Count)</a></p>
                             }
                         </div>
 
                         <img src="~/img/@ctgry.Image" alt="">
+
                     </div>
                 }
 
@@ -91,25 +94,25 @@
 
                     <div class="must-read-books-container">
                         <div class="must-read-books-row">
-                            @foreach (var book in Model.Books.Where(x=>x.BookCategory.CategoryName=="CCC"))
+                            @foreach (var book in Model.Books.Where(x => x.BookCategory.CategoryName == "Must Read Classics"))
                             {
-                            <div class="must-read-books-body">
-                                <div class="must-read-img">
-                                    <div class="img-and-basket">
-                                        <img src="~/img/@book.BookImage" alt="">
-                                        <div class="mustread-basket">
-                                            <a class="addBasket-Books" data-id="@book.Id">Add To Basket</a>
+                                <div class="must-read-books-body">
+                                    <div class="must-read-img">
+                                        <div class="img-and-basket">
+                                            <img src="~/img/@book.BookImage" alt="">
+                                            <div class="mustread-basket">
+                                                <a class="addBasket-Books" data-id="@book.Id">Add To Basket</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="must-read-text">
-                                    <h1><a href="">@book.BookName</a></h1>
-                                    <h5>by: @book.Author.AuthorName</h5>
-                                    <p>$ @book.BookPrice</p>
-                                    <h4><a href="">Read More</a></h4>
+                                    <div class="must-read-text">
+                                        <h1><a href="">@book.BookName</a></h1>
+                                        <h5>by: @book.Author.AuthorName</h5>
+                                        <p>$ @book.BookPrice</p>
+                                        <h4><a asp-controller="Book" asp-action="BookDetail" asp-route-id="@book.Id">Read More</a></h4>
+                                    </div>
                                 </div>
-                            </div>
                             }
                         </div>
                     </div>
@@ -125,7 +128,7 @@
 
                         <div class="must-read-books-container">
                             <div class="must-read-books-row">
-                                @foreach (var book in Model.Books.Where(x => x.BookCategory.CategoryName == "DDD"))
+                                @foreach (var book in Model.Books.Where(x => x.BookCategory.CategoryName == "Special Books"))
                                 {
                                     <div class="must-read-books-body">
                                         <div class="must-read-img">
@@ -141,7 +144,7 @@
                                             <h1><a href="">@book.BookName</a></h1>
                                             <h5>by: @book.Author.AuthorName</h5>
                                             <p>$ @book.BookPrice</p>
-                                            <h4><a href="">Read More</a></h4>
+                                            <h4><a asp-controller="Book" asp-action="BookDetail" asp-route-id="@book.Id">Read More</a></h4>
                                         </div>
                                     </div>
                                 }
@@ -179,17 +182,15 @@
 
         </div>
         <!-- Right Category  End -->
-
         <!-- book search start-->
         <div class="bk-search-container-search">
 
             <i id="bookExpand" class="fas fa-expand"> </i>
             <i id="bookTimes" class="fas fa-times"></i>
 
-          
+
         </div>
         <!-- book search end-->
-
         <!-- All Books Container  Start -->
         <div class="allbooks-filter-container">
             <div class="book-filter-container">
@@ -234,19 +235,7 @@
             <!--All Left Categorys Start-->
             <div class="allbooks-left-categories-container">
                 <h1>Categories</h1>
-                @foreach (var ctgry in Model.BookCategories)
-                {
-                    @if (ctgry.Books == null)
-                    {
-                        <p><a href="">@ctgry.CategoryName (0)</a></p>
-                    }
-                    else
-                    {
-                        <p><a >@ctgry.CategoryName (@ctgry.Books.Count)</a></p>
-                    }
-                }
-
-
+                @await Component.InvokeAsync("BookCategory")
             </div>
             <!--All Left Categorys End-->
 
@@ -261,7 +250,7 @@
                                 <a class="addBasket-Books" data-id="@book.Id">
                                     <i class="fas fa-cart-arrow-down"></i>
                                 </a>
-                                <p><a href="">Book Details</a></p>
+                                <p><a asp-controller="Book" asp-action="BookDetail" asp-route-id="@book.Id">Book Details</a></p>
                             </div>
                         </div>
                         <h1>@book.BookName</h1>
@@ -276,9 +265,8 @@
                 <h3>For Pagination</h3>
             </div>
         </div>
-        </div>
-        <!-- All Books Container End -->
-        <!-- Timer Modal Subs Start -->
+        <!-- Timer Modal Subs Start -->        <!-- All Books Container End -->
+
         <div id="main" class="timer-modal-info-container">
             <div class="timer-info-modal">
                 <button id="close-btn-btn">X</button>
@@ -312,6 +300,7 @@
 
         <div class="our-services-container">
             @await Component.InvokeAsync("OurServices")
+
         </div>
 
         <!-- Our Services End -->

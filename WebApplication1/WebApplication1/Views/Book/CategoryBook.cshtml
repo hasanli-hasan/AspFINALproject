@@ -1,0 +1,63 @@
+﻿@model HomeVM
+@{
+    ViewData["Title"] = "CategoryBook";
+    Layout = "~/Views/Shared/_Book.cshtml";
+}
+
+
+
+    
+        @foreach (var item in Model.BookCategories)
+        {
+            <h4 style="text-align:center; margin-top:20px; border:2px black solid; padding:12px 20px;">
+                Category: @item.CategoryName
+             </h4>
+         }
+
+<!-- All Books Container  Start -->
+
+<div class="succesfully-alert">
+    <p>Add Basket Succesfuly</p>
+</div>
+
+<div style="width:1328px !important; background:#C6C5C5;" class="allbooks-all-books-container">
+
+    @foreach (var book in Model.Books.OrderByDescending(x => x.Id))
+    {
+
+        <div data-aos="zoom-out" class="top-book-container">
+            <div class="top-book-image">
+                <img src="~/img/@book.BookImage" alt="">
+                <div class="top-image-hover-row">
+                    <a class="addBasket-Books" data-id="@book.Id">
+                        <i class="fas fa-cart-arrow-down"></i>
+                    </a>
+                    <p><a asp-controller="Book" asp-action="BookDetail" asp-route-id="@book.Id">Book Details</a></p>
+                </div>
+            </div>
+            <h1>@book.BookName</h1>
+            <h5>@book.Author.AuthorName</h5>
+            <p>$ @book.BookPrice</p>
+        </div>
+    }
+
+    <div class="top-book-pagination">
+        <h3>For Pagination</h3>
+    </div>
+</div>
+
+<!-- All Books Container End -->
+<!-- Timer Modal Subs Start -->
+<div id="main" class="timer-modal-info-container">
+    <div class="timer-info-modal">
+        <button id="close-btn-btn">X</button>
+        <h1>Subscribe for new <span>Books</span> and <span>Blogs</span></h1>
+        <input type="email" required placeholder="Email...">
+        <button id="email-button" type="submit">
+            <a href="">
+                <i class="fas fa-cannabis"></i>
+            </a>
+        </button>
+    </div>
+</div>
+<!-- Timer Modal Subs End -->

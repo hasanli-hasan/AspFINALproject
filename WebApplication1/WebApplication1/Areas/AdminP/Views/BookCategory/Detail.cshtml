@@ -1,0 +1,17 @@
+﻿@model BookCategory
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="container">
+        <div class="row">
+            <h3>@Model.CategoryName</h3>
+            <p>@Html.Raw(Model.Description)</p>
+        </div>
+        <div class="row">
+            <a class="btn btn-inverse-secondary" asp-action="Index">
+                Go Back
+            </a>
+        </div>
+    </div>

@@ -20,6 +20,6 @@ namespace WebApplication1.View_Models
         public IEnumerable<BookSlider> BookSliders { get; set; }
         public IEnumerable<MRClassics> MRClassics { get; set; }
         public IEnumerable<SpecialBooks> SpecialBooks { get; set; }
-       
+        public object AllBooks { get; internal set; }
     }
 }

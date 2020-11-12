@@ -109,6 +109,18 @@ $(document).ready(function () {
                 //$(".basket-products-container").append(res);
 
                 $(".basket-booksCountt").text(res)
+
+                function ShowWindow() {
+                    $('.succesfully-alert').show();
+
+                    setTimeout(hideWindow, 830)
+                }
+
+                function hideWindow() {
+                    $('.succesfully-alert').hide();
+                }
+
+                setTimeout(ShowWindow, 140)
             }
         });
 

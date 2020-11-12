@@ -1,0 +1,43 @@
+﻿@model Author
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            <form class="forms-sample" method="post">
+                <h3>Create Book Category</h3>
+
+                <div class="form-group">
+                    <label asp-for="AuthorName">Author Name</label>
+                    <input asp-for="AuthorName" class="form-control" placeholder="Name">
+                    <span asp-validation-for="AuthorName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success mr-2">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_Validation" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
+    <script>
+       ClassicEditor
+           .create(document.querySelector('#Description'))
+           .catch(error => {
+               console.error(error);
+           });
+
+
+    </script>
+}

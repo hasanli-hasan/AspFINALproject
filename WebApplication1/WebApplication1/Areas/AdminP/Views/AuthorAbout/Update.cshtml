@@ -1,0 +1,57 @@
+﻿@model AuthorAbout
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create New Author About</h2>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Photo"></label>
+                    <input asp-for="Photo" class="form-control" accept="image/*">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="NameSurname"></label>
+                    <input asp-for="NameSurname" class="form-control" placeholder="Name">
+                    <span asp-validation-for="NameSurname" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FrontTitle"></label>
+                    <textarea asp-for="FrontTitle" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="FrontTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="About"></label>
+                    <textarea asp-for="About" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="About" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BookInfo"></label>
+                    <textarea asp-for="BookInfo" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="BookInfo" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success mr-2">Save</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_Validation" />
+
+}
+
+
+

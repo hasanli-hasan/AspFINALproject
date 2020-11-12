@@ -38,6 +38,23 @@ namespace WebApplication1.Controllers
             return PartialView("_SearchBlogPartial",blog);
         }
 
+        public IActionResult BlogDetail(int? id)
+        {
+            Blog blog = _db.Blogs.Where(x => x.Id == id).FirstOrDefault();
+
+            return View(blog);
+        }
+
+        public IActionResult CategoryBlog(int? id)
+        {
+            HomeVM homeVM = new HomeVM
+            {
+                Blogs = _db.Blogs.Include(x => x.BlogCategory).Where(b => b.BlogCategoryId == id).ToList(),
+                BlogCategories=_db.BlogCategories
+            };
+            
+            return View(homeVM);
+        }
         
     }
 }

@@ -1,0 +1,60 @@
+﻿@model Book
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create New Book</h2>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Photo"></label>
+                    <input asp-for="Photo" class="form-control" accept="image/*">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="BookName"></label>
+                    <input asp-for="BookName" class="form-control" placeholder="Name">
+                    <span asp-validation-for="BookName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BookPrice"></label>
+                    <input asp-for="BookPrice" class="form-control" placeholder="Name">
+                    <span asp-validation-for="BookPrice" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="AboutBook"></label>
+                    <textarea asp-for="AboutBook" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="AboutBook" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Author"></label>
+                    <select name="AuthorId" asp-for="AuthorId" asp-items="@ViewBag.Authors"></select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BookCategory"></label>
+                    <select name="BookCategoryId" asp-for="BookCategoryId" asp-items="@ViewBag.Categories"></select>
+                </div>
+
+                <button type="submit" class="btn btn-success mr-2">Save</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_Validation" />
+
+}
+

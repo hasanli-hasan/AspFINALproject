@@ -329,3 +329,127 @@ margin-left: 93px;
 }
 
 
+/*Author Detail Start */
+
+.author-detail-page {
+    width: 80%;
+    height: 1100px;
+    margin: 0 auto;
+    background: rgb(126, 126, 126);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+    .author-detail-page .detail-header {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(45deg,rgb(66, 66, 66),rgb(29, 29, 29),rgb(0, 0, 0));
+    }
+
+.detail-header h1 {
+    color: white;
+    position: absolute;
+    top: 11%;
+    left: 5%;
+}
+
+.author-detail-page .author-detail-image {
+    position: absolute;
+    width: 280px;
+    height: 310px;
+    top: 7%;
+    left: 55%;
+}
+
+    .author-detail-page .author-detail-image img {
+        width: 100%;
+        height: 100%;
+    }
+
+.author-detail-bio {
+    width: 900px;
+    height: 600px;
+    margin: 0 auto;
+    background: rgb(151, 240, 170);
+    margin-top: 150px;
+}
+
+.author-books-bios-button {
+    width: 100%;
+    height: 80px;
+    background: #000;
+}
+
+    .author-books-bios-button button {
+        border: none;
+        outline: none;
+        width: 110px;
+        height: 35px;
+        margin-top: 18px;
+        margin-left: 10px;
+        font-size: 20px;
+        background-color: white;
+    }
+
+.author-bios-text-areaRow {
+    width: 900px;
+    height: 530px;
+    background: rgb(255, 255, 255);
+    position: absolute;
+    overflow-y: scroll;
+}
+
+    .author-bios-text-areaRow p {
+        font-family: serif;
+        font-size: 21px;
+        padding-left: 17px;
+        padding-top: 20px;
+    }
+
+
+.author-books-text-areaRow {
+    width: 900px;
+    height: 530px;
+    background: rgb(255, 255, 255);
+    position: absolute;
+    overflow-y: scroll;
+}
+
+    .author-books-text-areaRow li {
+        font-size: 22px;
+        padding-top: 10px;
+        padding-left: 20px;
+    }
+
+    .author-books-text-areaRow p {
+        padding-top: 20px;
+        font-size: 20px;
+        padding-left: 35px;
+    }
+
+.d-none {
+    display: none;
+}
+
+/* Scroll Css Start*/
+.gigidi::-webkit-scrollbar {
+    width: 15px;
+    background: linear-gradient(to bottom,rgb(160, 158, 158),rgb(70, 69, 69),rgb(0, 0, 0));
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.gigidi::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom,rgb(255, 175, 25),rgb(255, 94, 0),red);
+    height: 20px !important;
+    border-radius: 10px;
+}
+
+.gigidi ::-webkit-scrollbar:horizontal {
+    display: none;
+}
+
+/*Scroll Css End */
+
+/*Author Detail End */

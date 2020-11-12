@@ -1,0 +1,23 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Blog</h2>
+
+<div class="align-items-center">
+    <img src="~/img/@Model.Image" style="width:200px; height:150px;" />
+    <h3>@Model.Title</h3>
+    <h4>@Model.FrontText</h4>
+
+    <h5>@Model.DateTime</h5>
+    <p>@Model.BlogCategory.Name</p>
+</div>
+<div class="mt-4">
+    @Model.BlogText
+</div>
+<a asp-action="Index" class="btn btn-inverse-dark">Go Back</a>
+<form method="post">
+    <button type="submit" class="btn btn-success mt-2">Delete</button>
+</form>

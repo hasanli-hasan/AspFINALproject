@@ -1,0 +1,40 @@
+﻿@*@model Book
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="bookDetailPage">
+    <div class="book-detail-container">
+        <div class="product-profil-row">
+            <div class="book-page">
+                <div class="page-img">
+                    <img src="~/img/@Model.BookImage" alt="">
+                </div>
+                <div class="text-page-product">
+                    <h2>@Model.BookName</h2>
+                    <p>
+                        @Model.AboutBook
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="product-addCart-row">
+            <h1>@Model.BookName</h1>
+            <h3>@Model.Author.AuthorName</h3>
+            <p>$ @Model.BookPrice</p>
+            <a  class="addBasket-Books" data-id="@Model.Id">Add</a>
+            <button id="Sxx">Salam</button>
+        </div>
+    </div>
+    <div class="book-detail-fullInfo-tab">
+        <h1>@Model.BookName</h1>
+        <p>
+            @Model.AboutBook
+        </p>
+    </div>
+
+</div>*@
+

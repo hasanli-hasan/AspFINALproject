@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model BookCategory
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <div class="container">
+        <div class="row">
+            <h3>@Model.CategoryName</h3>
+            
+        </div>
+        <div class="row">
+           
+            <h5>@Html.Raw(Model.Description)</h5>
+        </div>
+        <p>Eminsinizmi?</p>
+
+        <div class="row">
+            <form method="post">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>   
+        </div>
+
+        <div class="row mt-2" >
+            <a class="btn btn-inverse-secondary" asp-action="Index">
+                Cancel
+            </a>
+        </div>
+    </div>
+

@@ -1,0 +1,63 @@
+﻿@model Blog
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Create New Blog</h2>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Photo"></label>
+                    <input asp-for="Photo" class="form-control" accept="image/*">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control" placeholder="Name">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FrontText"></label>
+                    <input asp-for="FrontText" class="form-control" placeholder="Name">
+                    <span asp-validation-for="FrontText" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BlogText"></label>
+                    <textarea asp-for="BlogText" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="BlogText" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DateTime"></label>
+                    <input asp-for="DateTime" class="form-control" placeholder="Name">
+                    <span asp-validation-for="DateTime" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BlogCategory"></label>
+                    <select name="BlogCategoryId" asp-for="BlogCategoryId" asp-items="@ViewBag.BlogCategory"></select>
+                </div>
+
+                <button type="submit" class="btn btn-success mr-2">Create</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_Validation" />
+
+}
+
+
+

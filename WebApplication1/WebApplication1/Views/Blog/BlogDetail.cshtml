@@ -1,0 +1,40 @@
+﻿
+@model Blog
+
+@{
+    ViewData["Title"] = "BlogDetail";
+    Layout = "~/Views/Shared/_Blog.cshtml";
+}
+
+<div class="blog-detail-container">
+    <div class="blogD-header">
+        <h1>@Model.Title</h1>
+    </div>
+    <div class="blogD-about-blogAuthor">
+        <div class="blogAuthor-image">
+            <img src="~/img/blgA.jpg" alt="">
+        </div>
+        <h1>Lynanna Stark</h1>
+        <h3>Contacts</h3>
+        <p>
+            <a href="">
+                <i class="fab fa-facebook"></i>
+            </a>
+            Facebook
+        </p>
+
+        <p>
+            <a href="">
+                <i class="fab fa-twitter"></i>
+            </a>
+            Twitter
+        </p>
+
+    </div>
+    <div class="blog-detail-text-page">
+        <p>
+            @Model.BlogText
+        </p>
+    </div>
+</div>
+

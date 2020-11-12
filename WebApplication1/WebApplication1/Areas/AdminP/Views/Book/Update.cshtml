@@ -1,0 +1,74 @@
+﻿@model Book
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Old Book Update</h2>
+
+<div class="align-items-center">
+    <img src="~/img/@Model.BookImage" style="width:120px; height:170px;" />
+    <h3>@Model.BookName</h3>
+    <h4>@Model.Author.AuthorName</h4>
+    <p>@Model.BookPrice</p>
+    <h5>@Model.BookCategory.CategoryName</h5>
+</div>
+<div class="mt-4">
+    @Model.AboutBook
+</div>
+<a asp-action="Index" class="btn btn-inverse-dark">Go Back</a>
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Photo"></label>
+                    <input asp-for="Photo" class="form-control" accept="image/*">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="BookName"></label>
+                    <input asp-for="BookName" class="form-control" placeholder="Name">
+                    <span asp-validation-for="BookName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BookPrice"></label>
+                    <input asp-for="BookPrice" class="form-control" placeholder="Name">
+                    <span asp-validation-for="BookPrice" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="AboutBook"></label>
+                    <textarea asp-for="AboutBook" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="AboutBook" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Author"></label>
+                    <select name="AuthorId" asp-for="AuthorId" asp-items="@ViewBag.Authors"></select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BookCategory"></label>
+                    <select name="BookCategoryId" asp-for="BookCategoryId" asp-items="@ViewBag.Categories"></select>
+                </div>
+
+                <button type="submit" class="btn btn-success mr-2">Update</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_Validation" />
+
+}
+
+
+
+

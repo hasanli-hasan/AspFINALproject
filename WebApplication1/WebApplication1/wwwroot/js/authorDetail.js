@@ -1,4 +1,6 @@
-let book=document.getElementById('bookButton');
+
+//author detail start
+let book = document.getElementById('bookButton');
 let about=document.getElementById('aboutButton');
 let authorBook=document.querySelector('.author-books-text-areaRow')
 let authorBio=document.querySelector('.author-bios-text-areaRow')
@@ -14,3 +16,6 @@ about.addEventListener('click',function(){
     authorBook.classList.add('d-none')
     authorBio.classList.remove('d-none')
 })
+
+
+//author detail end

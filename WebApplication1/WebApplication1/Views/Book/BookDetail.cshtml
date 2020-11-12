@@ -1,0 +1,43 @@
+﻿@model  Book
+
+@{
+    ViewData["Title"] = "BookDetail";
+    Layout = "~/Views/Shared/_Book.cshtml";
+}
+
+    <div class="succesfully-alert">
+        <p>Add Basket Succesfuly</p>
+    </div>
+
+    <div class="bookDetailPage">
+        <div class="book-detail-container">
+            <div class="product-profil-row">
+                <div class="book-page">
+                    <div class="page-img">
+                        <img src="~/img/@Model.BookImage" alt="">
+                    </div>
+                    <div class="text-page-product">
+                        <h2>@Model.BookName</h2>
+                        <p>
+                            @Model.AboutBook
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="product-addCart-row">
+                <h1>@Model.BookName</h1>
+                <h3>@Model.Author.AuthorName</h3>
+                <p>$ @Model.BookPrice</p>
+                <a class="addBasket-Books" data-id="@Model.Id">Add To Basket</a>
+               
+            </div>
+        </div>
+        <div class="book-detail-fullInfo-tab">
+            <h1>@Model.BookName</h1>
+            <p>
+                @Model.AboutBook
+            </p>
+        </div>
+
+    </div>
+

@@ -1,0 +1,43 @@
+﻿@model AuthorAbout
+
+<style>
+    .detail {
+        margin-top: 20px;
+        width: 500px;
+    }
+
+    img {
+        width: 100px;
+        height: 120px;
+    }
+</style>
+
+
+
+    <div class="detail">
+        <img src="~/img/@Model.Image" />
+    </div>
+
+    <div class="detail">
+        @Model.NameSurname
+    </div>
+
+    <div class="detail">
+        <p>  
+            @Model.FrontTitle
+        </p>
+    </div>
+
+    <h2>About Author</h2>
+    <div class="detail">
+        <p>
+            @Model.About
+        </p>
+    </div>
+
+    <h2>Author Books</h2>
+    <div class="detail">
+        <p>
+            @Model.BookInfo
+        </p>
+    </div>

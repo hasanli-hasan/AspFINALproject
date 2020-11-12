@@ -1,0 +1,36 @@
+﻿@model AuthorAbout
+
+@{
+    ViewData["Title"] = "AuthorDetail";
+    Layout = "~/Views/Shared/_Author.cshtml";
+}
+
+
+<div class="author-detail-page">
+    <div class="detail-header">
+        <h1>@Model.NameSurname</h1>
+    </div>
+
+    <div class="author-detail-image">
+        <img src="~/img/@Model.Image" alt="">
+    </div>
+    <div class="author-detail-bio">
+        <div class="author-books-bios-button">
+            <button id="aboutButton">About</button>
+            <button id="bookButton">Books</button>
+
+        </div>
+
+        <div class="author-bios-text-areaRow gigidi">
+            <p>@Model.About</p>
+        </div>
+
+        <div class="author-books-text-areaRow gigidi d-none">
+            <p>@Model.BookInfo</p>
+           
+        </div>
+    </div>
+
+</div>
+
+

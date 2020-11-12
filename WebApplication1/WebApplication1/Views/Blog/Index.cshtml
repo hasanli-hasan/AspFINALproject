@@ -14,7 +14,7 @@
         
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                @foreach (var blog in Model.Blogs.OrderByDescending(x => x.Id).Take(8))
+                @foreach (var blog in Model.Blogs.OrderByDescending(x => x.Id).Take(5))
                 {
                     <div class="swiper-slide">
                         <div class="top-new-blog-card">
@@ -28,7 +28,7 @@
                                 <p>
                                     @blog.FrontText
                                 </p>
-                                <h5><a href="">Read More</a></h5>
+                                <h5><a asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">Read More</a></h5>
                             </div>
                         </div>
                     </div>
@@ -44,15 +44,17 @@
 
         <!-- All  Categorys Start-->
         <div class="new-blogs-header-title selectCategory">
-            <select name="" id="">
-                <option value="">All Categories</option>
-                @foreach (var ctgry in Model.BlogCategories)
-                {
-                    <option value="">@ctgry.Name</option>
-                }
+            <form method="post"  >
+                <select name="Id">
+                    <option value="">All Categories</option>
+                    @foreach (var ctgry in Model.BlogCategories)
+                    {
+                        <option value="@ctgry.Id">@ctgry.Name</option>
+                    }
 
-            </select>
-            <button id="categoryButton" type="submit">Show</button>
+                </select>
+                <button  id="categoryButton" type="submit">Show</button>
+            </form>
 
             <!-- blog search input start-->
             <input id="blogSearchInput" type="search" placeholder="Search...">
@@ -76,8 +78,8 @@
                         {
                             <div data-aos="fade-right" class="left-categories">
                                 <div class="left-text-div">
-                                    <p><a href="">@ctgry.Name</a></p>
-                                    <p><a href="">(0)</a></p>
+                                    <p><a asp-controller="Blog" asp-action="CategoryBlog" asp-route-id="@ctgry.Id">@ctgry.Name</a></p>
+                                    <p><a asp-controller="Blog" asp-action="CategoryBlog" asp-route-id="@ctgry.Id">(0)</a></p>
                                 </div>
                                 <img src="~/img/@ctgry.Image" alt="">
                             </div>
@@ -86,8 +88,8 @@
                         {
                             <div data-aos="fade-right" class="left-categories">
                                 <div class="left-text-div">
-                                    <p><a href="">@ctgry.Name</a></p>
-                                    <p><a href="">(@ctgry.Blogs.Count)</a></p>
+                                    <p><a asp-controller="Blog" asp-action="CategoryBlog" asp-route-id="@ctgry.Id">@ctgry.Name</a></p>
+                                    <p><a asp-controller="Blog" asp-action="CategoryBlog" asp-route-id="@ctgry.Id">(@ctgry.Blogs.Count)</a></p>
                                 </div>
                                 <img src="~/img/@ctgry.Image" alt="">
                             </div>
@@ -112,7 +114,7 @@
                                 <p>@blog.FrontText</p>
                                 <p>@blog.DateTime.ToString("dd/MM/yyyy")</p>
 
-                                <h5><a href="../html/blogDetail.html">More</a></h5>
+                                <h5><a  asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">More</a></h5>
                             </div>
                         </div>
                     }
@@ -149,7 +151,7 @@
                         <div data-aos="zoom-out-down" class="like-this-row">
                             <img src="~/img/@blog.Image" alt="">
                             <div class="like-row-face">
-                                <p><a href="">Show</a></p>
+                                <p><a  asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">Show</a></p>
                             </div>
                         </div>
                     }
@@ -161,7 +163,7 @@
                         <div data-aos="zoom-out-down" class="like-this-row">
                             <img src="~/img/@blog.Image" alt="">
                             <div class="like-row-face">
-                                <p><a href="">Show</a></p>
+                                <p><a  asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">Show</a></p>
                             </div>
                         </div>
                     }

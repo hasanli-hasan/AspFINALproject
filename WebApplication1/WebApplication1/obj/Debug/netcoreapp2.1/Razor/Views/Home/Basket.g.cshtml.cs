@@ -79,7 +79,7 @@ using WebApplication1.View_Models;
             WriteLiteral("        <div class=\"basket-product-row\">\r\n            <div class=\"basket-image-name-row\">\r\n                <li class=\'book\'>\r\n                    ");
             EndContext();
             BeginContext(516, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "4c7893258a8a46669066a915a5db05a3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "32d23865215b47b9baf7bb9f290e504b", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -134,7 +134,7 @@ AddHtmlAttributeValue("", 532, book.BookImage, 532, 15, false);
             WriteLiteral("</p>\r\n            </div>\r\n\r\n            <div class=\"basket-price-count-totalPrice\">\r\n                <p>Count</p>\r\n                <p id=\"basketplusMinus\">\r\n                    ");
             EndContext();
             BeginContext(1223, 76, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "71cf9cd1afbb4c58bfcac0479de787bc", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "416bfdfeff77462daf17dead5aa86c14", async() => {
                 BeginContext(1294, 1, true);
                 WriteLiteral("+");
                 EndContext();
@@ -171,7 +171,7 @@ AddHtmlAttributeValue("", 532, book.BookImage, 532, 15, false);
             WriteLiteral("\r\n                    ");
             EndContext();
             BeginContext(1321, 77, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a1699d452a4a4154ab48f20d72689eb6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "31ff282e4f7e411fae2109dae017b30d", async() => {
                 BeginContext(1393, 1, true);
                 WriteLiteral("-");
                 EndContext();
@@ -218,7 +218,7 @@ AddHtmlAttributeValue("", 532, book.BookImage, 532, 15, false);
             WriteLiteral("</p>\r\n            </div>\r\n\r\n            <div class=\"basket-product-delete-icon\">\r\n                ");
             EndContext();
             BeginContext(1663, 151, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e8515734753c4aed8c6e6d6226643e5e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "70f5d25c1d7b4e6c9636ace0df5773c1", async() => {
                 BeginContext(1738, 72, true);
                 WriteLiteral("\r\n                    <i class=\"fas fa-trash-alt\"></i>\r\n                ");
                 EndContext();

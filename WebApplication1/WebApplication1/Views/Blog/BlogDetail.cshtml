@@ -1,9 +1,10 @@
 ﻿
-@model Blog
+@model BlogVM
 
 @{
     ViewData["Title"] = "BlogDetail";
     Layout = "~/Views/Shared/_Blog.cshtml";
+   
 }
 
 <div class="blog-detail-container">
@@ -38,3 +39,113 @@
     </div>
 </div>
 
+<div class="commet-box-container">
+    <div id="commetDiv" class="commet-text-body-row">
+
+        @foreach (var commet in Model.Commets)
+        {
+          
+            <div class="commet-body">
+               
+                <div class="commet-user-info">
+                    <div class="commet-user-image">
+                        <img src="~/img/user-image.png" />
+                    </div>
+                    <div class="commet-user-name">
+                        <h5>@commet.UserName</h5>
+                        
+                    </div>
+                </div>
+
+                <div class="commet-user-text">
+                    <p>
+                        @commet.Text
+                    </p>
+
+                    @if (User.Identity.Name == commet.UserName)
+                    {
+                        <a id="dltBtnn" data-id="@commet.Id" style="cursor:pointer;">Delete</a>
+
+
+                    }
+
+                    <span>
+                        @commet.Date.ToString("dd/MM/yyyy")
+                    </span>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="commet-submit-create-row">
+
+        <form method="post">
+            <input id="modelId" type="hidden"  value="@Model.Id" />
+            <textarea id="textArea" name="Text"></textarea>
+            <button type="submit" id="createCommet" >Leave Comment</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>
+
+    <script>
+       
+        $(document).on("click", "#dltBtnn", function () {
+
+            let id = $(this).attr("data-id");
+            
+
+            $.ajax({
+                url: "/Blog/DeleteCommet?Id=" + id,
+                type: "Get",
+                success: function (res) {
+                    
+                }
+            });
+
+            $(this).closest('.commet-body').remove()
+        });
+
+        //////////////////////////
+
+
+
+        let btnCreate = document.querySelector('#createCommet');
+       
+        btnCreate.addEventListener('click', function (event) {
+            event.preventDefault();
+           
+         
+            let formData = new FormData();
+            
+            
+            formData.append("Text", $("#textArea").val());
+              formData.append("Id", $("#modelId").val());
+
+       
+          
+            axios.post('/Blog/BlogDetail', formData)
+                .then(function (response) {
+                    console.log(response.data);
+                  
+                })
+                //.catch(function (error) {
+                //    if (error.response) {
+                //        let errorObj = error.response.data;
+                //        console.log(errorObj)
+                //        for (let errors in errorObj) {
+                //            let error = errorObj[errors];
+                //            $.notify(error, "error");
+                //        }
+                //    }
+                //});
+        })
+
+
+    </script>
+}

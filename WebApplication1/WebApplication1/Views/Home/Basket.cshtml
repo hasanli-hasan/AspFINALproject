@@ -10,6 +10,19 @@
 
 
 <!-- basket area start -->
+<div class="container alert-success">
+    @TempData["success"]
+
+</div>
+
+<div class="container alert-danger">
+
+    @TempData["error"]
+
+</div>
+
+@if (Model.Count() > 0)
+{
     <div class="basket-products-container">
 
         @foreach (var book in Model)
@@ -17,48 +30,51 @@
             decimal total = book.BookPrice * book.Count;
             Total += total;
 
-        <div class="basket-product-row">
-            <div class="basket-image-name-row">
-                <li class='book'>
-                    <img src='~/img/@book.BookImage' />
-                </li>
-            </div>
+            <div class="basket-product-row">
+                <div class="basket-image-name-row">
+                    <li class='book'>
+                        <img src='~/img/@book.BookImage' />
+                    </li>
+                </div>
 
-            <div class="basket-image-name-row">
-                <h1>
-                    <a href="">@book.BookName</a>
-                </h1>
-            </div>
+                <div class="basket-image-name-row">
+                    <h1>
+                        <a href="">@book.BookName</a>
+                    </h1>
+                </div>
 
-            <div class="basket-price-count-totalPrice">
-                <p>Book Price:</p>
-                <p>$ @book.BookPrice</p>
-            </div>
+                <div class="basket-price-count-totalPrice">
+                    <p>Book Price:</p>
+                    <p>$ @book.BookPrice</p>
+                </div>
 
-            <div class="basket-price-count-totalPrice">
-                <p>Book Count:</p>
-                <p> @book.Count</p>
-            </div>
+                <div class="basket-price-count-totalPrice">
+                    <p>Book Count:</p>
+                    <p> @book.Count</p>
+                </div>
 
-            <div class="basket-price-count-totalPrice">
-                <p>Count</p>
-                <p id="basketplusMinus">
-                    <a asp-controller="Home" asp-action="Upcrease" asp-route-id="@book.Id">+</a>
-                    <a asp-controller="Home" asp-action="Decrease"  asp-route-id="@book.Id">-</a>
-                </p>
-            </div>
+                <div class="basket-price-count-totalPrice">
+                    <p>Count</p>
+                    <p id="basketplusMinus">
+                        @if (book.Count < book.BookCount)
+                        {
+                            <a asp-controller="Home" asp-action="Upcrease" asp-route-id="@book.Id">+</a>
+                        }
+                        <a asp-controller="Home" asp-action="Decrease" asp-route-id="@book.Id">-</a>
+                    </p>
+                </div>
 
-            <div class="basket-price-count-totalPrice">
-                <p>Total Price:</p>
-                <p>$ @total</p>
-            </div>
+                <div class="basket-price-count-totalPrice">
+                    <p>Total Price:</p>
+                    <p>$ @total</p>
+                </div>
 
-            <div class="basket-product-delete-icon">
-                <a asp-controller="Home" asp-action="DeleteBasket" asp-route-id="@book.Id">
-                    <i class="fas fa-trash-alt"></i>
-                </a>
+                <div class="basket-product-delete-icon">
+                    <a asp-controller="Home" asp-action="DeleteBasket" asp-route-id="@book.Id">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </div>
             </div>
-        </div>
 
         }
 
@@ -67,5 +83,44 @@
 
         </div>
 
+        <div class="row m-2 justify-content-center">
+            @*<form method="post">
+                    <button type="submit" class="btn btn-success ">Buy Now</button>
+                </form>*@
+        </div>
     </div>
+
+
+    <!-- basket shop modal start -->
+    <div class="basket-shopping-user-info">
+
+
+        <form method="post">
+            <div class="form-shop">
+                <label>Phone Number</label>
+                <input class="form-control" placeholder="Phone" name="Number">
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-shop">
+                <label>Your Address</label>
+                <textarea class="form-control" rows="4" name="Address"></textarea>
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-shop">
+                <label>Message</label>
+                <textarea class="form-control" rows="4" name="Message"></textarea>
+                <span class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-success ">Buy Now</button>
+        </form>
+    </div>
+    <!--  basket shop modal end -->
+}
+else
+{ <div style="margin-left:42%;">
+        <h4 class="text-danger">Sebet Boshdur</h4>
+    </div>
+}
 <!-- basket area end -->

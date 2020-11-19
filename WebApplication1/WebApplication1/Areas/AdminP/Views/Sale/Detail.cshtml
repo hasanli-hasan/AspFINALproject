@@ -1,0 +1,72 @@
+﻿@model SaleVM
+
+
+
+<div class="saled-product-container">
+    <div class="saled-datetime-row">
+        <h2>Saled DateTime: @Model.Date</h2>
+    </div>
+
+    @foreach (SaleBook item in Model.SaleBooks)
+    {
+        <div class="saled-products-row">
+            <div class="saled-product-image">
+                <img src="~/img/@item.Book.BookImage" alt="">
+            </div>
+            <div class="saled-product-properties">
+                <div class="saled-property-types">
+                    <span>Name: </span> <p>@item.Book.BookName</p>
+                </div>
+                <div class="saled-property-types">
+                    <span>Count: </span> <p>@item.Count</p>
+                </div>
+                <div class="saled-property-types">
+                    <span>Book Price: </span> <p>$ @item.BookPrice</p>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+    <div class="saled-all-totalPrice-row">
+        <h3></p>Total Price: $ @Model.Total</h3>
+    </div>
+
+    <div class="saled-user-info-row">
+        <div class="user-name-email-phone">
+            <span>User Name:</span>
+            <h3>@Model.FullName</h3>
+        </div>
+
+        <div class="user-name-email-phone">
+            <span>User Email:</span>
+            <p>@Model.Email</p>
+        </div>
+
+        <div class="user-name-email-phone">
+            <span>User Phone Number:</span>
+            <p>@Model.Number</p>
+        </div>
+        <p>User Address:</p>
+        <div class="user-address-row">
+            <p>
+                @Model.Address
+            </p>
+        </div>
+        <p>User Message:</p>
+        <div class="user-message-row">
+            <p>
+                @Model.Message
+            </p>
+        </div>
+
+        <div class="recive-sale">
+            @if (!Model.isRecived)
+            {
+                <p> <a asp-action="ArchiveSale" asp-route-id="@Model.Id">Recive Sale</a></p>
+            }
+
+        </div>
+    </div>
+</div>

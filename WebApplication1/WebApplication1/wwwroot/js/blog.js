@@ -76,4 +76,8 @@ $(document).ready(function () {
 
     //full ecran click end
 
+    //commet create start
+
+
 });
+

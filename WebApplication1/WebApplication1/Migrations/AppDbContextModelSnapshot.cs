@@ -148,6 +148,8 @@ namespace WebApplication1.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
+                    b.Property<bool>("IsActivated");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
@@ -361,6 +363,33 @@ namespace WebApplication1.Migrations
                     b.ToTable("BookSliders");
                 });
 
+            modelBuilder.Entity("WebApplication1.Models.Commet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId");
+
+                    b.Property<int>("BlogId");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Text");
+
+                    b.Property<string>("UserName");
+
+                    b.Property<bool>("isAppend");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("Commets");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.DiscountBooks", b =>
                 {
                     b.Property<int>("Id")
@@ -450,6 +479,56 @@ namespace WebApplication1.Migrations
                     b.ToTable("RecommendationBooks");
                 });
 
+            modelBuilder.Entity("WebApplication1.Models.Sale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("AppUserId");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Message");
+
+                    b.Property<string>("Number");
+
+                    b.Property<decimal>("Total");
+
+                    b.Property<bool>("isRecived");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Sales");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.SaleBook", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BookId");
+
+                    b.Property<decimal>("BookPrice");
+
+                    b.Property<int>("Count");
+
+                    b.Property<int>("SaleId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("SaleId");
+
+                    b.ToTable("SaleBooks");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.SpecialBooks", b =>
                 {
                     b.Property<int>("Id")
@@ -534,6 +613,38 @@ namespace WebApplication1.Migrations
                     b.HasOne("WebApplication1.Models.BookCategory", "BookCategory")
                         .WithMany("Books")
                         .HasForeignKey("BookCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.Commet", b =>
+                {
+                    b.HasOne("WebApplication1.Models.AppUser", "AppUser")
+                        .WithMany("Commets")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("WebApplication1.Models.Blog", "Blog")
+                        .WithMany("Commets")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.Sale", b =>
+                {
+                    b.HasOne("WebApplication1.Models.AppUser", "AppUser")
+                        .WithMany("Sales")
+                        .HasForeignKey("AppUserId");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.SaleBook", b =>
+                {
+                    b.HasOne("WebApplication1.Models.Book", "Book")
+                        .WithMany("SaleBooks")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("WebApplication1.Models.Sale", "Sale")
+                        .WithMany("SaleBooks")
+                        .HasForeignKey("SaleId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

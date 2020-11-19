@@ -12,5 +12,7 @@ namespace WebApplication1.View_Models
         public string BookImage { get; set; }
         public decimal BookPrice { get; set; }
         public int Count { get; set; }
+        public int BookCount { get; set; }
+
     }
 }

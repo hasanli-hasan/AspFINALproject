@@ -24,5 +24,7 @@ namespace WebApplication1.Models
         public int BlogCategoryId { get; set; }
         public BlogCategory BlogCategory { get; set; }
 
+        public ICollection<Commet> Commets { get; set; }
+
     }
 }

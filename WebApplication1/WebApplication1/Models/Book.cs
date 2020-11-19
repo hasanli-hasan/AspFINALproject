@@ -24,5 +24,7 @@ namespace WebApplication1.Models
         public Author Author { get; set; }
         public int BookCategoryId { get; set; }
         public BookCategory BookCategory { get; set; }
+
+        public ICollection<SaleBook> SaleBooks { get; set; }
     }
 }

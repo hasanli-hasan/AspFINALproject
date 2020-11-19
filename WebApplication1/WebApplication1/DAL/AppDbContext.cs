@@ -25,6 +25,8 @@ namespace WebApplication1.DAL
         public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<OurServices> OurServices { get; set; }
         public DbSet<Bio> Bios { get; set; }
-
+        public DbSet<Sale> Sales { get; set; }
+        public DbSet<SaleBook> SaleBooks { get; set; }
+        public DbSet<Commet> Commets { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,6 +16,7 @@ using WebApplication1.View_Models;
 namespace WebApplication1.Areas.AdminP.Controllers
 {
     [Area("AdminP")]
+    //[Authorize(Roles ="Admin")]
     public class BookController : Controller
     {
         private readonly AppDbContext _db;
@@ -24,6 +26,7 @@ namespace WebApplication1.Areas.AdminP.Controllers
             _db = db;
             _env = env;
         }
+       /* [AllowAnonymous]*/ //controllera qadaga olsa da bu action-a icaze verilir
         public IActionResult Index()
         {
             _db.Books.Include(b => b.Author).ToList();

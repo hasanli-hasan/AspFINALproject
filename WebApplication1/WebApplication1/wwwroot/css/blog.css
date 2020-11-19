@@ -88,10 +88,9 @@
     height: 600px;
     background: white;
     z-index: 200;
-    position: absolute;
-    top: -80%;
+    position: fixed;
+    top: 3%;
     left: 20px;
-    box-shadow: none !important;
     display: flex;
     flex-wrap: wrap;
     overflow-y: scroll;
@@ -691,6 +690,114 @@ margin-top: 30px;
 
 /* Blog detail end */
 
+/* Blog commet start */
+.commet-box-container {
+    width: 1100px;
+    margin: 0 auto;
+    margin-top: 40px;
+    border: 0.1px rgb(119, 116, 116) solid;
+}
+
+
+    .commet-box-container .commet-text-body-row {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+.commet-text-body-row .commet-body {
+    width: 100%;
+    margin: 10px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 1px rgb(110, 109, 109) solid;
+}
+
+.commet-body .commet-user-info {
+    width: 26%;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.commet-user-info .commet-user-image {
+    width: 60px;
+    height: 60px;
+    background: #000;
+    border-radius: 50%;
+}
+
+    .commet-user-info .commet-user-image img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+.commet-user-info .commet-user-name {
+    width: 140px;
+    height: 60px;
+}
+
+.commet-user-info .commet-user-name h3{
+   font-size:21px;
+   padding-top:15px;
+}
+
+
+
+.commet-body .commet-user-text {
+    width: 68%;
+}
+
+    .commet-body .commet-user-text span {
+        padding-left: 80%;
+        color: rgb(255, 64, 16);
+        font-weight: 600;
+    }
+
+.commet-body .commet-user-text a:nth-child(2){
+    color:red;
+    text-decoration:none;
+}
+
+    .commet-body .commet-user-text a:nth-child(3) {
+        color: green;
+        text-decoration: none;
+        margin-left:8px;
+    }
+
+
+.commet-box-container .commet-submit-create-row {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: rgb(224, 223, 223);
+}
+
+    .commet-box-container .commet-submit-create-row form textarea {
+        width: 960px;
+        height: 100px;
+        margin-left: 71px;
+        margin-top: 10px;
+    }
+
+    .commet-box-container .commet-submit-create-row button {
+        width: 130px;
+        height: 40px;
+        outline: none;
+        border: none;
+        margin-left: 43%;
+        margin-top: 15px;
+        font-size: 15px;
+        color: white;
+        background: #000;
+    }
+/* Blog commet end */
 
 
 

@@ -67,7 +67,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n<h2>Blog</h2>\r\n\r\n<div class=\"align-items-center\">\r\n    ");
             EndContext();
             BeginContext(177, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "dc43aecbe14f4800aba4555dbeae90d1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "67c95062d3754514b6711e2060449441", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -143,7 +143,7 @@ Write(Model.BlogText);
             WriteLiteral("\r\n</div>\r\n");
             EndContext();
             BeginContext(430, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "33ef10e8f0a04a3ebf420c3c82209d0f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8aac8fb6dfa04ceaa4acd7a6272683b5", async() => {
                 BeginContext(481, 7, true);
                 WriteLiteral("Go Back");
                 EndContext();
@@ -166,7 +166,7 @@ Write(Model.BlogText);
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(494, 101, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0c3b8f8908bf438da8140cf380894aa9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "545e982baa5b4509bf7529f951f4170f", async() => {
                 BeginContext(514, 74, true);
                 WriteLiteral("\r\n    <button type=\"submit\" class=\"btn btn-success mt-2\">Delete</button>\r\n");
                 EndContext();

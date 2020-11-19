@@ -74,7 +74,7 @@ using WebApplication1.View_Models;
             WriteLiteral("</h1>\r\n    </div>\r\n\r\n    <div class=\"author-detail-image\">\r\n        ");
             EndContext();
             BeginContext(286, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "3e3d0794ad36466a9a11b55afa5f89ec", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "86b990b59dca4dd5b75723ac98fb496b", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

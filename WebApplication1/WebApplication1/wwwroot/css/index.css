@@ -1348,7 +1348,7 @@ background: rgb(179, 175, 175);
 }
 
 .basket-all-products-total {
-    width: 1200px;
+    width: 1250px;
     height: 69px;
     margin: 0 auto;
     background: rgb(255, 255, 255);
@@ -1360,6 +1360,7 @@ background: rgb(179, 175, 175);
     .basket-all-products-total h1 {
         text-align: center;
         padding-top: 10px;
+        font-size:22px;
     }
 
     .basket-all-products-total span {
@@ -1546,6 +1547,49 @@ background: rgb(179, 175, 175);
     }
 
 /* basket succesfuly alert  End */
+
+/*basket info modal start*/
+.basket-shopping-user-info{
+    width:1250px;
+    margin:0 auto;
+    height:450px;
+}
+
+.basket-shopping-user-info .form-shop {
+    width: 400px;
+    margin-top: 30px;
+}
+
+        .basket-shopping-user-info .form-shop:nth-child(1) {
+            width: 400px;
+            margin-top: 50px;
+        }
+
+        .basket-shopping-user-info .form-shop input {
+            width: 600px;
+            height: 40px;
+            margin-left:80%;
+        }
+
+    .basket-shopping-user-info .form-shop textarea {
+        width: 600px;
+        height: 90px;
+        margin-left: 80%;
+    }
+
+    .basket-shopping-user-info .form-shop label {
+        margin-left: 80%;
+        width:140px;
+    }
+
+    .basket-shopping-user-info button {
+        margin-top: 15px;
+        margin-left: 40%;
+        height: 38px;
+        width: 130px;
+        margin-left: 45%;
+    }
+/*basket info modal end*/
 
 /* basket  end */
 

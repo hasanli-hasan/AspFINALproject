@@ -1,103 +1,128 @@
-﻿@model HomeVM   
+﻿@model HomeVM
 
-@{ 
+@{
     int Discount = 0;
+
+
 }
+    
 <!-- Main Start -->
-    <main>
-        <div class="new-books-new-blogs-showBox-container">
-            <div class="showbox-blogs">
-                <h3>Blogs</h3>
-                <a href="">About Blogs</a>
-                <a href="">New Blogs</a>
-                <a href="">Favorits</a>
-                <a href="">Most Readings</a>
-                <a href="">Mythology</a>
-                <a href="">Philosophy</a>
-                <a href="">Pyschology</a>
-            </div>
-            <div class="showbox-categorys">
-                <h3>Books</h3>
-                <a href="">About Blogs</a>
-                <a href="">New Blogs</a>
-                <a href="">Favorits</a>
-                <a href="">Most Readings</a>
-                <a href="">Mythology</a>
-                <a href="">Philosophy</a>
-                <a href="">Pyschology</a>
-            </div>
-
-            <div class="basket-succesfully-alert">
-                <p>Add Basket Succesfuly</p>
-            </div>
-
-            <div class="showbox-new-books">
-                @foreach (var book in Model.Books.OrderByDescending(x => x.Id).Take(3))
-                {
-                    <div class="showbox-books-childs">
-                        <div class="image-content">
-                            <a asp-controller="Book" asp-action="BookDetail" asp-route-id="@book.Id">
-                                <img src="~/img/@book.BookImage" alt="">
-                            </a>
-                        </div>
-                        <h1>@book.BookName</h1>
-                        <h5> by: @book.Author.AuthorName</h5>
-                        <p>$ @book.BookPrice</p>
-                        <p><a class="addBasket-Books" data-id="@book.Id">Add To Cart</a></p>
-
-                    </div>
-                }
-            </div>
-
+<main>
+  @if (User.IsInRole("Admin"))
+  {
+      <h1>Salam</h1>
+  }
+    <div class="new-books-new-blogs-showBox-container">
+        <div class="showbox-blogs">
+            <h3>Blogs</h3>
+            <a href="">About Blogs</a>
+            <a href="">New Blogs</a>
+            <a href="">Favorits</a>
+            <a href="">Most Readings</a>
+            <a href="">Mythology</a>
+            <a href="">Philosophy</a>
+            <a href="">Pyschology</a>
+        </div>
+        <div class="showbox-categorys">
+            <h3>Books</h3>
+            <a href="">About Blogs</a>
+            <a href="">New Blogs</a>
+            <a href="">Favorits</a>
+            <a href="">Most Readings</a>
+            <a href="">Mythology</a>
+            <a href="">Philosophy</a>
+            <a href="">Pyschology</a>
         </div>
 
-        <!-- Parallax Side Start -->
-        <div class="first-parallax-container">
-            <div class="parallax-image-container">
-            </div>
-            <div class="bestseller-book-detail-container">
-                <div class="recommendation">
-                    <i class="fas fa-quote-left"></i>
-                    <p> <span>Our</span> recommendation</p>
-                    <i class="fas fa-quote-right"></i>
-                </div>
-                <div class="parallax-bestseller-book-content">
-                    
-                        <img src="~/img/@Model.RecommendationBook.Image" alt="">
+        <div class="basket-succesfully-alert">
+            <p>Add Basket Succesfuly</p>
+        </div>
+
+        <div class="showbox-new-books">
+            @foreach (var book in Model.Books.OrderByDescending(x => x.Id).Take(3))
+            {
+                <div class="showbox-books-childs">
+                    <div class="image-content">
+                        <a asp-controller="Book" asp-action="BookDetail" asp-route-id="@book.Id">
+                            <img src="~/img/@book.BookImage" alt="">
+                        </a>
+                    </div>
+                    <h1>@book.BookName</h1>
+                    <h5> by: @book.Author.AuthorName</h5>
+                    <p>$ @book.BookPrice</p>
+
+                    @if (book.BookCount > 0)
+                    {
+
+                         <p><a class="addBasket-Books" data-id="@book.Id">Add To Cart</a></p>
+                        
                      
-</div>
-                <div class="prallax-bestseller-info">
-                    <h1>@Model.RecommendationBook.Name</h1>
-                    <h5>@Model.RecommendationBook.Author</h5>
-                    <p>$ @Model.RecommendationBook.Price</p>
+
+                    }
+                    else
+                    {
+                        <p>Tükənib</p>
+                    }
+
                 </div>
+            }
+        </div>
+
+    </div>
+
+    <!-- Parallax Side Start -->
+    <div class="first-parallax-container">
+        <div class="parallax-image-container">
+        </div>
+        <div class="bestseller-book-detail-container">
+            <div class="recommendation">
+                <i class="fas fa-quote-left"></i>
+                <p> <span>Our</span> recommendation</p>
+                <i class="fas fa-quote-right"></i>
+            </div>
+            <div class="parallax-bestseller-book-content">
+
+                <img src="~/img/@Model.RecommendationBook.Image" alt="">
+
+            </div>
+            <div class="prallax-bestseller-info">
+                <h1>@Model.RecommendationBook.Name</h1>
+                <h5>@Model.RecommendationBook.Author</h5>
+                <p>$ @Model.RecommendationBook.Price</p>
             </div>
         </div>
-        <!-- Parallax Side End -->
+    </div>
+    <!-- Parallax Side End -->
+    <!-- Owl Carousel Start -->
+    <div class="wrapper">
+        <div class="owl-carousel owl-theme ">
+            @foreach (var book in Model.Books.OrderByDescending(x => x.Id).Take(12))
+            {
+                <div class="item upper">
+                    <div class="owl-carousel-zoom-container">
+                        <div id="zoom-In">
+                            <figure>
 
-        <!-- Owl Carousel Start -->
-        <div class="wrapper">
-            <div class="owl-carousel owl-theme ">
-                @foreach (var book in Model.Books.OrderByDescending(x => x.Id).Take(12))
-                {
-                    <div class="item upper">
-                        <div class="owl-carousel-zoom-container">
-                            <div id="zoom-In">
-                                <figure>
-                                    
-                                    <img src="~/img/@book.BookImage" alt="">
-                                    <div class="carousel-clip-path-add-cart">
+                                <img src="~/img/@book.BookImage" alt="">
+                                <div class="carousel-clip-path-add-cart">
+                                    @if (book.BookCount > 0)
+                                    {
                                         <a class="addBasket-Books" data-id="@book.Id">Add To Cart</a>
-                                        <a style="margin-top:55px;" asp-controller="Book" asp-action="BookDetail" asp-route-id="@book.Id">Book Deatil</a>
+                                    }
+                                    else
+                                    {
+                                        <p style="color:orangered;margin-top:30px;font-size:20px;">Tükənib</p>
+                                    }
+                                    <a style="margin-top:55px;" asp-controller="Book" asp-action="BookDetail" asp-route-id="@book.Id">Book Deatil</a>
 
-                                    </div>
-                                </figure>
-                            </div>
+                                </div>
+                            </figure>
                         </div>
                     </div>
-                }
+                </div>
+            }
 
-                @*<div class="item">
+            @*<div class="item">
                     <div class="owl-carousel-zoom-container">
                         <div id="zoom-In">
                             <figure>
@@ -110,142 +135,137 @@
                     </div>
                 </div>*@
 
-            </div>
         </div>
-        <!-- Owl Carousel End -->
+    </div>
+    <!-- Owl Carousel End -->
 
-        <div class="crash-side"></div>
+    <div class="crash-side"></div>
 
-        <!-- Discount Area Start  -->
-        <div class="discount-main-container">
-            <div data-aos="fade-right" class="discount-books-side">
-                @foreach (var discBook in Model.Books.Where(b=>b.BookCategory.CategoryName=="Discount Books").OrderByDescending(x=>x.Id).Take(3) )
-                {
+    <!-- Discount Area Start  -->
+    <div class="discount-main-container">
+        <div data-aos="fade-right" class="discount-books-side">
+            @foreach (var discBook in Model.Books.Where(b => b.BookCategory.CategoryName == "Discount Books").OrderByDescending(x => x.Id).Take(3))
+            {
                 <div class="discount-books">
                     <img src="~/img/@discBook.BookImage" alt="">
                     <a class="addBasket-Books" data-id="@discBook.Id">Add To Cart</a>
                 </div>
-                }
-                
-            </div>
-            <div data-aos="fade-left" class="discount-text-side">
-                <h1>This Month <sup>@Model.DiscountText.Faiz%</sup></h1>
-                <hr>
-                <p>
-                    @Model.DiscountText.Description
-                </p>
-                <button id="modal-btn">Read More</button>
-                
-            </div>
+            }
+
         </div>
+        <div data-aos="fade-left" class="discount-text-side">
+            <h1>This Month <sup>@Model.DiscountText.Faiz%</sup></h1>
+            <hr>
+            <p>
+                @Model.DiscountText.Description
+            </p>
+            <button id="modal-btn">Read More</button>
 
-        <!-- Modal Area Start -->
-        <div id="discountModal">
-            <div>
-                <i id="modalClose" class="fas fa-times"></i>
+        </div>
+    </div>
 
-                <div id="bookAnimate" class='modalInline-book-animation d-none'>
-                    <div class='center modalInline-row flex-column'>
-                        @foreach (var discBook in Model.Books.Where(b=>b.BookCategory.CategoryName=="Discount Books").OrderByDescending(x=>x.Id).Take(3))
+    <!-- Modal Area Start -->
+    <div id="discountModal">
+        <div>
+            <i id="modalClose" class="fas fa-times"></i>
+
+            <div id="bookAnimate" class='modalInline-book-animation d-none'>
+                <div class='center modalInline-row flex-column'>
+                    @foreach (var discBook in Model.Books.Where(b => b.BookCategory.CategoryName == "Discount Books").OrderByDescending(x => x.Id).Take(3))
+                    {
+                        if (Discount == 0)
                         {
-                            if (Discount == 0)
-                            {
-                                <div class='bookAnimation-Card flex-row open'>
-                                    <img src='~/img/@discBook.BookImage' class='book'>
-                                    <div class='flex-column info'>
-                                        <h1>@discBook.Author.AuthorName</h1>
-                                        <h5>@discBook.BookName</h5>
-                                        <p>Today Price : $ @discBook.BookPrice</p>
-                                        <a asp-controller="Book" asp-action="BookDetail" asp-route-id="@discBook.Id">Book Detail</a>
-                                    </div>
+                            <div class='bookAnimation-Card flex-row open'>
+                                <img src='~/img/@discBook.BookImage' class='book'>
+                                <div class='flex-column info'>
+                                    <h1>@discBook.Author.AuthorName</h1>
+                                    <h5>@discBook.BookName</h5>
+                                    <p>Today Price : $ @discBook.BookPrice</p>
+                                    <a asp-controller="Book" asp-action="BookDetail" asp-route-id="@discBook.Id">Book Detail</a>
                                 </div>
-                            }
-                            else
-                            {
-                    <div class='bookAnimation-Card flex-row '>
-                        <img src='~/img/@discBook.BookImage' class='book'>
-                        <div class='flex-column info'>
-                            <h1>@discBook.Author.AuthorName</h1>
-                            <h5>@discBook.BookName</h5>
-                            <p>Today Price : $ @discBook.BookPrice</p>
-                            <a asp-controller="Book" asp-action="BookDetail" asp-route-id="@discBook.Id">Book Detail</a>
-                        </div>
-                    </div>
-                            }
-                            Discount++;
-
+                            </div>
                         }
+                        else
+                        {
+                            <div class='bookAnimation-Card flex-row '>
+                                <img src='~/img/@discBook.BookImage' class='book'>
+                                <div class='flex-column info'>
+                                    <h1>@discBook.Author.AuthorName</h1>
+                                    <h5>@discBook.BookName</h5>
+                                    <p>Today Price : $ @discBook.BookPrice</p>
+                                    <a asp-controller="Book" asp-action="BookDetail" asp-route-id="@discBook.Id">Book Detail</a>
+                                </div>
+                            </div>
+                        }
+                        Discount++;
+
+                    }
 
 
-                    </div>
                 </div>
             </div>
         </div>
-        <!-- Modal Area End -->
-
-        <!-- Discount Area End -->
-
-        <!-- Subscribe Are Start -->
-        <div class="subscribe-main-container">
-            <p>Subscribe For New Books And Blogs</p>
-            <div class="subscribe-input-button">
-                <input type="email" required placeholder="Enter Your E mail..">
-                <Button><a href=""><i class="fas fa-cannabis"></i></a></Button>
-            </div>
-
+    </div>
+    <!-- Modal Area End -->
+    <!-- Discount Area End -->
+    <!-- Subscribe Are Start -->
+    <div class="subscribe-main-container">
+        <p>Subscribe For New Books And Blogs</p>
+        <div class="subscribe-input-button">
+            <input type="email" required placeholder="Enter Your E mail..">
+            <Button><a href=""><i class="fas fa-cannabis"></i></a></Button>
         </div>
-        <!-- Subscribe Area End -->
 
-        <!-- Blog Example Area Start -->
-        <div class="blog-h1-word">
-            <h1>New Blogs</h1>
-        </div>
-        <div class="blog-example-container">
-            @foreach (var blog in Model.Blogs.OrderByDescending(x=>x.Id).Take(4))
-            {
-                <div data-aos="flip-left" class="blog-card-body">
-                    <div class="blog-image">
-                        <a asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">
-                            <img src="~/img/@blog.Image" alt="">
-                        </a>
-                    </div>
-                    <div class="blog-text-area">
-                        <div id="blog-header">
-                            <h1><a  asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">@blog.Title</a></h1>
-                        </div>
-                        <p >@blog.DateTime.ToString("dd/MM/yyyy")</p>
-                    </div>
+    </div>
+    <!-- Subscribe Area End -->
+    <!-- Blog Example Area Start -->
+    <div class="blog-h1-word">
+        <h1>New Blogs</h1>
+    </div>
+    <div class="blog-example-container">
+        @foreach (var blog in Model.Blogs.OrderByDescending(x => x.Id).Take(4))
+        {
+            <div data-aos="flip-left" class="blog-card-body">
+                <div class="blog-image">
+                    <a asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">
+                        <img src="~/img/@blog.Image" alt="">
+                    </a>
                 </div>
-            }
-        </div>
-        <!-- Blog Example End -->
-
-        <!-- Famous Authors Start -->
-        <div class="famous-author-container">
-            <div class="famous-text">
-                <h1>Most Famous Authors</h1>
-            </div>
-
-            @foreach (var author in Model.AuthorAbouts.OrderByDescending(x=>x.Id).Take(10))
-            {
-                <div data-aos="zoom-in" class="author-info-row">
-                    <div class="author-image-row">
-                        <img src="~/img/@author.Image" alt="">
+                <div class="blog-text-area">
+                    <div id="blog-header">
+                        <h1><a asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">@blog.Title</a></h1>
                     </div>
-                    <h1><a href="../html/authorDetail.html">@author.NameSurname</a></h1>
+                    <p>@blog.DateTime.ToString("dd/MM/yyyy")</p>
                 </div>
-            }
+            </div>
+        }
+    </div>
+    <!-- Blog Example End -->
+    <!-- Famous Authors Start -->
+    <div class="famous-author-container">
+        <div class="famous-text">
+            <h1>Most Famous Authors</h1>
         </div>
-        <!-- Famous Authors End -->
 
-        <!-- E-book Reclam Start -->
-        <div class="e-book-title">
-            <p>Enjoy From E-Books</p>
-        </div>
-        <div class="ebook-reclam-container">
-            <img src="~/img/e-read.jpg" alt="">
-        </div>
-        <!-- E-book Reclam End -->
+        @foreach (var author in Model.AuthorAbouts.OrderByDescending(x => x.Id).Take(10))
+        {
+            <div data-aos="zoom-in" class="author-info-row">
+                <div class="author-image-row">
+                    <img src="~/img/@author.Image" alt="">
+                </div>
+                <h1><a href="../html/authorDetail.html">@author.NameSurname</a></h1>
+            </div>
+        }
+    </div>
+    <!-- Famous Authors End -->
+    <!-- E-book Reclam Start -->
+    <div class="e-book-title">
+        <p>Enjoy From E-Books</p>
+    </div>
+    <div class="ebook-reclam-container">
+        <img src="~/img/e-read.jpg" alt="">
+    </div>
+    <!-- E-book Reclam End -->
 
-    </main>
+</main>
 <!-- Main End -->

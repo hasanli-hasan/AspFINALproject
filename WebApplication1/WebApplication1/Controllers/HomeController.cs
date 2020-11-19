@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -15,9 +16,11 @@ namespace WebApplication1.Controllers
     public class HomeController : Controller
     {
         private readonly AppDbContext _db;
-        public HomeController(AppDbContext db)
+        private readonly UserManager<AppUser> _userManager;
+        public HomeController(AppDbContext db, UserManager<AppUser> userManager)
         {
             _db = db;
+            _userManager = userManager;
         }
         public IActionResult Index()
         {
@@ -49,34 +52,44 @@ namespace WebApplication1.Controllers
             else
             {
                 books = JsonConvert.DeserializeObject<List<BasketBookVM>>(Request.Cookies["basket"]);
+
             }
+
+
 
             BasketBookVM existBook = books.FirstOrDefault(x => x.Id == id);
 
             if (existBook == null){
-                BasketBookVM newProduct = new BasketBookVM
-                {
-                    Id = book.Id,
-                    Count = 1
-                };
 
-                books.Add(newProduct);
-              
+                    BasketBookVM newProduct = new BasketBookVM
+                    {
+                        Id = book.Id,
+                        Count = 1
+                    };
+
+                    books.Add(newProduct);
+               
             }
             else
             {
-                existBook.Count++;
+                if (existBook.Count<book.BookCount)
+                {
+                    existBook.Count++;
+                }
+ 
             }
 
-            string basket = JsonConvert.SerializeObject(books);
-            Response.Cookies.Append("basket", basket, new CookieOptions { MaxAge = TimeSpan.FromDays(30) });
+                string basket = JsonConvert.SerializeObject(books);
 
-            if(Request.Headers["X-Request-With"] == "XMLHttpRequest"){
-                return RedirectToAction("Basket");
-            }
-           
-            return Json(books.Count);
-          
+                Response.Cookies.Append("basket", basket, new CookieOptions { MaxAge = TimeSpan.FromDays(30) });
+
+                if (Request.Headers["X-Request-With"] == "XMLHttpRequest")
+                {
+                    return RedirectToAction("Basket");
+                }
+
+                return Json(books.Count);
+
         }
 
 
@@ -85,6 +98,7 @@ namespace WebApplication1.Controllers
             string basket = Request.Cookies["basket"];
 
             List<BasketBookVM> books =new List<BasketBookVM>();
+            
             if (basket != null)
             {
                books = JsonConvert.DeserializeObject<List<BasketBookVM>>(basket);
@@ -95,14 +109,16 @@ namespace WebApplication1.Controllers
                     item.BookPrice = dbBooks.BookPrice;
                     item.BookName = dbBooks.BookName;
                     item.BookImage = dbBooks.BookImage;
+                    item.BookCount = dbBooks.BookCount;
                 }
+                
             }
 
           
             return View(books);
         }
 
-        public async Task<IActionResult> DeleteBasket(int? id)
+        public IActionResult DeleteBasket(int? id)
         {
             List<BasketBookVM> books = JsonConvert.DeserializeObject<List<BasketBookVM>>(Request.Cookies["basket"]);
             books.Remove(books.Find(b => b.Id == id));
@@ -132,16 +148,87 @@ namespace WebApplication1.Controllers
 
         public IActionResult Upcrease(int? id)
         {
+
             List<BasketBookVM> books = JsonConvert.DeserializeObject<List<BasketBookVM>>(Request.Cookies["basket"]);
             BasketBookVM book = books.Where(p => p.Id == id).FirstOrDefault();
 
                 ++book.Count;
             string basket = JsonConvert.SerializeObject(books);
             Response.Cookies.Append("basket", basket, new CookieOptions { MaxAge = TimeSpan.FromDays(30) });
-
+           
             return RedirectToAction("Basket");
         }
-    }
 
-    
+        [HttpPost]
+        [ActionName("Basket")]
+        public async Task<IActionResult> BasketSale(string Number,string Message,string Address)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                AppUser appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+                Sale sale = new Sale
+                {
+                    Date=DateTime.Now,
+                    AppUserId=appUser.Id
+                };
+
+                string basket = Request.Cookies["basket"];
+
+                List<BasketBookVM> basketBooks = JsonConvert.DeserializeObject<List<BasketBookVM>>(basket);
+                foreach (BasketBookVM item in basketBooks)
+                {
+                    Book dbBook = await _db.Books.FindAsync(item.Id);
+                    if (dbBook.BookCount<item.Count)
+                    {
+                        TempData["error"] =$"{dbBook.BookName} kitabindan {dbBook.BookCount} -eded qalib" ;
+                        return RedirectToAction("Basket");
+                    }
+                }
+
+                List<SaleBook> saleBooks = new List<SaleBook>();
+                decimal total = 0;
+
+                foreach (BasketBookVM book in basketBooks)
+                {
+                    Book dbBook = await _db.Books.FindAsync(book.Id);
+                   
+                    await DecreaseSalesCount(dbBook, book);
+
+                    SaleBook saleBook = new SaleBook
+                    {
+                        BookPrice = dbBook.BookPrice,
+                        Count=book.Count,
+                        BookId=book.Id,
+                        SaleId=sale.Id
+                    };
+
+                    total += book.Count * dbBook.BookPrice;
+                    saleBooks.Add(saleBook);
+                }
+                sale.Number = Number;
+                sale.Message = Message;
+                sale.Address = Address;
+                sale.Total = total;
+                sale.SaleBooks = saleBooks;
+
+               await _db.Sales.AddAsync(sale);
+               await _db.SaveChangesAsync();
+
+                TempData["success"] = "Satish Ugurla Yerine Yetirilib!";
+                return RedirectToAction("Basket");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+           
+        }
+
+        private async Task DecreaseSalesCount(Book dbBook,BasketBookVM basketBook)
+        {
+             dbBook = await _db.Books.FindAsync(basketBook.Id);
+            dbBook.BookCount = dbBook.BookCount - basketBook.Count;
+        }
+   
+    } 
 }

@@ -51,7 +51,7 @@ namespace WebApplication1.Areas.AdminP.Controllers
                 ModelState.AddModelError("CategoryName", "Bu adda kateqoriya artıq mövcuddur");
                 return View();
             }
-
+           
             await _db.BookCategories.AddAsync(bookCategory);
             await _db.SaveChangesAsync();
 

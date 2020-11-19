@@ -11,5 +11,9 @@ namespace WebApplication1.Models
     {
         [Required,StringLength(100)]
         public string FullName { get; set; }
+        public bool IsActivated { get; set; }
+        public ICollection<Sale> Sales { get; set; }
+
+        public ICollection<Commet> Commets { get; set; }
     }
 }

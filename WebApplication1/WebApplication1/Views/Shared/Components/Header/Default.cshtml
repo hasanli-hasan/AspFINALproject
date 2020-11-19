@@ -39,10 +39,18 @@
         </div>
         <div class="header-username-login-side">
             <div class="header-username-child-div">
-                <h5>hasanli-hasan</h5>
+                <h5 style="cursor:pointer">@ViewBag.UserName</h5>
             </div>
             <div class="header-login-show-word">
-                <p><a asp-controller="Account" asp-action="Login">Log In</a></p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <p><a asp-controller="Account" asp-action="Logout">Log Out</a></p>
+                }
+                else
+                {
+                    <p><a asp-controller="Account" asp-action="Login">Log In</a></p>
+                }
+
             </div>
         </div>
     </div>

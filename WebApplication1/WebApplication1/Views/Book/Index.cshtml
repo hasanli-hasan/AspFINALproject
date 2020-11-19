@@ -101,7 +101,14 @@
                                         <div class="img-and-basket">
                                             <img src="~/img/@book.BookImage" alt="">
                                             <div class="mustread-basket">
-                                                <a class="addBasket-Books" data-id="@book.Id">Add To Basket</a>
+                                                @if (book.BookCount > 0)
+                                                {
+                                                    <a class="addBasket-Books" data-id="@book.Id">Add To Basket</a>
+                                                }
+                                                else
+                                                {
+                                                    <a>Tükənib</a>
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -118,6 +125,7 @@
                     </div>
                 </div>
                 <!--Must Read Books  End -->
+
                 <!--Mythology Books  Start -->
                 <div class="mythology-container">
                     <div class="mustRead-container">
@@ -135,7 +143,15 @@
                                             <div class="img-and-basket">
                                                 <img src="~/img/@book.BookImage" alt="">
                                                 <div class="mustread-basket">
-                                                    <a class="addBasket-Books" data-id="@book.Id">Add To Basket</a>
+                                                    @if (book.BookCount > 0)
+                                                    {
+                                                        <a class="addBasket-Books" data-id="@book.Id">Add To Basket</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a>Tükənib</a>
+                                                    }
+
                                                 </div>
                                             </div>
                                         </div>
@@ -248,7 +264,14 @@
                             <img src="~/img/@book.BookImage" alt="">
                             <div class="top-image-hover-row">
                                 <a class="addBasket-Books" data-id="@book.Id">
-                                    <i class="fas fa-cart-arrow-down"></i>
+                                    @if (book.BookCount > 0)
+                                    {
+                                        <i class="fas fa-cart-arrow-down"></i>
+                                    }
+                                    else
+                                    {
+                                        <a>Tükənib</a>
+                                    }
                                 </a>
                                 <p><a asp-controller="Book" asp-action="BookDetail" asp-route-id="@book.Id">Book Details</a></p>
                             </div>
@@ -265,7 +288,10 @@
                 <h3>For Pagination</h3>
             </div>
         </div>
-        <!-- Timer Modal Subs Start -->        <!-- All Books Container End -->
+
+       
+        <!-- Timer Modal Subs Start --> 
+        <!-- All Books Container End -->
 
         <div id="main" class="timer-modal-info-container">
             <div class="timer-info-modal">

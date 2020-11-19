@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,11 @@ namespace WebApplication1.View_Components
     public class HeaderViewComponent:ViewComponent
     {
         private readonly AppDbContext _db;
-        public HeaderViewComponent(AppDbContext db)
+        private readonly UserManager<AppUser> _userManager;
+        public HeaderViewComponent(AppDbContext db, UserManager<AppUser> userManager)
         {
             _db = db;
+            _userManager = userManager;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
@@ -28,6 +31,13 @@ namespace WebApplication1.View_Components
 
             }
             Bio model = _db.Bios.FirstOrDefault();
+
+            ViewBag.UserName = "";
+            if(User.Identity.IsAuthenticated)
+              {
+                AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+                ViewBag.UserName = user.UserName;
+              }
 
             return View(await Task.FromResult(model));
         }

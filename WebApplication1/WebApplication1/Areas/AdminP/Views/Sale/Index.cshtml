@@ -1,0 +1,78 @@
+﻿
+@model List<SaleVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Sale List</h2>
+
+<a asp-action="RecivedSales" class="btn btn-google mb-2">
+    Recived Sales
+</a>
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive pt-3">
+                <table class="table table-dark">
+                    @if (Model.Count() > 0)
+                    {
+                        <thead>
+                            <tr>
+
+                                <th>
+                                    FullName
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Settings
+                                </th>
+                            </tr>
+                        </thead>
+                    }
+
+                    <tbody>
+
+                        @foreach (SaleVM sale in Model)
+                        {
+
+                            if (!sale.isRecived)
+                            {
+                                <tr>
+                                    <td>
+                                        @sale.FullName
+                                    </td>
+
+                                    <td>
+                                        @sale.Email
+                                    </td>
+
+                                    <td>
+                                        @sale.Date
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="Detail" asp-route-id="@sale.Id" class="btn btn-success">Detail Sale</a>
+                                    </td>
+                                </tr>
+
+                            }
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

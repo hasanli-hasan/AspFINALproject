@@ -71,7 +71,7 @@ using WebApplication1.View_Models;
             WriteLiteral("        <p>");
             EndContext();
             BeginContext(121, 103, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4ddb03bfb9594d03b831c9074be1b568", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e1c7dd9bc7ef41328f8ad2f6706edfe3", async() => {
                 BeginContext(198, 18, false);
 #line 8 "C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\Views\Shared\Components\BookCategory\Default.cshtml"
                                                                                   Write(ctgry.CategoryName);
@@ -125,7 +125,7 @@ using WebApplication1.View_Models;
             WriteLiteral("        <p>");
             EndContext();
             BeginContext(265, 120, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "23d1b668539b4dc59af330f24ae4f893", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "95d6fa68e62b4abcb33cb845542d10ba", async() => {
                 BeginContext(342, 18, false);
 #line 12 "C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\Views\Shared\Components\BookCategory\Default.cshtml"
                                                                                   Write(ctgry.CategoryName);

@@ -89,3 +89,11 @@ C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\net
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Areas\AdminP\Views\Recommendation\Update.g.cshtml.cs
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Areas\AdminP\Views\AllUsers\Index.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Areas\AdminP\Views\AllUsers\IsActivate.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Areas\AdminP\Views\AllUsers\ChangeRole.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Areas\AdminP\Views\AllUsers\ChangePassword.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Areas\AdminP\Views\Sale\Index.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Areas\AdminP\Views\Sale\Detail.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Areas\AdminP\Views\Sale\RecivedSales.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CommetPartial.g.cshtml.cs

@@ -17,19 +17,38 @@ namespace WebApplication1.Controllers
         {
             _db = db;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            HomeVM homeVM = new HomeVM
+            ViewBag.PageCount = Math.Ceiling((decimal)_db.Books.Count() / 16);
+            ViewBag.Page = page;
+
+            if (page == null)
             {
-                Books = _db.Books.Include(x=>x.BookCategory).ToList(),
-                Authors = _db.Authors.ToList(),
-                BookCategories=_db.BookCategories.ToList(),
-                BookSliders = _db.BookSliders.ToList(),
-                MRClassics=_db.MRClassics.ToList(),
-                SpecialBooks=_db.SpecialBooks.ToList(),
-              
-            };
-            return View(homeVM);
+                List<Book> Books = _db.Books.Include(x => x.BookCategory).OrderByDescending(x=>x.Id).Take(16).ToList();
+
+                HomeVM homeVM = new HomeVM
+                {
+                    Books = Books,
+                    Authors = _db.Authors.ToList(),
+                    BookCategories = _db.BookCategories.Include(x=>x.Books).ToList(),
+                    BookSliders = _db.BookSliders.ToList()
+                };
+                return View(homeVM);
+            }
+            else
+            {
+                List<Book> Books = _db.Books.Include(x => x.BookCategory).OrderByDescending(b => b.Id).Skip(((int)page - 1) * 16).Take(16).ToList();
+
+                HomeVM homeVM = new HomeVM
+                {
+                    Books = Books,
+                    Authors = _db.Authors.ToList(),
+                    BookCategories = _db.BookCategories.Include(x => x.Books).ToList(),
+                    BookSliders = _db.BookSliders.ToList()
+                };
+                return View(homeVM);
+            }
+
         }
 
         public IActionResult Search(string search)

@@ -27,7 +27,7 @@ namespace WebApplication1.View_Models
 
         public string Text { get; set; }
         public DateTime ComDate { get; set; }
-
         public string UserName { get; set; }
+       
     }
 }

@@ -27,10 +27,20 @@ namespace WebApplication1.Areas.AdminP.Controllers
             _env = env;
         }
        /* [AllowAnonymous]*/ //controllera qadaga olsa da bu action-a icaze verilir
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            _db.Books.Include(b => b.Author).ToList();
-            return View(_db.Books.Include(b => b.Author).ToList());
+            ViewBag.PageCount = Math.Ceiling((decimal)_db.Books.Count()/6);
+            ViewBag.Page = page;
+
+            if (page == null)
+            {
+                return View(_db.Books.Include(b => b.Author).OrderByDescending(b => b.Id).Take(6).ToList());
+            }
+            else
+            {
+                return View(_db.Books.Include(b => b.Author).OrderByDescending(b => b.Id).Skip(((int)page-1)*6).Take(6).ToList());
+            }
+
         }
 
         public IActionResult Create()

@@ -34,7 +34,7 @@
     </div>
     <div class="blog-detail-text-page">
         <p>
-            @Model.BlogText
+            @Html.Raw(Model.BlogText)
         </p>
     </div>
 </div>
@@ -44,12 +44,22 @@
 
         @foreach (var commet in Model.Commets)
         {
-          
+
             <div class="commet-body">
                
                 <div class="commet-user-info">
                     <div class="commet-user-image">
-                        <img src="~/img/user-image.png" />
+                        @if (commet.CommentImage == null)
+                        {
+                            <img src="~/img/user-image.png" />
+                        }
+                        else
+                        {
+                            <img src="~/img/@commet.CommentImage" />
+                        }
+                        
+
+
                     </div>
                     <div class="commet-user-name">
                         <h5>@commet.UserName</h5>
@@ -65,8 +75,6 @@
                     @if (User.Identity.Name == commet.UserName)
                     {
                         <a id="dltBtnn" data-id="@commet.Id" style="cursor:pointer;">Delete</a>
-
-
                     }
 
                     <span>
@@ -79,10 +87,10 @@
 
     <div class="commet-submit-create-row">
 
-        <form method="post">
+        <form >
             <input id="modelId" type="hidden"  value="@Model.Id" />
             <textarea id="textArea" name="Text"></textarea>
-            <button type="submit" id="createCommet" >Leave Comment</button>
+            <button  id="createCommet" >Leave Comment</button>
         </form>
     </div>
 </div>
@@ -94,6 +102,8 @@
     <script src="https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>
 
     <script>
+
+        //ajax commet start
        
         $(document).on("click", "#dltBtnn", function () {
 
@@ -111,9 +121,9 @@
             $(this).closest('.commet-body').remove()
         });
 
-        //////////////////////////
+        //ajax commet end
 
-
+        //leave commet start
 
         let btnCreate = document.querySelector('#createCommet');
        
@@ -123,27 +133,41 @@
          
             let formData = new FormData();
             
-            
             formData.append("Text", $("#textArea").val());
-              formData.append("Id", $("#modelId").val());
+            formData.append("Id", $("#modelId").val());
 
-       
           
             axios.post('/Blog/BlogDetail', formData)
-                .then(function (response) {
-                    console.log(response.data);
-                  
+                .then(function (res) {
+
+                    var commetDiv = document.getElementById("commetDiv");
+                    
+                    var commet=
+                    ` <div class="commet-body">
+                        <div class="commet-user-info">
+                            <div class="commet-user-image">
+                                 <img  src="~/img/${res.data.commentImage}" />
+                            </div>
+                            <div class="commet-user-name">
+                                <h5>${res.data.userName}</h5>
+                            </div>
+                        </div>
+                        <div class="commet-user-text">
+                            <p>
+                               ${res.data.text}
+                            </p>
+                                <a id="dltBtnn" data-id="${res.data.commetId}" style="cursor:pointer;">Delete</a>
+                            <span>
+                                ${res.data.date}
+                            </span>
+                        </div>
+                     </div>`
+                   
+                    commetDiv.innerHTML += commet;
+                   
+                     $("#textArea").val('');
                 })
-                //.catch(function (error) {
-                //    if (error.response) {
-                //        let errorObj = error.response.data;
-                //        console.log(errorObj)
-                //        for (let errors in errorObj) {
-                //            let error = errorObj[errors];
-                //            $.notify(error, "error");
-                //        }
-                //    }
-                //});
+
         })
 
 

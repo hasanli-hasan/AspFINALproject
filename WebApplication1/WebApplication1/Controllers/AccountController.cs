@@ -34,8 +34,8 @@ namespace WebApplication1.Controllers
         {
             if (!ModelState.IsValid) return View();
             AppUser loginUser =await _userManager.FindByEmailAsync(login.Email);
-            
 
+            
             if (loginUser == null)
             {
                 ModelState.AddModelError("","Email və ya Password Səhvdir");

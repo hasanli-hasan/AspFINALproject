@@ -101,7 +101,7 @@ using WebApplication1.View_Models;
             WriteLiteral("        <div data-aos=\"zoom-out\" class=\"top-book-container\">\r\n            <div class=\"top-book-image\">\r\n                ");
             EndContext();
             BeginContext(782, 40, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "772db3becca54259a644ed4da2710f9f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "ad254543589041f791e45076d9d8d373", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -164,7 +164,7 @@ AddHtmlAttributeValue("", 798, book.BookImage, 798, 15, false);
             WriteLiteral("                    </a>\r\n                    <p>");
             EndContext();
             BeginContext(1290, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a7c20e78a30048959538673156b60969", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13d32890cc084616b66643ff97412a99", async() => {
                 BeginContext(1363, 12, true);
                 WriteLiteral("Book Details");
                 EndContext();

@@ -23,9 +23,20 @@ namespace WebApplication1.Areas.AdminP.Controllers
             _db = db;
             _env = env;
         }
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-            return View(_db.Blogs.Include(c=>c.BlogCategory));
+            ViewBag.PageCount = Math.Ceiling((decimal)_db.Blogs.Count() / 6);
+            ViewBag.Page = page;
+
+            if (page == null)
+            {
+                return View(_db.Blogs.Include(c => c.BlogCategory).OrderByDescending(b => b.Id).Take(6).ToList());
+            }
+            else
+            {
+                return View(_db.Blogs.Include(c => c.BlogCategory).OrderByDescending(b => b.Id).Skip(((int)page - 1) * 6).Take(6).ToList());
+            }
+           
         }
 
         public IActionResult Create()
@@ -137,7 +148,7 @@ namespace WebApplication1.Areas.AdminP.Controllers
                     return View();
                 }
 
-                if (blog.Photo.MaxLength(200))
+                if (blog.Photo.MaxLength(800))
                 {
                     ModelState.AddModelError("Photo", "Sekil 200kb-dan artiq olmamalidir.");
                     return View();

@@ -5,6 +5,11 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Book.cshtml";
     int SliderCount = 0;
+
+        if (ViewBag.Page == null)
+    {
+        ViewBag.Page = 1;
+    }
 }
 
    <!-- Main Start -->
@@ -256,7 +261,7 @@
             <!--All Left Categorys End-->
 
             <div class="allbooks-all-books-container">
-                @foreach (var book in Model.Books.OrderByDescending(x => x.Id).Take(16))
+                @foreach (var book in Model.Books)
                 {
 
                     <div data-aos="zoom-out" class="top-book-container">
@@ -285,7 +290,26 @@
             </div>
 
             <div class="top-book-pagination">
-                <h3>For Pagination</h3>
+
+                <div class="row mt-2 justify-content-center w-100">
+                    <nav aria-label="...">
+                        <ul class="pagination pagination-sm bookPagination">
+                            @for (int i = 1; i <= ViewBag.PageCount; i++)
+                            {
+                                if (ViewBag.Page == i)
+                                {
+                                    <li class="page-item disabled"><a  class="page-link"  asp-controller="Book" asp-action="Index" asp-route-page="@i">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li class="page-item"><a id="paginationLi" class="page-link"  asp-controller="Book" asp-action="Index" asp-route-page="@i" data-id="@i">@i</a></li>
+                                }
+
+                            }
+                        </ul>
+                    </nav>
+
+                </div>
             </div>
         </div>
 

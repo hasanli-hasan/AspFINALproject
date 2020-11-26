@@ -1174,4 +1174,20 @@ top: 0;
 
 /* Hover 3d Book End */
 
+/* Book Pagination Start*/
 
+
+.bookPagination li{
+    width:40px !important;
+    height:40px !important;
+}
+
+    .bookPagination li a {
+        height: 40px !important;
+        background: #FF4F00 !important;
+        font-size:20px !important;
+        font-weight:600;
+        padding-left:13px !important;
+        color:black;
+    }
+/* Book Pagination End*/

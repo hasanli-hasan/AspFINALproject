@@ -57,7 +57,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n    <div class=\"container\">\r\n        <h4>Slider Image</h4>\r\n        <div class=\"row\">\r\n            ");
             EndContext();
             BeginContext(120, 103, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "49d3c2125a634af995bd247adb818efd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f6bc2e5d220d454a9c0122b5442cc641", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -83,7 +83,7 @@ AddHtmlAttributeValue("", 136, Model.Image, 136, 12, false);
             WriteLiteral("\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n           ");
             EndContext();
             BeginContext(281, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6f5bb678cfb045a484f2017647814a27", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "220b2cc4f7a64070bd06c61877beff9d", async() => {
                 BeginContext(339, 4, true);
                 WriteLiteral("Back");
                 EndContext();

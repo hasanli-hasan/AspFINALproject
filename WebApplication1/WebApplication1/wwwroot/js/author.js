@@ -16,7 +16,7 @@ let skip = 6;
 
 $(document).on('click', '#authorLoadMore', function () {
     let authorCount = $("#AuthorCount").val();
-    console.log('/Author/Load?skip=' + skip)
+
     $.ajax({
        
         url: '/Author/Load?skip='+skip,

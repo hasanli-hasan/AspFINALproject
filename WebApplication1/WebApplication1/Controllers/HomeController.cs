@@ -40,6 +40,13 @@ namespace WebApplication1.Controllers
         public async Task<IActionResult> AddBasket(int? id)
         {
             if (id == null) return NotFound();
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return NotFound();
+                
+            }
+
             Book book = await _db.Books.FindAsync(id);
             
             if (book == null) return NotFound();
@@ -55,17 +62,17 @@ namespace WebApplication1.Controllers
 
             }
 
-
-
-            BasketBookVM existBook = books.FirstOrDefault(x => x.Id == id);
+ 
+            BasketBookVM existBook = books.FirstOrDefault(x => x.Id == id && x.UserName== User.Identity.Name);
 
             if (existBook == null){
 
-                    BasketBookVM newProduct = new BasketBookVM
-                    {
-                        Id = book.Id,
-                        Count = 1
-                    };
+                BasketBookVM newProduct = new BasketBookVM
+                {
+                    Id = book.Id,
+                    Count = 1,
+                    UserName= User.Identity.Name
+                };
 
                     books.Add(newProduct);
                
@@ -88,34 +95,40 @@ namespace WebApplication1.Controllers
                     return RedirectToAction("Basket");
                 }
 
-                return Json(books.Count);
+                return Json(books.Where(x=>x.UserName==User.Identity.Name).Count());
 
         }
 
 
         public async Task<IActionResult> Basket()
         {
+            AppUser currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
             string basket = Request.Cookies["basket"];
-
+            List<BasketBookVM> userBooks = new List<BasketBookVM>();
             List<BasketBookVM> books =new List<BasketBookVM>();
-            
-            if (basket != null)
+            if (User.Identity.IsAuthenticated)
             {
-               books = JsonConvert.DeserializeObject<List<BasketBookVM>>(basket);
-                foreach (var item in books)
-                {
 
-                    Book dbBooks = await _db.Books.FindAsync(item.Id);
-                    item.BookPrice = dbBooks.BookPrice;
-                    item.BookName = dbBooks.BookName;
-                    item.BookImage = dbBooks.BookImage;
-                    item.BookCount = dbBooks.BookCount;
+                if (basket != null)
+                {
+                    books = JsonConvert.DeserializeObject<List<BasketBookVM>>(basket);
+                    foreach (var item in books)
+                    {
+                        
+                            Book dbBooks = await _db.Books.FindAsync(item.Id);
+                            item.BookPrice = dbBooks.BookPrice;
+                            item.BookName = dbBooks.BookName;
+                            item.BookImage = dbBooks.BookImage;
+                            item.BookCount = dbBooks.BookCount;
+
+                        userBooks.Add(item);
+                    }
+
                 }
-                
             }
 
           
-            return View(books);
+            return View(userBooks);
         }
 
         public IActionResult DeleteBasket(int? id)
@@ -188,7 +201,7 @@ namespace WebApplication1.Controllers
                 List<SaleBook> saleBooks = new List<SaleBook>();
                 decimal total = 0;
 
-                foreach (BasketBookVM book in basketBooks)
+                foreach (BasketBookVM book in basketBooks.Where(x=>x.UserName==User.Identity.Name))
                 {
                     Book dbBook = await _db.Books.FindAsync(book.Id);
                    

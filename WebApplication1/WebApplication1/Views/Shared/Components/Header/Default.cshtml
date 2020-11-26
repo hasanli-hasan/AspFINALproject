@@ -37,9 +37,23 @@
             <img src="~/img/@Model.logo" alt="">
             <h1>Pandora</h1>
         </div>
+
+        <div style="margin-left:100px;">
+            @if (ViewBag.UserImage == null)
+            {
+                <img style="width:60px; height:60px; border-radius:50%; object-fit:cover;" src="~/img/user-image.png" alt="">
+            }
+            else
+            {
+                <img style="width:60px; height:60px; border-radius:50%; object-fit:cover;" src="~/img/@ViewBag.UserImage" alt="">
+            }
+
+        </div>
+             
+
         <div class="header-username-login-side">
             <div class="header-username-child-div">
-                <h5 style="cursor:pointer">@ViewBag.UserName</h5>
+                <a asp-controller="Personal" asp-action="Index" asp-route-name="@User.Identity.Name"><h5 style="cursor:pointer">@ViewBag.UserName</h5></a>
             </div>
             <div class="header-login-show-word">
                 @if (User.Identity.IsAuthenticated)
@@ -75,9 +89,23 @@
                 </div>
             </div>
             <div class="basket-container">
-                <a asp-controller="Home" asp-action="Basket"> <i class="fas fa-shopping-bag">
-                    <sup class="basket-booksCountt">@ViewBag.BasketCount</sup></i>
-                </a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="Home" asp-action="Basket">
+                        <i class="fas fa-shopping-bag">
+                            <sup class="basket-booksCountt">@ViewBag.BasketCount</sup>
+                        </i>
+                    </a>
+                }
+                else
+                {
+                    <a >
+                     <i class="fas fa-shopping-bag">
+                       <sup class="basket-booksCountt">@ViewBag.BasketCount</sup>
+                     </i>
+                    </a>
+                }
+
             </div>
         </div>
     </nav>

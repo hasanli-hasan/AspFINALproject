@@ -20,27 +20,59 @@ namespace WebApplication1.Areas.AdminP.Controllers
             _userManager = userManager;
             _db = db;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            List<AppUser> users = _userManager.Users.ToList();
-            List<UserVM> usersVM = new List<UserVM>();
+            ViewBag.PageCount = Math.Ceiling((decimal)_userManager.Users.Count() / 3);
+            ViewBag.Page = page;
 
-            foreach (AppUser user in users)
+            if (page==null)
             {
-                UserVM userVm = new UserVM
+                List<AppUser> users = _userManager.Users.Take(3).ToList();
+                List<UserVM> usersVM = new List<UserVM>();
+
+                foreach (AppUser user in users)
                 {
-                    Id=user.Id,
-                    FullName=user.FullName,
-                    Email=user.Email,
-                    UserName=user.UserName,
-                    IsActivated=user.IsActivated,
-                    Role=(await _userManager.GetRolesAsync(user))[0]
-                };
+                    UserVM userVm = new UserVM
+                    {
+                        Id = user.Id,
+                        FullName = user.FullName,
+                        Email = user.Email,
+                        UserName = user.UserName,
+                        IsActivated = user.IsActivated,
+                        Role = (await _userManager.GetRolesAsync(user))[0]
+                    };
 
-                usersVM.Add(userVm);
+                    usersVM.Add(userVm);
 
+                }
+
+                return View(usersVM);
             }
-            return View(usersVM);
+            else
+            {
+                List<AppUser> users = _userManager.Users.Skip(((int)page - 1) * 3).Take(3).ToList();
+
+                List<UserVM> usersVM = new List<UserVM>();
+
+                foreach (AppUser user in users)
+                {
+                    UserVM userVm = new UserVM
+                    {
+                        Id = user.Id,
+                        FullName = user.FullName,
+                        Email = user.Email,
+                        UserName = user.UserName,
+                        IsActivated = user.IsActivated,
+                        Role = (await _userManager.GetRolesAsync(user))[0]
+                    };
+
+                    usersVM.Add(userVm);
+
+                }
+
+                return View(usersVM);
+            }
+
         }
 
         public async Task<IActionResult> IsActivate(string id)

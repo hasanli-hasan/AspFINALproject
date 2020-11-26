@@ -84,7 +84,7 @@ using WebApplication1.View_Models;
             WriteLiteral("</h4>\r\n</div>\r\n\r\n<div class=\"row\">\r\n\r\n    ");
             EndContext();
             BeginContext(303, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a9418cfcea2b47ebb5769adbf477af06", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cfa2117bfefe4da0b4f882277d199265", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper>();
@@ -108,7 +108,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper.ValidationSumma
             WriteLiteral("\r\n\r\n    ");
             EndContext();
             BeginContext(377, 192, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "432187587de049a0ba17809e8ed09d01", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ef1a59a77b44ad99fb00ee64b4cd191", async() => {
                 BeginContext(397, 165, true);
                 WriteLiteral("\r\n        <input type=\"password\" name=\"NewPassword\" placeholder=\"new password\" />\r\n        <button type=\"submit\" class=\"btn btn-success\">Save Password</button>\r\n    ");
                 EndContext();

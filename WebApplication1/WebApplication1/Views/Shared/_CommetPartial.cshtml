@@ -1,36 +1,34 @@
 ﻿
-@model BlogVM
+@model Commet
 
 @{
     Layout = null;
 }
 
-@foreach (var commet in Model.Commets)
-{
+
     <div class="commet-body">
         <div class="commet-user-info">
             <div class="commet-user-image">
                 <img src="~/img/user-image.png" />
             </div>
             <div class="commet-user-name">
-                <h5>@commet.UserName</h5>
+                <h5>@Model.UserName</h5>
             </div>
         </div>
 
         <div class="commet-user-text">
             <p>
-                @commet.Text
+                @Model.Text
             </p>
 
-            @if (User.Identity.Name == commet.UserName)
+            @if (User.Identity.Name == Model.UserName)
             {
-                <a asp-action="DeleteCommet" asp-route-id="@commet.Id">Delete</a>
+                <a asp-action="DeleteCommet" asp-route-id="@Model.Id">Delete</a>
 
             }
 
             <span>
-                @commet.Date.ToString("dd/MM/yyyy")
+                @Model.Date.ToString("dd/MM/yyyy")
             </span>
         </div>
     </div>
-}

@@ -16,19 +16,19 @@
     <div id="LoginForm" class="register-form-container">
         <div id="loginFormBody" class="form-input-body">
 
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" style="color:white;"></div>
 
             <form class="pt-3" method="post">
 
                 <div class="form-input-row">
                     <input asp-for="Email" class="form-control form-control-lg" placeholder="Email">
                 </div>
-                <span class="text-danger" asp-validation-for="Email"></span>
+                <span style="color:white;" asp-validation-for="Email"></span>
 
                 <div class="form-input-row">
                     <input asp-for="Password" class="form-control form-control-lg" placeholder="Password">
                 </div>
-                <span class="text-danger" asp-validation-for="Password"></span>
+                <span style="color:white;" class="text-danger" asp-validation-for="Password"></span>
 
                 <button type="submit">Login</button>
 

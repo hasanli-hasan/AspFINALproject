@@ -4,6 +4,11 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+
+      if (ViewBag.Page == null)
+    {
+        ViewBag.Page = 1;
+    }
 }
 
 <h2>Sale List</h2>
@@ -74,5 +79,26 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="row mt-2 justify-content-center">
+
+    <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+            @for (int i = 1; i <= ViewBag.PageCount; i++)
+            {
+                if (ViewBag.Page == i)
+                {
+                    <li class="page-item disabled"><a class="page-link" asp-area="AdminP" asp-controller="Sale" asp-action="Index" asp-route-page="@i">@i</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" asp-area="AdminP" asp-controller="Sale" asp-action="Index" asp-route-page="@i">@i</a></li>
+                }
+
+            }
+        </ul>
+    </nav>
+
 </div>
 

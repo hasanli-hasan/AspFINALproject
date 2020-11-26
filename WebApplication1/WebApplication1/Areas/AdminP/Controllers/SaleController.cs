@@ -21,37 +21,77 @@ namespace WebApplication1.Areas.AdminP.Controllers
             _db = db;
             _userManager = userManager;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            List<Sale> sales = _db.Sales.ToList();
-            List<SaleVM> saleVMs = new List<SaleVM>();
+            ViewBag.PageCount = Math.Ceiling((decimal)_db.Sales.Where(x=>x.isRecived==false).Count() / 3);
+            ViewBag.Page = page;
 
-            foreach (Sale sale in sales)
+            if (page == null)
             {
-                AppUser user = await _userManager.FindByIdAsync(sale.AppUserId);
+                List<Sale> sales = _db.Sales.Where(x => x.isRecived == false).OrderByDescending(x=>x.Id).Take(3).ToList();
+                List<SaleVM> saleVMs = new List<SaleVM>();
 
-                SaleVM saleVM = new SaleVM
-                {  
-                    Id = sale.Id,
-                    Date = sale.Date,
-                    Total = sale.Total,
-                    Email = user.Email,
-                    FullName = user.FullName,
-                    SaleBooks = _db.SaleBooks.Where(sb => sb.SaleId == sale.Id).Include(sb => sb.Book).ToList(),
-                    Number=sale.Number,
-                    Message=sale.Message,
-                   Address=sale.Address,
-                   isRecived=sale.isRecived
-                };
-
-                if (!saleVM.isRecived)
+                foreach (Sale sale in sales)
                 {
-                    saleVMs.Add(saleVM);
-                }
-               
-            }
+                    AppUser user = await _userManager.FindByIdAsync(sale.AppUserId);
 
-            return View(saleVMs);
+                    SaleVM saleVM = new SaleVM
+                    {
+                        Id = sale.Id,
+                        Date = sale.Date,
+                        Total = sale.Total,
+                        Email = user.Email,
+                        FullName = user.FullName,
+                        SaleBooks = _db.SaleBooks.Where(sb => sb.SaleId == sale.Id).Include(sb => sb.Book).ToList(),
+                        Number = sale.Number,
+                        Message = sale.Message,
+                        Address = sale.Address,
+                        isRecived = sale.isRecived
+                    };
+
+                    if (!saleVM.isRecived)
+                    {
+                        saleVMs.Add(saleVM);
+                    }
+
+                }
+
+                return View(saleVMs);
+            }
+            else
+            {
+                List<Sale> sales = _db.Sales.Where(x => x.isRecived == false).OrderByDescending(x => x.Id).Skip(((int)page - 1) * 3).Take(3).ToList();
+                List<SaleVM> saleVMs = new List<SaleVM>();
+
+                foreach (Sale sale in sales)
+                {
+                    AppUser user = await _userManager.FindByIdAsync(sale.AppUserId);
+
+                    SaleVM saleVM = new SaleVM
+                    {
+                        Id = sale.Id,
+                        Date = sale.Date,
+                        Total = sale.Total,
+                        Email = user.Email,
+                        FullName = user.FullName,
+                        SaleBooks = _db.SaleBooks.Where(sb => sb.SaleId == sale.Id).Include(sb => sb.Book).ToList(),
+                        Number = sale.Number,
+                        Message = sale.Message,
+                        Address = sale.Address,
+                        isRecived = sale.isRecived
+                    };
+
+                    if (!saleVM.isRecived)
+                    {
+                        saleVMs.Add(saleVM);
+                    }
+
+                }
+
+                return View(saleVMs);
+            }
+           
+           
         }
 
         public IActionResult Detail(int? id)

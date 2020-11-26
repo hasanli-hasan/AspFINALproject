@@ -1,0 +1,107 @@
+﻿@model AppUser
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="user-personal-page-container">
+    <div class="user-personalinfo-row">
+
+        <div class="user-image-row">
+            <div class="user-image-image">
+                @if (Model.Image == null)
+                {
+                    <img src="~/img/user-image.png" alt="">
+                }
+                else
+                {
+                    <img src="~/img/@Model.Image" alt="">
+                }
+            </div>
+
+            <div class="user-image-update">
+                <p>Update Image</p>
+
+                <form method="post" asp-action="UserImage" enctype="multipart/form-data">
+                    <input asp-for="Photo">
+                    <button type="submit">Change</button>
+                    <span asp-validation-for="Photo"></span>
+                </form>
+            </div>
+        </div>
+
+        <div class="user-name-email">
+            <span>UserName: </span> <h3>@Model.UserName</h3>
+            <span>Email: </span> <h3>@Model.Email</h3>
+        </div>
+
+        <div class="user-birthdate userall-row">
+            <p>Birth Day:</p>
+            <a id="birthdayChange" href="">Change</a>
+            <span>@Model.BirthDate.ToString("dd/MM/yyyy")</span>
+
+            <form id="birthdayForm" method="post" asp-action="BirthDay">
+                <input asp-for="BirthDate" />
+                <button type="submit">Change</button>
+            </form>
+        </div>
+
+        <div class="user-gender userall-row">
+            <p>Gender:</p>
+            <a id="genderChange" href="">Change</a>
+            <span>@Model.Gender</span>
+
+            <form id="userGenderForm" asp-action="UserGender" method="post">
+                Man:
+                <input asp-for="Gender" type="radio" value="Man"/>
+
+                Woman:
+                <input asp-for="Gender" type="radio" value="Woman" />
+
+                <button type="submit">Change</button>
+            </form>
+        </div>
+
+        <div class="user-religion userall-row">
+            <p>Religious:</p>
+            <a id="changeReligious" href="">Change</a>
+            <span>@Model.Religion</span>
+
+            <form id="userReligiousForm" asp-action="UserReligion" method="post">
+                
+                <input asp-for="Religion" placeholder="Religion"/>
+                <button type="submit">Change</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script>
+    //user birthday start
+    $(document).ready(function () {
+
+        $(document).on("click", "#birthdayChange", function (e) {
+            e.preventDefault()
+            $("#birthdayForm").toggle();
+        })
+
+        $(document).on("click", "#genderChange", function (e) {
+            e.preventDefault()
+            $("#userGenderForm").toggle();
+        })
+
+         $(document).on("click", "#changeReligious", function (e) {
+            e.preventDefault()
+            $("#userReligiousForm").toggle();
+        })
+    })
+
+    //user birthday end
+</script>

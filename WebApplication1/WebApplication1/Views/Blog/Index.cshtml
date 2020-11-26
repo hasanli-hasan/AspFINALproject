@@ -4,6 +4,11 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Blog.cshtml";
+
+          if (ViewBag.Page == null)
+    {
+        ViewBag.Page = 1;
+    }
 }
 
     <main>
@@ -89,7 +94,7 @@
                             <div data-aos="fade-right" class="left-categories">
                                 <div class="left-text-div">
                                     <p><a asp-controller="Blog" asp-action="CategoryBlog" asp-route-id="@ctgry.Id">@ctgry.Name</a></p>
-                                    <p><a asp-controller="Blog" asp-action="CategoryBlog" asp-route-id="@ctgry.Id">(@ctgry.Blogs.Count)</a></p>
+                                    <p><a asp-controller="Blog" asp-action="CategoryBlog" asp-route-id="@ctgry.Id">(@ctgry.Blogs.Count())</a></p>
                                 </div>
                                 <img src="~/img/@ctgry.Image" alt="">
                             </div>
@@ -99,13 +104,13 @@
                 <!-- left category end-->
                 <!-- All Blogs Start-->
                 <div class="all-blog-row">
-                    @foreach (var blog in Model.Blogs.OrderByDescending(x => x.Id).Take(6))
+                    @foreach (var blog in Model.Blogs)
                     {
                         <div class="blog-box">
 
                             <div class="blog-box-image">
                                 <figure>
-                                    <img src="~/img/@blog.Image" alt="">
+                                    <img style="object-fit:cover;" src="~/img/@blog.Image" alt="">
                                 </figure>
                             </div>
 
@@ -123,7 +128,26 @@
 
             </div>
             <div class="blog-pagination-container">
-                <h1>For Pagination</h1>
+                <div class="row mt-2 justify-content-center w-100">
+                    <nav aria-label="...">
+                        <ul class="pagination pagination-sm bookPagination">
+                            @for (int i = 1; i <= ViewBag.PageCount; i++)
+                            {
+                                if (ViewBag.Page == i)
+                                {
+                                    <li class="page-item disabled"><a class="page-link" asp-controller="Blog" asp-action="Index" asp-route-page="@i">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li class="page-item"><a id="paginationLi" class="page-link" asp-controller="Blog" asp-action="Index" asp-route-page="@i" data-id="@i">@i</a></li>
+                                }
+
+                            }
+                        </ul>
+                    </nav>
+
+                </div>
+
             </div>
             <!-- All  blogs End-->
             <!-- Animated Subscribe Start-->
@@ -146,7 +170,7 @@
             <div class="also-like-beer-effect-container">
 
                 <div class="also-like-this-container-first">
-                    @foreach (var blog in Model.Blogs.Take(4))
+                    @foreach (var blog in Model.OldBlogs.Take(4))
                     {
                         <div data-aos="zoom-out-down" class="like-this-row">
                             <img src="~/img/@blog.Image" alt="">
@@ -158,7 +182,7 @@
                 </div>
 
                 <div class="also-like-this-container-second">
-                    @foreach (var blog in Model.Blogs.Skip(4).Take(3))
+                    @foreach (var blog in Model.OldBlogs.Skip(4).Take(3))
                     {
                         <div data-aos="zoom-out-down" class="like-this-row">
                             <img src="~/img/@blog.Image" alt="">

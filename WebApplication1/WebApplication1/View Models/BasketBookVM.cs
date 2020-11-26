@@ -13,6 +13,7 @@ namespace WebApplication1.View_Models
         public decimal BookPrice { get; set; }
         public int Count { get; set; }
         public int BookCount { get; set; }
+        public string UserName { get; set; }
 
     }
 }

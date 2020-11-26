@@ -22,7 +22,7 @@ namespace WebApplication1.Controllers
         {
             HomeVM homeVM = new HomeVM
             {
-                AuthorAbouts=_db.AuthorAbouts.Take(6)
+                AuthorAbouts=_db.AuthorAbouts.OrderByDescending(x=>x.Id).Take(6)
             };
             ViewBag.AuthorCount = _db.AuthorAbouts.Count();
            
@@ -36,7 +36,7 @@ namespace WebApplication1.Controllers
             //    return Content("All Info You Show");
             //}
 
-            IEnumerable<AuthorAbout> model = _db.AuthorAbouts.Skip(skip).Take(6);
+            IEnumerable<AuthorAbout> model = _db.AuthorAbouts.OrderByDescending(x=>x.Id).Skip(skip).Take(6);
             return PartialView("_AuthorPartial",model);
         }
 

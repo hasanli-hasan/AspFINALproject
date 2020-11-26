@@ -50,6 +50,23 @@
 
 @section Scripts{
     <partial name="_Validation" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#About'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#BookInfo'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
 }
 

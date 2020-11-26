@@ -136,6 +136,8 @@ namespace WebApplication1.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<DateTime>("BirthDate");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -147,6 +149,10 @@ namespace WebApplication1.Migrations
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(100);
+
+                    b.Property<string>("Gender");
+
+                    b.Property<string>("Image");
 
                     b.Property<bool>("IsActivated");
 
@@ -165,6 +171,8 @@ namespace WebApplication1.Migrations
                     b.Property<string>("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("Religion");
 
                     b.Property<string>("SecurityStamp");
 
@@ -372,6 +380,8 @@ namespace WebApplication1.Migrations
                     b.Property<string>("AppUserId");
 
                     b.Property<int>("BlogId");
+
+                    b.Property<string>("CommentImage");
 
                     b.Property<DateTime>("Date");
 

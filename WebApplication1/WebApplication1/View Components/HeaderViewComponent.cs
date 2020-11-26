@@ -23,21 +23,35 @@ namespace WebApplication1.View_Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            ViewBag.BasketCount = 0;
-            if (Request.Cookies["basket"] !=null)
-            {
-                List<BasketBookVM> books = JsonConvert.DeserializeObject<List<BasketBookVM>>(Request.Cookies["basket"]);
-                ViewBag.BasketCount = books.Count;
 
+            ViewBag.UserName = "";
+            ViewBag.BasketCount = 0;
+           
+            if (User.Identity.IsAuthenticated)
+            {
+
+                AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
+                ViewBag.UserName = user.UserName;
+                ViewBag.UserImage = user.Image;
+
+                if (Request.Cookies["basket"] != null)
+                {
+                    List<BasketBookVM> books = JsonConvert.DeserializeObject<List<BasketBookVM>>(Request.Cookies["basket"]);
+
+                    //List<BasketBookVM> userProducts = new List<BasketBookVM>();
+                    //foreach (BasketBookVM item in books.Where(x=>x.UserName==User.Identity.Name))
+                    //{
+                    //    userProducts.Add(item);
+                        
+                    //}
+                    
+                    ViewBag.BasketCount = books.Where(x => x.UserName == User.Identity.Name).Count();
+                }
+                
             }
             Bio model = _db.Bios.FirstOrDefault();
 
-            ViewBag.UserName = "";
-            if(User.Identity.IsAuthenticated)
-              {
-                AppUser user = await _userManager.FindByNameAsync(User.Identity.Name);
-                ViewBag.UserName = user.UserName;
-              }
+          
 
             return View(await Task.FromResult(model));
         }

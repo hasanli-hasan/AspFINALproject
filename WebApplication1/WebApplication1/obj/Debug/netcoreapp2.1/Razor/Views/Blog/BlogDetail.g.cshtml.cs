@@ -82,7 +82,7 @@ using WebApplication1.View_Models;
             WriteLiteral("</h1>\r\n    </div>\r\n    <div class=\"blogD-about-blogAuthor\">\r\n        <div class=\"blogAuthor-image\">\r\n            ");
             EndContext();
             BeginContext(323, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "daa08018dbb64056bc2297299dacd99b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "a2290a0b5d634647b885b21d800217a1", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -167,7 +167,7 @@ AddHtmlAttributeValue("", 365, ViewBag.WriterImage, 365, 20, false);
             WriteLiteral("                            ");
             EndContext();
             BeginContext(1327, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "66c6a05e7c6343a396e8bca250934cf9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "575b336b33f745c48b03a9d00556b16c", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -195,7 +195,7 @@ AddHtmlAttributeValue("", 365, ViewBag.WriterImage, 365, 20, false);
             WriteLiteral("                            ");
             EndContext();
             BeginContext(1475, 40, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "de27b97856ec44ceb1e994cf773bf376", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "5892c705810c44558ffef177e292ba3c", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -293,7 +293,7 @@ AddHtmlAttributeValue("", 1491, commet.CommentImage, 1491, 20, false);
             WriteLiteral("    </div>\r\n\r\n    <div class=\"commet-submit-create-row\">\r\n\r\n        ");
             EndContext();
             BeginContext(2375, 218, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d43dcedc1164427d987b675dacf76d36", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "23983595bd224827ad2ffd11d7fc792a", async() => {
                 BeginContext(2382, 47, true);
                 WriteLiteral("\r\n            <input id=\"modelId\" type=\"hidden\"");
                 EndContext();

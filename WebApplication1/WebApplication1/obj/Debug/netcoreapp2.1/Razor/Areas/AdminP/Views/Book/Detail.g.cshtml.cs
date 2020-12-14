@@ -64,7 +64,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n<h2>Book</h2>\r\n\r\n<div class=\"align-items-center\">\r\n    ");
             EndContext();
             BeginContext(177, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "eead90ad19bb484e9bc0b6482ba3f838", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "dbf9dc8b37c24dfa99a67a292b911111", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -140,7 +140,7 @@ Write(Model.AboutBook);
             WriteLiteral("\r\n</div>\r\n");
             EndContext();
             BeginContext(453, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "65ecad406dce4471a9f663aa56379b29", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ca9187a153524099969f1d3d45da5bfb", async() => {
                 BeginContext(504, 7, true);
                 WriteLiteral("Go Back");
                 EndContext();

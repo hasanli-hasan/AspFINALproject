@@ -86,6 +86,112 @@
 
          //remove product from basket ajax end
 
+//plus product axios start
+        let plusProduct = document.querySelectorAll('.plusProduct');
+
+             plusProduct.forEach(item => {
+            item.addEventListener("click", function (e) {
+                var plusBtn = e.target;
+                let formdata = new FormData();
+                let id = plusBtn.getAttribute("data-id");
+                formdata.append("id", id);
+                axios.post('/Home/Upcrease', formdata)
+                    .then(function (response) {
+
+                        console.log(response.data)
+                        let basketTotalPrice = document.getElementById('totalPrice');
+
+                        basketTotalPrice.innerHTML = '$' + ' ' + response.data.basketTotalPrice;
+
+                        plusBtn.parentElement.parentElement.nextElementSibling.childNodes[1].nextElementSibling.innerHTML = '$' +
+                            response.data.productTotalPrice
+
+                        plusBtn.parentElement.parentElement.previousElementSibling.childNodes[1].nextElementSibling.innerHTML =
+                            response.data.productBasketCount
+
+                        if (response.data.productBasketCount >= response.data.basketProductDbCount) {
+                            plusBtn.classList.add("plus");
+                        }
+                        else {
+
+                             plusBtn.classList.remove("plus");
+                        }
+                        
+                    })
+                    .catch(function (error) {
+                        if (error.response) {
+                            let errorObj = error.response.data;
+                            for (let errors in errorObj) {
+                                let error = errorObj[errors];
+                                console.log(error);
+                            }
+                        }
+                    });
+            })
+        })
+
+        //plus product axios start
+
+        //minus book axios start
+            let countMinus = document.querySelectorAll('.countMinus');
+
+             countMinus.forEach(item => {
+            item.addEventListener("click", function (e) {
+                var minusBtn = e.target;
+                let formdata = new FormData();
+                let id = minusBtn.getAttribute("data-id");
+                formdata.append("id", id);
+                axios.post('/Home/Decrease', formdata)
+                    .then(function (response) {
+
+                        let bagCount = document.querySelector(".basket-booksCountt");
+                        bagCount.innerHTML = response.data.allBasketBagCount
+
+                        let userSaleMessage = document.getElementById("shoppingInfoToAdmin")
+                        let basketProductContainer = document.getElementById('basketProductContainer');
+
+                        if ( response.data.allBasketBagCount==0) {
+
+                            userSaleMessage.remove();
+                           basketProductContainer.innerHTML = `
+
+                                <div style="margin-left:42%;">
+                                   <h4 class="text-danger">Sebet Boshdur</h4>
+                               </div>`
+
+                        }
+
+
+
+                        let basketTotalPrice = document.getElementById('totalPrice');
+
+                        basketTotalPrice.innerHTML = '$' + ' ' + response.data.basketTotalPrice;
+
+                        minusBtn.parentElement.parentElement.nextElementSibling.childNodes[1].nextElementSibling.innerHTML = '$' +
+                            response.data.productTotalPrice
+
+                        minusBtn.parentElement.parentElement.previousElementSibling.childNodes[1].nextElementSibling.innerHTML =
+                            response.data.productBasketCount
+                        if ( response.data.productTotalPrice ==0)
+                        {
+                            minusBtn.closest(".basket-product-row").remove()
+                        }
+                       
+                        
+                    })
+                    .catch(function (error) {
+                        if (error.response) {
+                            let errorObj = error.response.data;
+                            for (let errors in errorObj) {
+                                let error = errorObj[errors];
+                                console.log(error);
+                            }
+                        }
+                    });
+            })
+        })
+
+          //minus book axios end
 
     </script>
 

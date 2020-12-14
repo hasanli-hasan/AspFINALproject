@@ -75,7 +75,7 @@ using WebApplication1.View_Models;
             WriteLiteral("        <div class=\"saled-products-row\">\r\n            <div class=\"saled-product-image\">\r\n                ");
             EndContext();
             BeginContext(319, 45, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "fe9802ec902e4a81a072da77d03668b8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "9d74f7c1916643dfa59a9243f37ce4f9", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -208,7 +208,7 @@ AddHtmlAttributeValue("", 335, item.Book.BookImage, 335, 20, false);
             WriteLiteral("                <p> ");
             EndContext();
             BeginContext(1889, 68, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b2964c1f9cbe4f68854c90d7b61a9da4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c80102fb4b4483d880d1b3b6436934f", async() => {
                 BeginContext(1942, 11, true);
                 WriteLiteral("Recive Sale");
                 EndContext();

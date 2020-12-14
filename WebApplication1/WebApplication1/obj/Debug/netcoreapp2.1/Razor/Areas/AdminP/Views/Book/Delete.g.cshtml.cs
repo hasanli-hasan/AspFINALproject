@@ -67,7 +67,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n<h2>Book</h2>\r\n\r\n<div class=\"align-items-center\">\r\n    ");
             EndContext();
             BeginContext(177, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "f390c8fa83cb461ea9d30c46c75d9cf9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "51d5a123078a436f806dceca095476e1", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -143,7 +143,7 @@ Write(Model.AboutBook);
             WriteLiteral("\r\n</div>\r\n");
             EndContext();
             BeginContext(453, 100, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b75e87d06ba4805a7bdf2e3ae2e0f36", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "72fe090fea1c4d0d93be9c9cfb5584da", async() => {
                 BeginContext(473, 73, true);
                 WriteLiteral("\r\n    <button type=\"submit\" class=\"btn btn-success m-3\">Delete</button>\r\n");
                 EndContext();
@@ -167,7 +167,7 @@ Write(Model.AboutBook);
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(555, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cb4d9f0c489d49ceb5ef24e0de5c3e10", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c77c99da711482788e0278f16d152f3", async() => {
                 BeginContext(606, 7, true);
                 WriteLiteral("Go Back");
                 EndContext();

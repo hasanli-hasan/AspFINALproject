@@ -161,36 +161,107 @@ namespace WebApplication1.Controllers
             return Ok(new {Total=Total, basketCount= basketCount});
         }
 
-        public IActionResult Decrease(int? id)
+        public IActionResult Decrease([FromForm]int? id)
         {
+            int basketProductDbCount = 0;
+            decimal basketTotalPrice = 0;
+            decimal productTotalPrice = 0;
+
             List<BasketBookVM> books = JsonConvert.DeserializeObject<List<BasketBookVM>>(Request.Cookies["basket"]);
             BasketBookVM book = books.Where(p => p.Id == id).FirstOrDefault();
 
             if(book.Count>1)
             {
                 --book.Count;
+                
             }
             else
             {
                 books.Remove(book);
             }
+
+            int basketCount = book.Count;
+            int allBasketBagCount = books.Where(x => x.UserName == User.Identity.Name).Count();
+            
+            foreach (var basketBook in books.Where(x => x.UserName == User.Identity.Name))
+            {
+                Book dbbook = _db.Books.FirstOrDefault(x => x.Id == basketBook.Id);
+                if (dbbook != null)
+                {
+                    basketBook.BookPrice = dbbook.BookPrice;
+                    basketProductDbCount = dbbook.BookCount;
+                }
+
+                decimal bookTotal = basketBook.Count * basketBook.BookPrice;
+
+                if (basketBook.Id == id)
+                {
+                    productTotalPrice = bookTotal;
+                }
+
+                basketTotalPrice += bookTotal;
+            }
+
             string basket = JsonConvert.SerializeObject(books);
             Response.Cookies.Append("basket", basket, new CookieOptions { MaxAge = TimeSpan.FromDays(30) });
 
-            return RedirectToAction("Basket");
+            var anonymObject = new
+            {
+                BasketBooks = books,
+                ProductBasketCount = basketCount,
+                BasketTotalPrice = basketTotalPrice,
+                ProductTotalPrice = productTotalPrice,
+                BasketProductDbCount = basketProductDbCount,
+                AllBasketBagCount= allBasketBagCount
+            };
+
+            return Ok(anonymObject);
         }
 
-        public IActionResult Upcrease(int? id)
+        public IActionResult Upcrease([FromForm] int? id)
         {
+            int basketProductDbCount = 0;
+            decimal basketTotalPrice = 0;
+            decimal productTotalPrice = 0;
 
             List<BasketBookVM> books = JsonConvert.DeserializeObject<List<BasketBookVM>>(Request.Cookies["basket"]);
-            BasketBookVM book = books.Where(p => p.Id == id).FirstOrDefault();
+            BasketBookVM book = books.Where(p => p.Id == id && p.UserName == User.Identity.Name).FirstOrDefault();
 
-                ++book.Count;
+            ++book.Count;
+            int basketCount = book.Count;
+
+            foreach (var basketBook in books.Where(x => x.UserName == User.Identity.Name))
+            {
+                Book dbbook = _db.Books.FirstOrDefault(x => x.Id == basketBook.Id);
+                if (dbbook !=null)
+                {
+                    basketBook.BookPrice = dbbook.BookPrice;
+                    basketProductDbCount = dbbook.BookCount;
+                }
+
+                decimal bookTotal = basketBook.Count * basketBook.BookPrice;
+
+                if (basketBook.Id == id)
+                {
+                    productTotalPrice = bookTotal;
+                }
+
+                basketTotalPrice += bookTotal;
+            }
+
             string basket = JsonConvert.SerializeObject(books);
             Response.Cookies.Append("basket", basket, new CookieOptions { MaxAge = TimeSpan.FromDays(30) });
-           
-            return RedirectToAction("Basket");
+
+            var anonymObject = new
+            {
+                BasketBooks=books,
+                ProductBasketCount= basketCount,
+                BasketTotalPrice= basketTotalPrice,
+                ProductTotalPrice= productTotalPrice,
+                BasketProductDbCount=basketProductDbCount
+            };
+
+            return Ok(anonymObject);
         }
 
         [HttpPost]

@@ -69,7 +69,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(142, 119, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3661db6478ff41d3a421fbde2f334ffe", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b1e9bc38e5fb43398d795dd4920afcdc", async() => {
                 BeginContext(237, 20, true);
                 WriteLiteral("Create Book Category");
                 EndContext();
@@ -134,7 +134,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n                                </td>\r\n\r\n                                <td>\r\n                                    ");
             EndContext();
             BeginContext(1188, 83, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d443437432ec4bb18ba3eaf899c47947", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d50263e664a74a82871c3c1f6805a7e9", async() => {
                 BeginContext(1261, 6, true);
                 WriteLiteral("Detail");
                 EndContext();
@@ -170,7 +170,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n                                    ");
             EndContext();
             BeginContext(1309, 83, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee691654cb6548c8a41a58e4abe61880", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9542070284404cc1ad8e822c8a5d4256", async() => {
                 BeginContext(1382, 6, true);
                 WriteLiteral("Update");
                 EndContext();
@@ -206,7 +206,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n                                    ");
             EndContext();
             BeginContext(1430, 82, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3ca79224b33546959e4256adf317de1e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3ba354508cc649f190accbc5453c0c35", async() => {
                 BeginContext(1502, 6, true);
                 WriteLiteral("Delete");
                 EndContext();

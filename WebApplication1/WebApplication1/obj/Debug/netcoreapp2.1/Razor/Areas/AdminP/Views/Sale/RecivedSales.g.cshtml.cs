@@ -70,7 +70,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n<h2>Sales Archive</h2>\r\n\r\n");
             EndContext();
             BeginContext(159, 82, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dde6b9d982b447b4b160e5ff758beb99", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f563c70d53be444c86c248997be92584", async() => {
                 BeginContext(216, 21, true);
                 WriteLiteral("\r\n    Recived Sales\r\n");
                 EndContext();
@@ -163,7 +163,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n                                    </td>\r\n\r\n                                    <td>\r\n                                        ");
             EndContext();
             BeginContext(1753, 86, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c511cb8883fc44f799d1115cd8b4c56e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a70682b54afe4350a4c28121fd88047f", async() => {
                 BeginContext(1824, 11, true);
                 WriteLiteral("Detail Sale");
                 EndContext();

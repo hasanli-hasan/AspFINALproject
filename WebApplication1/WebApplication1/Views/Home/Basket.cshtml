@@ -59,9 +59,9 @@
                     <p id="basketplusMinus">
                         @if (book.Count < book.BookCount)
                         {
-                            <a id="countUpper" asp-controller="Home" asp-action="Upcrease" asp-route-id="@book.Id">+</a>
+                            <a id="countUpper" class="plusProduct" data-id="@book.Id">+</a>
                         }
-                        <a asp-controller="Home" asp-action="Decrease" asp-route-id="@book.Id">-</a>
+                        <a class="countMinus" data-id="@book.Id">-</a>
                     </p>
                 </div>
 

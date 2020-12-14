@@ -63,7 +63,7 @@ using WebApplication1.View_Models;
             WriteLiteral("    <div class=\"blog-search-info-row\">\r\n        <div class=\"blog-search-image-row\">\r\n            ");
             EndContext();
             BeginContext(158, 36, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "52fe8f124cb644658233f95dd9403fd4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "c2cbf1d24b3b41ec8c6ab762ba4125b9", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

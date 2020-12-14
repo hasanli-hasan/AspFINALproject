@@ -210,7 +210,7 @@ using WebApplication1.View_Models;
             WriteLiteral("                                ");
             EndContext();
             BeginContext(2611, 85, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "32768c9fea9c4b77b5d8d52a1b8203d1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e35a4d79961545b286bae0837916c855", async() => {
                 BeginContext(2685, 7, true);
                 WriteLiteral("Disable");
                 EndContext();
@@ -256,7 +256,7 @@ using WebApplication1.View_Models;
             WriteLiteral("                                ");
             EndContext();
             BeginContext(2826, 88, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cb667a329c5a470ba716aa55b4355af3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e61673abc1f9461e9c70241a4b0f788a", async() => {
                 BeginContext(2901, 9, true);
                 WriteLiteral("Activated");
                 EndContext();
@@ -300,7 +300,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n                            ");
             EndContext();
             BeginContext(2977, 90, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "32233f3677314d60be6b3ebcc848c30b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae89b7cecce0484aa3807b0058c92e99", async() => {
                 BeginContext(3052, 11, true);
                 WriteLiteral("Change Role");
                 EndContext();
@@ -336,7 +336,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n                            ");
             EndContext();
             BeginContext(3097, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a932f0515d14a63b8488d28a4315636", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "32793c80aae045dab06142d58767f9d4", async() => {
                 BeginContext(3173, 9, true);
                 WriteLiteral(" Password");
                 EndContext();
@@ -391,7 +391,7 @@ using WebApplication1.View_Models;
             WriteLiteral("                    <li class=\"page-item disabled\">");
             EndContext();
             BeginContext(3703, 110, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c80d6ac2467e41978edc3b8050d6ede0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9df7741f27ba4b90aee3ccac1f007d74", async() => {
                 BeginContext(3808, 1, false);
 #line 117 "C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\Areas\AdminP\Views\AllUsers\Index.cshtml"
                                                                                                                                                       Write(i);
@@ -445,7 +445,7 @@ using WebApplication1.View_Models;
             WriteLiteral("                    <li class=\"page-item\">");
             EndContext();
             BeginContext(3922, 110, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1c4ea0c8a4ce4659b3bf40b19a1dd28e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "71dadd147a774c7a8b583f020bbf9a4b", async() => {
                 BeginContext(4027, 1, false);
 #line 121 "C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\Areas\AdminP\Views\AllUsers\Index.cshtml"
                                                                                                                                              Write(i);

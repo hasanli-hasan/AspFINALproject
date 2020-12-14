@@ -53,7 +53,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n<style>\r\n    .detail {\r\n        margin-top: 20px;\r\n        width: 500px;\r\n    }\r\n\r\n    img {\r\n        width: 100px;\r\n        height: 120px;\r\n    }\r\n</style>\r\n\r\n\r\n\r\n    <div class=\"detail\">\r\n        ");
             EndContext();
             BeginContext(220, 32, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0a19a0303d0b4843a5596c624a26e75e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "748763443cba45cabbb7797625dfcddc", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

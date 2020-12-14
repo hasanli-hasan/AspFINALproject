@@ -68,7 +68,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n\r\n    <div class=\"commet-body\">\r\n        <div class=\"commet-user-info\">\r\n            <div class=\"commet-user-image\">\r\n                ");
             EndContext();
             BeginContext(182, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "d1cb1f1bbf6a4185817e8e75a1347edd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "36240401384f41c5819a4d698fa3255d", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -115,7 +115,7 @@ using WebApplication1.View_Models;
             WriteLiteral("                ");
             EndContext();
             BeginContext(555, 64, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e3a6cdd444ef49e0981761797d0802f3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5784c5e4b64c458d8fae64c3762a8b7e", async() => {
                 BeginContext(609, 6, true);
                 WriteLiteral("Delete");
                 EndContext();

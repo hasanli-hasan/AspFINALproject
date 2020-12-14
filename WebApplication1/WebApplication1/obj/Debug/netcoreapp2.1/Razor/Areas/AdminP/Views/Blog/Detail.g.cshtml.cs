@@ -64,7 +64,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n<h2>Blog</h2>\r\n\r\n<div class=\"align-items-center\">\r\n    ");
             EndContext();
             BeginContext(177, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b4b24bccd8f94bc1a7599529a8b4f8c1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a14b7f14cb1e4f4b94b14a73e3c77423", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -140,7 +140,7 @@ Write(Model.BlogText);
             WriteLiteral("\r\n</div>\r\n");
             EndContext();
             BeginContext(433, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "646cc5c769874db5833c83a110ee210b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f41cb71671bd49edb84dff667e7d9ecf", async() => {
                 BeginContext(484, 7, true);
                 WriteLiteral("Go Back");
                 EndContext();

@@ -82,7 +82,7 @@ using WebApplication1.View_Models;
             WriteLiteral("                <div class=\"last-author-image-row\" style=\"object-fit:cover;\">\r\n                    ");
             EndContext();
             BeginContext(459, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "c595c818e82748c584c50bd019ea0d5e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "7c59390e587e41739d389326fc41218f", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -121,7 +121,7 @@ AddHtmlAttributeValue("", 475, author.Image, 475, 13, false);
             WriteLiteral("\r\n                        </p>\r\n                    </div>\r\n\r\n                    ");
             EndContext();
             BeginContext(821, 92, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f54d154235d8437faaa96d85018736d5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0199c57b386c475b926b6f77d0998ca9", async() => {
                 BeginContext(900, 9, true);
                 WriteLiteral("Read More");
                 EndContext();
@@ -206,7 +206,7 @@ AddHtmlAttributeValue("", 475, author.Image, 475, 13, false);
             WriteLiteral("                    <div class=\"author-body-row\">\r\n                        <div class=\"author-body-image\">\r\n                            ");
             EndContext();
             BeginContext(1890, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "cbe1b68fd5584b93a655e39e9a446069", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "4a51ea3bdfda4a9b965f4a2a21f7eb53", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -252,7 +252,7 @@ AddHtmlAttributeValue("", 1906, author.Image, 1906, 13, false);
             WriteLiteral("\r\n                                </p>\r\n                            </div>\r\n                        </div>\r\n\r\n                        ");
             EndContext();
             BeginContext(2364, 91, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3d4a311d52b44c9ba277fd832ff4b7d9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57246a30b53448348b10f68bf58e4bec", async() => {
                 BeginContext(2443, 8, true);
                 WriteLiteral("See More");
                 EndContext();
@@ -335,7 +335,7 @@ WriteAttributeValue("", 2613, ViewBag.AuthorCount, 2613, 20, false);
                     ");
             EndContext();
             BeginContext(3440, 302, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6757a0680ddc4f468f46f46c9909710f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "33dbb90168b74c40a2f78ee235334cc4", async() => {
                 BeginContext(3446, 289, true);
                 WriteLiteral(@"
                         <input id=""inputEmail"" type=""email"" required placeholder=""Email..."">

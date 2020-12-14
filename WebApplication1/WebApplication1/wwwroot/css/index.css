@@ -1603,3 +1603,7 @@ background: rgb(179, 175, 175);
 #userMessageIconHeader i{
    font-size:22px;
 }
+
+.plus{
+    display:none;
+}

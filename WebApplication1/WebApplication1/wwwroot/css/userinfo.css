@@ -1,7 +1,6 @@
 
 .user-personal-page-container{
     width: 100%;
-    height: 600px;
     display:flex;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -90,6 +89,28 @@ height: 100%;
         font-size: 18px;
      }
 
+#userBioRow{
+    height:400px;
+    display:flex;
+    flex-wrap:wrap;
+}
+
+#bioForm{
+    display:none;
+}
+
+#existBio {
+    width: 97%;
+    height: 150px;
+    background-color: white;
+    overflow-y: scroll;
+    margin: 0 auto;
+}
+
+#userBioRow #bioTextArea {
+    width: 900px;
+    height: 120px;
+}
 
 
 #birthdayForm {

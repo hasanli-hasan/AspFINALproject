@@ -13,7 +13,8 @@ namespace WebApplication1.View_Models
         public string UserName { get; set; }
         public bool IsActivated { get; set; }
         public string Role { get; set; }
-        public List<string> Roles { get; set; }
+        public IList<string> Roles { get; set; }
+        public IList<string> OtherRoles { get; set; }
     }
 
 }

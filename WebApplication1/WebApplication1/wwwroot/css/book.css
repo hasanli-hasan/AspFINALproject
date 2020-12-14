@@ -767,7 +767,7 @@ top: 0;
     margin-top: 50px;
  }
 
- .timer-modal-info-container #email-button{
+ .timer-modal-info-container .email-button{
     outline: none;
     border: 1px black solid;
     width: 60px;
@@ -775,7 +775,7 @@ top: 0;
     background: #000;
  }
  
- .timer-modal-info-container #email-button i{
+ .timer-modal-info-container .email-button i{
   font-size: 22px;
   color: rgb(255, 72, 0);
  }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -51,8 +52,47 @@ namespace WebApplication1.View_Components
             }
             Bio model = _db.Bios.FirstOrDefault();
 
-          
+            //usere gelen mesajlarin countunu tapmaq ucun
+            //count da eger user mesaj yazarsa gosterilir. hemin mesaj oxunsa count -1 azalacaq
+            if (User.Identity.IsAuthenticated)
+            {
+                AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
 
+                List<AppUser> users = _userManager.Users.Include(x => x.Messages).ToList();
+                List<Conversation> conversations = _db.Conversations.ToList();
+                List<Message> messages = _db.Messages.ToList();
+
+                List<Conversation> EachConv = new List<Conversation>();
+
+                foreach (var c in conversations)
+                {
+                    foreach (var u in users)
+                    {
+                        if (c.SenderId == existUser.Id && c.AcceptorId == u.Id || c.SenderId == u.Id && c.AcceptorId == existUser.Id)
+                        {
+                            EachConv.Add(c);
+                        }
+                    }
+                }
+
+                List<Message> newMes = new List<Message>();
+                foreach (var ec in EachConv)
+                {
+                    foreach (var m in messages.Where(x => x.ConversationId == ec.Id).OrderByDescending(y => y.Id).Take(1))
+                    {
+                        if (m.IsRead == false && m.AppUserId !=existUser.Id)
+                        {
+                            newMes.Add(m);
+                        }
+                    }
+                }
+
+                ViewBag.Conv = newMes.Count();
+            }
+
+
+             
+           
             return View(await Task.FromResult(model));
         }
     }

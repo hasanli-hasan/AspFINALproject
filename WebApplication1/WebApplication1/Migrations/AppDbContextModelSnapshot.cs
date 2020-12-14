@@ -136,10 +136,14 @@ namespace WebApplication1.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<string>("Bio");
+
                     b.Property<DateTime>("BirthDate");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
+
+                    b.Property<string>("ConnectionId");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
@@ -175,6 +179,8 @@ namespace WebApplication1.Migrations
                     b.Property<string>("Religion");
 
                     b.Property<string>("SecurityStamp");
+
+                    b.Property<string>("Token");
 
                     b.Property<bool>("TwoFactorEnabled");
 
@@ -221,8 +227,7 @@ namespace WebApplication1.Migrations
                     b.Property<string>("BookInfo")
                         .IsRequired();
 
-                    b.Property<string>("FrontTitle")
-                        .HasMaxLength(100);
+                    b.Property<string>("FrontTitle");
 
                     b.Property<string>("Image");
 
@@ -271,6 +276,8 @@ namespace WebApplication1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AppUserId");
+
                     b.Property<int>("BlogCategoryId");
 
                     b.Property<string>("BlogText");
@@ -285,6 +292,8 @@ namespace WebApplication1.Migrations
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("BlogCategoryId");
 
@@ -400,6 +409,24 @@ namespace WebApplication1.Migrations
                     b.ToTable("Commets");
                 });
 
+            modelBuilder.Entity("WebApplication1.Models.Conversation", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AcceptorId");
+
+                    b.Property<string>("SenderId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AcceptorId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Conversations");
+                });
+
             modelBuilder.Entity("WebApplication1.Models.DiscountBooks", b =>
                 {
                     b.Property<int>("Id")
@@ -434,6 +461,33 @@ namespace WebApplication1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DiscountTexts");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AppUserId");
+
+                    b.Property<string>("Content");
+
+                    b.Property<string>("ConversationId");
+
+                    b.Property<bool>("IsLiked");
+
+                    b.Property<bool>("IsRead");
+
+                    b.Property<DateTime>("dateTime");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("ConversationId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.MRClassics", b =>
@@ -560,6 +614,19 @@ namespace WebApplication1.Migrations
                     b.ToTable("SpecialBooks");
                 });
 
+            modelBuilder.Entity("WebApplication1.Models.Subscriptions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Subscriptions");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -607,6 +674,10 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("WebApplication1.Models.Blog", b =>
                 {
+                    b.HasOne("WebApplication1.Models.AppUser", "AppUser")
+                        .WithMany("Blogs")
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("WebApplication1.Models.BlogCategory", "BlogCategory")
                         .WithMany("Blogs")
                         .HasForeignKey("BlogCategoryId")
@@ -636,6 +707,28 @@ namespace WebApplication1.Migrations
                         .WithMany("Commets")
                         .HasForeignKey("BlogId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.Conversation", b =>
+                {
+                    b.HasOne("WebApplication1.Models.AppUser", "Acceptor")
+                        .WithMany("AcceptorConversation")
+                        .HasForeignKey("AcceptorId");
+
+                    b.HasOne("WebApplication1.Models.AppUser", "Sender")
+                        .WithMany("SenderConversation")
+                        .HasForeignKey("SenderId");
+                });
+
+            modelBuilder.Entity("WebApplication1.Models.Message", b =>
+                {
+                    b.HasOne("WebApplication1.Models.AppUser", "AppUser")
+                        .WithMany("Messages")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("WebApplication1.Models.Conversation", "Conversation")
+                        .WithMany()
+                        .HasForeignKey("ConversationId");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Sale", b =>

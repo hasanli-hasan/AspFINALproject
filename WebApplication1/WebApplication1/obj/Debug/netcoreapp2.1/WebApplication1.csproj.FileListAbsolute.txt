@@ -98,3 +98,9 @@ C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\net
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Areas\AdminP\Views\Sale\RecivedSales.g.cshtml.cs
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CommetPartial.g.cshtml.cs
 C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Personal\Index.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_MessageChat.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\ChatUsers\MessagesIndex.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\ChatUsers\MessageList.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_UserSearchPartial.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Areas\AdminP\Views\Roles\Index.g.cshtml.cs
+C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.1\Razor\Areas\AdminP\Views\Roles\CreateRole.g.cshtml.cs

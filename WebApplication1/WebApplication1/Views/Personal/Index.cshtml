@@ -54,7 +54,7 @@
 
             <form id="userGenderForm" asp-action="UserGender" method="post">
                 Man:
-                <input asp-for="Gender" type="radio" value="Man"/>
+                <input asp-for="Gender" type="radio" value="Man" />
 
                 Woman:
                 <input asp-for="Gender" type="radio" value="Woman" />
@@ -69,8 +69,23 @@
             <span>@Model.Religion</span>
 
             <form id="userReligiousForm" asp-action="UserReligion" method="post">
-                
-                <input asp-for="Religion" placeholder="Religion"/>
+
+                <input asp-for="Religion" placeholder="Religion" />
+                <button type="submit">Change</button>
+            </form>
+        </div>
+
+        <div id="userBioRow" class="user-bio userall-row ">
+            <p>Bio:</p>
+            <a id="changeBio" href="">Change</a>
+            <div id="existBio">
+
+                @Html.Raw(Model.Bio)
+
+            </div>
+
+            <form id="bioForm" asp-action="UserBio" method="post">
+                <textarea id="bioTextArea" asp-for="Bio"></textarea>
                 <button type="submit">Change</button>
             </form>
         </div>
@@ -80,8 +95,9 @@
 </div>
 
 
-
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
 
 <script>
     //user birthday start
@@ -97,11 +113,18 @@
             $("#userGenderForm").toggle();
         })
 
-         $(document).on("click", "#changeReligious", function (e) {
+        $(document).on("click", "#changeReligious", function (e) {
             e.preventDefault()
             $("#userReligiousForm").toggle();
+        })
+
+        $(document).on("click", "#changeBio", function (e) {
+            e.preventDefault()
+            $("#bioForm").toggle();
         })
     })
 
     //user birthday end
+
+
 </script>

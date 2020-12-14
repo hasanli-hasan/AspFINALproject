@@ -1,0 +1,718 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.users-messageChat-main-container {
+    width: 100%;
+    height: 625px;
+    background: rgb(250, 250, 250);
+}
+
+    .users-messageChat-main-container .users-search-header-row {
+        width: 100%;
+        height: 54px;
+        background: rgb(255, 255, 255);
+        border-bottom: 1px rgb(195, 195, 196) solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .users-messageChat-main-container .users-search-header-row input {
+            width: 220px;
+            height: 28px;
+            text-align: center;
+            padding-left: 20px;
+            border: 1px rgb(192, 194, 196) solid;
+            border-radius: 3px;
+            outline: none;
+            background-color: rgba(244, 244, 245, 0.384);
+            margin-left: 100px;
+        }
+
+        .users-messageChat-main-container .users-search-header-row #timesSearch {
+            position: relative;
+            left: -10.1%;
+            font-size: 11px;
+            color: rgb(166, 167, 168);
+        }
+
+#timesCircle {
+    position: relative;
+    left: -2.4%;
+    font-size: 15px;
+    color: rgb(184, 183, 183);
+    display: none;
+}
+
+.click-search-input {
+    padding-left: 30px !important;
+    text-align: start !important;
+}
+
+.click-search-input-i {
+    left: -15.1% !important;
+}
+
+.message-chat-iconSet {
+    width: 200px;
+    height: 30px;
+    position: relative;
+    left: 14%;
+    display: flex;
+}
+
+    .message-chat-iconSet i {
+        font-size: 23px;
+        padding-left: 22px;
+        color: rgb(59, 59, 59);
+    }
+
+    .message-chat-iconSet .message-chatUserImageRow {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        margin-left: 22px;
+        background: #000;
+    }
+
+        .message-chat-iconSet .message-chatUserImageRow img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+/* search user css start */
+.SearchUserApend-row {
+    width: 250px;
+    max-height: 310px;
+    overflow-y: scroll;
+    background: rgb(255, 255, 255);
+    border-left: 1px rgb(201, 200, 200) solid;
+    border-right: 1px rgb(201, 200, 200) solid;
+    z-index: 10;
+    position: absolute;
+    left: 36.8%;
+    top: 5%;
+    display: none;
+}
+
+.searchUser-info-row {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px rgb(201, 200, 200) solid;
+}
+
+    .searchUser-info-row:nth-child(1) {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        border-top: 1px rgb(201, 200, 200) solid;
+        border-bottom: 1px rgb(201, 200, 200) solid;
+    }
+
+    .searchUser-info-row .searchUser-image {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        margin-left: 10px;
+    }
+
+        .searchUser-info-row .searchUser-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+    .searchUser-info-row h3 {
+        font-size: 17px;
+        margin-left: 17px;
+    }
+
+        .searchUser-info-row h3 a {
+            color: rgb(59, 54, 54);
+        }
+/* search user css end */
+
+
+/* mesajlar ve userler olan hisse start */
+.usersAll-listMessages-container {
+    width: 935px;
+    height: 530px;
+    background: rgb(255, 255, 255);
+    border: 1px rgb(192, 194, 196) solid;
+    border-radius: 4px;
+    position: relative;
+    top: 20px;
+    left: 15%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .usersAll-listMessages-container .userAll-list-row {
+        width: 349px;
+        height: 100%;
+        border-right: 1px rgb(192, 194, 196) solid;
+    }
+
+.userAll-list-row .existUserName-header-row {
+    width: 100%;
+    height: 60px;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px rgb(192, 194, 196) solid;
+}
+
+    .userAll-list-row .existUserName-header-row h1 {
+        font-size: 17px;
+        font-weight: 600;
+        color: rgba(20, 20, 20, 0.87);
+        font-family: sans-serif;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+        .userAll-list-row .existUserName-header-row h1 a {
+            color: rgba(20, 20, 20, 0.87);
+        }
+
+.userAll-list-row .existuser-messagesOtherUsers-row {
+    width: 100%;
+    height: 468px;
+    overflow-y: scroll;
+    background: rgb(255, 255, 255);
+}
+
+.existuser-messagesOtherUsers-row .messagesOtherUsers-row {
+    width: 100%;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+    .existuser-messagesOtherUsers-row .messagesOtherUsers-row:nth-child(1) {
+        margin-top: 9px;
+    }
+
+    .existuser-messagesOtherUsers-row .messagesOtherUsers-row:hover {
+        background: rgb(235, 235, 235);
+    }
+
+.messagesOtherUsers-row .OtherUser-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: relative;
+}
+
+#removeA {
+}
+
+.messagesOtherUsers-row .OtherUser-image i {
+    position: absolute;
+    top: 40px;
+    right: -1px;
+    background: rgb(255, 255, 255);
+    padding: 3px;
+    border-radius: 50%;
+    color: rgb(33, 243, 51);
+}
+
+.messagesOtherUsers-row .OtherUser-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.messagesOtherUsers-row .OtherUser-Name-row {
+    width: 230px;
+    height: 50%;
+}
+
+    .messagesOtherUsers-row .OtherUser-Name-row h4 {
+        font-weight: 600;
+        font-family: sans-serif;
+        font-size: 16px;
+        color: rgb(63, 63, 63);
+    }
+
+    .messagesOtherUsers-row .OtherUser-Name-row p {
+        color: rgb(124, 126, 129);
+        padding-top: 4px;
+    }
+
+#rmvUserOther {
+    z-index: 8;
+    color: rgba(255, 0, 0, 0.651);
+    display: none;
+}
+
+.messagesOtherUsers-row #removeA {
+    position: relative;
+    left: 68%;
+}
+
+
+.messagesOtherUsers-row:hover #rmvUserOther {
+    display: block;
+}
+
+.ExistUser-rigthMessages-Info-row {
+    width: 583px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+    .ExistUser-rigthMessages-Info-row .sendMessageicon {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px black solid;
+    }
+
+        .ExistUser-rigthMessages-Info-row .sendMessageicon i {
+            font-size: 50px;
+            margin-right: 4px;
+        }
+
+    .ExistUser-rigthMessages-Info-row p {
+        font-size: 28px;
+        position: absolute;
+        top: 63%;
+    }
+
+/* userlarin mesajlari olan hisse start */
+.ExistAndUser-messagesAll-container {
+    width: 583px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    background: rgb(255, 255, 255);
+}
+
+    .ExistAndUser-messagesAll-container .AndUser-name-header-row {
+        width: 100%;
+        height: 60px;
+        border-bottom: 1px rgb(192, 194, 196) solid;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+.AndUser-name-header-row .AndUser-image-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 30px;
+}
+
+    .AndUser-name-header-row .AndUser-image-box img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+.AndUser-name-header-row h3 {
+    font-family: sans-serif;
+    font-size: 17.1px;
+    color: rgb(36, 36, 36);
+    margin-left: 20px;
+}
+
+.AndUser-name-header-row i {
+    font-size: 30px;
+    color: rgb(112, 112, 112);
+    position: absolute;
+    right: 22px;
+}
+
+.ExistUser-AndUser-messageBox-row {
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+#userSingleMessage {
+    max-width: 270px;
+    margin-top: 10px;
+    margin-left: 8px;
+    position: relative;
+}
+
+    #userSingleMessage p {
+        padding: 16px 20px;
+        margin-top: 3px;
+    }
+
+#heartIcon {
+    position: absolute;
+    color: red;
+    top: 45px;
+}
+
+.ExistUser-AndUser-messageBox-row p {
+    padding: 16px 26px;
+    display: inline-block;
+    border-radius: 20px;
+    border: 1px rgb(225, 225, 220) solid;
+    color: rgb(57, 58, 58);
+    font-family: sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+    .ExistUser-AndUser-messageBox-row p a {
+        color: rgb(57, 58, 58);
+    }
+
+    .ExistUser-AndUser-messageBox-row p:hover #faTimes {
+        display: block;
+        position: absolute;
+        top: 39%;
+        right: 10px;
+    }
+
+.ExistUser-AndUser-messageBox-row #faTimes {
+    color: rgb(170, 45, 45);
+    display: none;
+}
+
+#ExistUserMessage {
+    max-width: 270px;
+    margin-top: 10px;
+    margin-left: 48%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    position: relative;
+}
+
+    #ExistUserMessage p {
+        background-color: #ececec;
+        border: none;
+    }
+
+.ExistUser-sendMessage-input {
+    width: 100%;
+    height: 67px;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgb(255, 255, 255);
+}
+
+    .ExistUser-sendMessage-input #mytextarea {
+        width: 350px;
+        height: 45px;
+        outline: none;
+        border: 1px rgb(179, 178, 178) solid;
+        border-radius: 50px;
+        margin-left: 16px;
+        padding-top: 13px;
+        padding-left: 17px;
+        margin-top: 15px;
+    }
+
+    .ExistUser-sendMessage-input button {
+        width: 60px;
+        height: 45px;
+        background: rgb(255, 255, 255);
+        outline: none;
+        border: 1px rgb(179, 178, 178) solid;
+        border-radius: 50px;
+        position: relative;
+        top: -18px;
+        margin-left: 6px;
+        color: rgb(55, 204, 25);
+        font-weight: 600;
+        font-size: 15px;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+#fileLoader {
+    display: none;
+}
+
+#sendImageBtn {
+    border: none;
+    outline: none;
+    margin-top: 30px;
+}
+
+    #sendImageBtn i {
+        font-size: 35px;
+        color: rgb(72, 72, 73);
+    }
+
+#isReadMessageSpan {
+    color: #858585;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#andUserLastMessage {
+    width: 200px;
+    height: 20px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+    #andUserLastMessage p {
+        margin-right: 12px;
+        position: relative;
+    }
+
+
+/* userlarin mesajlari olan hisse end */
+
+/* mesajlar ve userler olan hisse end */
+
+/*search user loading spinner css start*/
+
+.spinner {
+    display: inline-block;
+    text-indent: -999em;
+    height: 1em;
+    width: 1em;
+    position: relative;
+    vertical-align: middle;
+    /*border-radius:50%;*/
+    overflow: hidden;
+}
+
+    .spinner:before {
+        animation: spin .75s infinite reverse linear;
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        border-radius: 50%;
+        margin: -0.1em;
+        width: 0.2em;
+        height: 0.2em;
+        box-shadow: 0.40em 0.00em 0 #fff, 0.28em 0.28em 0 #ddd, 0.00em 0.40em 0 #bbb, -0.28em 0.28em 0 #999, -0.40em 0.00em 0 #777, -0.28em -0.28em 0 #555, -0.00em -0.40em 0 #333, 0.28em -0.28em 0 #111;
+    }
+
+@keyframes spin {
+    from {
+        transform: rotate(360deg);
+    }
+}
+
+#searchSpinner {
+    position: relative;
+    z-index: 22;
+    left: -35px;
+    display: none;
+}
+
+/*search user loading spinner css end*/
+
+
+
+/* Scroll Css Start*/
+.existuser-messagesOtherUsers-row::-webkit-scrollbar {
+    width: 7px;
+    height: 14px;
+    background: #ebe8e8;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.existuser-messagesOtherUsers-row::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.existuser-messagesOtherUsers-row::-webkit-scrollbar-thumb {
+    background-color: #808080;
+    height: 20px !important;
+    border-radius: 10px;
+}
+
+.existuser-messagesOtherUsers-row ::-webkit-scrollbar:horizontal {
+    display: none;
+}
+
+/*Scroll Css End */
+
+/* Scroll Css Start*/
+.SearchUserApend-row::-webkit-scrollbar {
+    width: 7px;
+    height: 14px;
+    background: #ebe8e8;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.SearchUserApend-row::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.SearchUserApend-row::-webkit-scrollbar-thumb {
+    background-color: #808080;
+    height: 20px !important;
+    border-radius: 10px;
+}
+
+.SearchUserApend-row::-webkit-scrollbar:horizontal {
+    SearchUserApend-row display: none;
+}
+
+/*Scroll Css End */
+
+/*User Info css start*/
+.AndUser-information-row {
+    width: 430px;
+    height: 300px;
+    position: absolute;
+    z-index: 11;
+    top: 108%;
+    right: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    visibility:hidden;
+    overflow-y: scroll;
+    background: rgb(231, 230, 230);
+    border: 5px rgb(231, 230, 230) solid;
+}
+
+#infoIcon:hover {
+    color: black;
+}
+
+
+    #infoIcon:hover .AndUser-information-row {
+        visibility: visible;
+    }
+
+.AndUser-information-row .user-information-imageRow {
+    width: 180px;
+    height: 200px;
+    margin-top: 8px;
+}
+
+    .AndUser-information-row .user-information-imageRow img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.AndUser-information-row .user-information-bioRow {
+    width: 200px;
+    height: 200px;
+    background: rgb(255, 255, 255);
+    margin-top: 8px;
+}
+
+    .AndUser-information-row .user-information-bioRow ul li {
+        list-style: none;
+        margin-left: 20px;
+        margin-top: 7px;
+        color: black;
+    }
+
+        .AndUser-information-row .user-information-bioRow ul li:nth-child(1) {
+            font-size: 22px;
+        }
+
+        .AndUser-information-row .user-information-bioRow ul li:nth-child(2) {
+            font-size: 20px;
+        }
+
+        .AndUser-information-row .user-information-bioRow ul li:nth-child(3) {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+.AndUser-information-row .user-information-aboutUserRow {
+    width: 97%;
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: rgb(255, 255, 255);
+    overflow-y: scroll;
+}
+
+    .AndUser-information-row .user-information-aboutUserRow p {
+        font-size: 20px;
+        color: black;
+        text-align: center;
+    }
+
+/* Scroll Css Start*/
+.AndUser-information-row::-webkit-scrollbar {
+    width: 7px;
+    height: 14px;
+    background: rgb(204, 202, 202);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.AndUser-information-row::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.AndUser-information-row::-webkit-scrollbar-thumb {
+    background-color: #706f6f;
+    height: 20px !important;
+    border-radius: 10px;
+}
+
+.AndUser-information-row ::-webkit-scrollbar:horizontal {
+    display: none;
+}
+
+/*Scroll Css End */
+
+/* Scroll Css Start*/
+.user-information-aboutUserRow::-webkit-scrollbar {
+    width: 7px;
+    height: 14px;
+    background: rgb(202, 201, 201);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.user-information-aboutUserRow::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.user-information-aboutUserRow::-webkit-scrollbar-thumb {
+    background-color: #525151;
+    height: 20px !important;
+    border-radius: 10px;
+}
+
+.user-information-aboutUserRow::-webkit-scrollbar:horizontal {
+    display: none;
+}
+
+/*Scroll Css End */
+
+/*User Info css end*/

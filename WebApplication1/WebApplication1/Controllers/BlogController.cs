@@ -69,6 +69,10 @@ namespace WebApplication1.Controllers
         {
             AppUser actUser = await _userManager.FindByNameAsync(User.Identity.Name);
             Blog blog = _db.Blogs.Where(x => x.Id == id).FirstOrDefault();
+            AppUser writerUser = _db.Users.FirstOrDefault(x => x.Id == blog.AppUserId);
+
+            ViewBag.WriterImage = writerUser.Image;
+            ViewBag.WriterName = writerUser.UserName;
 
             ViewBag.UserImage = actUser.Image;
             List<Commet> DbCommets = _db.Commets.Where(c => c.BlogId == blog.Id).Where(i=>i.isAppend==false).Include(x=>x.Blog).ToList();
@@ -109,15 +113,32 @@ namespace WebApplication1.Controllers
             return Ok(new {Text=commet.Text,Date=commet.Date.ToString("dd/MM/yyyy"), UserName=commet.UserName, CommentImage = commet.CommentImage,CommetId=commet.Id });
         }
 
-        public IActionResult CategoryBlog(int? id)
+
+        public IActionResult CategoryBlog(int? id,int? page)
         {
-            HomeVM homeVM = new HomeVM
+            ViewBag.PageCount = Math.Ceiling((decimal)_db.Blogs.Where(x=>x.BlogCategoryId==id).Count()/6);
+            ViewBag.Page = page;
+
+            if (page==null)
             {
-                Blogs = _db.Blogs.Include(x => x.BlogCategory).Where(b => b.BlogCategoryId == id).ToList(),
-                BlogCategories=_db.BlogCategories
-            };
-            
-            return View(homeVM);
+                HomeVM homeVM = new HomeVM
+                {
+                    Blogs = _db.Blogs.Include(x => x.BlogCategory).OrderByDescending(x=>x.Id).Where(b => b.BlogCategoryId == id).ToList(),
+                    BlogCategories = _db.BlogCategories
+                };
+
+                return View(homeVM);
+            }
+            else
+            {
+                HomeVM homeVM = new HomeVM
+                {
+                    Blogs = _db.Blogs.Include(x => x.BlogCategory).Where(b => b.BlogCategoryId == id).OrderByDescending(x=>x.Id).Skip(((int)page - 1) * 6).Take(6),
+                    BlogCategories = _db.BlogCategories
+                };
+
+                return View(homeVM);
+            }
         }
 
    

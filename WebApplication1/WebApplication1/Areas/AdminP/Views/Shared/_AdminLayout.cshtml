@@ -175,86 +175,109 @@
                         </a>
                     </li>
 
-                    <!-- Book category start -->
-                    <div class="panel-left-menu">
-                        <ul>
-                            <li> <a class="nav-link" asp-area="AdminP" asp-controller="BookCategory" asp-action="Index">Book Categorys</a></li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <!-- Book category start -->
+                        <div class="panel-left-menu">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="BookCategory" asp-action="Index">Book Categorys</a></li>
 
-                        </ul>
-                    </div>
-                    <!-- Book category start -->
-                    <!-- Book slider start -->
-                    <div class="panel-left-menu">
-                        <ul>
-                            <li> <a class="nav-link" asp-area="AdminP" asp-controller="Slider" asp-action="Index">Book Slider</a></li>
+                            </ul>
+                        </div>
+                        <!-- Book category start -->
+                        <!-- Book slider start -->
+                        <div class="panel-left-menu">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="Slider" asp-action="Index">Book Slider</a></li>
 
-                        </ul>
-                    </div>
-                    <!-- Book slider end -->
-                    <!-- Book  start -->
-                    <div class=" panel-left-menu" id="ui-basic">
-                        <ul>
-                            <li> <a class="nav-link" asp-area="AdminP" asp-controller="Book" asp-action="Index">All Books</a></li>
+                            </ul>
+                        </div>
+                        <!-- Book slider end -->
+                        <!-- Book  start -->
+                        <div class=" panel-left-menu" id="ui-basic">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="Book" asp-action="Index">All Books</a></li>
 
-                        </ul>
-                    </div>
-                    <!-- Book  end -->
-                    <!-- Book Author start -->
-                    <div class=" panel-left-menu" id="ui-basic">
-                        <ul>
-                            <li> <a class="nav-link" asp-area="AdminP" asp-controller="Author" asp-action="Index">Author</a></li>
+                            </ul>
+                        </div>
+                        <!-- Book  end -->
+                        <!-- Book Author start -->
+                        <div class=" panel-left-menu" id="ui-basic">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="Author" asp-action="Index">Author</a></li>
 
-                        </ul>
-                    </div>
-                    <!-- Book Author end -->
-                    <!-- Blog start -->
-                    <div class=" panel-left-menu" id="ui-basic">
-                        <ul>
-                            <li> <a class="nav-link" asp-area="AdminP" asp-controller="Blog" asp-action="Index">Blogs</a></li>
+                            </ul>
+                        </div>
+                        <!-- Book Author end -->
+                        <!-- Blog start -->
+                        <div class=" panel-left-menu" id="ui-basic">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="Blog" asp-action="Index">Blogs</a></li>
 
-                        </ul>
-                    </div>
-                    <!-- Blog end -->
-                    <!-- Blog Category start -->
-                    <div class=" panel-left-menu" id="ui-basic">
-                        <ul>
-                            <li> <a class="nav-link" asp-area="AdminP" asp-controller="BlogCategory" asp-action="Index">Blog Category</a></li>
+                            </ul>
+                        </div>
+                        <!-- Blog end -->
+                        <!-- Blog Category start -->
+                        <div class=" panel-left-menu" id="ui-basic">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="BlogCategory" asp-action="Index">Blog Category</a></li>
 
-                        </ul>
-                    </div>
-                    <!-- Blog Category end -->
-                    <!-- Author About start -->
-                    <div class=" panel-left-menu" id="ui-basic">
-                        <ul>
-                            <li> <a class="nav-link" asp-area="AdminP" asp-controller="AuthorAbout" asp-action="Index">Author About</a></li>
+                            </ul>
+                        </div>
+                        <!-- Blog Category end -->
+                        <!-- Author About start -->
+                        <div class=" panel-left-menu" id="ui-basic">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="AuthorAbout" asp-action="Index">Author About</a></li>
 
-                        </ul>
-                    </div>
-                    <!--  Author About end -->
-                    <!-- Recommendation start -->
-                    <div class=" panel-left-menu" id="ui-basic">
-                        <ul>
-                            <li> <a class="nav-link" asp-area="AdminP" asp-controller="Recommendation" asp-action="Index">Recommendation Book</a></li>
+                            </ul>
+                        </div>
+                        <!--  Author About end -->
+                        <!-- Recommendation start -->
+                        <div class=" panel-left-menu" id="ui-basic">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="Recommendation" asp-action="Index">Recommendation Book</a></li>
 
-                        </ul>
-                    </div>
-                    <!--  Recommendation end -->
-                    <!-- All Users start -->
-                    <div class=" panel-left-menu" id="ui-basic">
-                        <ul>
-                            <li> <a class="nav-link" asp-area="AdminP" asp-controller="AllUsers" asp-action="Index">All Users</a></li>
+                            </ul>
+                        </div>
+                        <!--  Recommendation end -->
+                        <!-- All Users start -->
+                        <div class=" panel-left-menu" id="ui-basic">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="AllUsers" asp-action="Index">All Users</a></li>
 
-                        </ul>
-                    </div>
-                    <!--  AllUsers end -->
-                    <!--  Sale List start -->
-                    <div class=" panel-left-menu" id="ui-basic">
-                        <ul>
-                            <li> <a class="nav-link" asp-area="AdminP" asp-controller="Sale" asp-action="Index">Sales</a></li>
+                            </ul>
+                        </div>
+                        <!--  AllUsers end -->
+                        <!--  Sale List start -->
+                        <div class=" panel-left-menu" id="ui-basic">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="Sale" asp-action="Index">Sales</a></li>
 
-                        </ul>
-                    </div>
-                    <!--  Sale list end -->
+                            </ul>
+                        </div>
+                        <!--  Sale list end -->
+                        <!--  Role List start -->
+                        <div class=" panel-left-menu" id="ui-basic">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="Roles" asp-action="Index">Roles</a></li>
+
+                            </ul>
+                        </div>
+                        <!--  Role list end -->
+                    }
+                    else
+                    {
+                        <!-- Blog start -->
+                        <div class=" panel-left-menu" id="ui-basic">
+                            <ul>
+                                <li> <a class="nav-link" asp-area="AdminP" asp-controller="Blog" asp-action="Index">Blogs</a></li>
+
+                            </ul>
+                        </div>
+                        <!-- Blog end -->
+                    }
+
                 </ul>
              
 

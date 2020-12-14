@@ -21,11 +21,12 @@
 
 </div>
 
-@if (Model.Where(x=>x.UserName==User.Identity.Name).Count() > 0)
+@if (Model.Where(x => x.UserName == User.Identity.Name).Count() > 0)
 {
-    <div class="basket-products-container">
+<div id="basketProductContainer">
+    <div  class="basket-products-container">
 
-        @foreach (var book in Model.Where(x=>x.UserName==User.Identity.Name))
+        @foreach (var book in Model.Where(x => x.UserName == User.Identity.Name))
         {
             decimal total = book.BookPrice * book.Count;
             Total += total;
@@ -50,7 +51,7 @@
 
                 <div class="basket-price-count-totalPrice">
                     <p>Book Count:</p>
-                    <p> @book.Count</p>
+                    <p id="bookCounter"> @book.Count</p>
                 </div>
 
                 <div class="basket-price-count-totalPrice">
@@ -58,7 +59,7 @@
                     <p id="basketplusMinus">
                         @if (book.Count < book.BookCount)
                         {
-                            <a asp-controller="Home" asp-action="Upcrease" asp-route-id="@book.Id">+</a>
+                            <a id="countUpper" asp-controller="Home" asp-action="Upcrease" asp-route-id="@book.Id">+</a>
                         }
                         <a asp-controller="Home" asp-action="Decrease" asp-route-id="@book.Id">-</a>
                     </p>
@@ -70,7 +71,7 @@
                 </div>
 
                 <div class="basket-product-delete-icon">
-                    <a asp-controller="Home" asp-action="DeleteBasket" asp-route-id="@book.Id">
+                    <a class="allRemovefromBasket" data-id="@book.Id">
                         <i class="fas fa-trash-alt"></i>
                     </a>
                 </div>
@@ -79,7 +80,7 @@
         }
 
         <div class="basket-all-products-total">
-            <h1>Total Price: <span>$ @Total</span></h1>
+            <h1>Total Price: <span id="totalPrice">$ @Total</span></h1>
 
         </div>
 
@@ -90,9 +91,9 @@
         </div>
     </div>
 
-
+</div>
     <!-- basket shop modal start -->
-    <div class="basket-shopping-user-info">
+    <div id="shoppingInfoToAdmin" class="basket-shopping-user-info">
 
 
         <form method="post">
@@ -124,3 +125,4 @@ else
     </div>
 }
 <!-- basket area end -->
+

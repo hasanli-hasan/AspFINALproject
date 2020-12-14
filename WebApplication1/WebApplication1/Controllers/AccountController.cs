@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using WebApplication1.DAL;
 using WebApplication1.Models;
 using WebApplication1.View_Models;
 
@@ -15,11 +16,13 @@ namespace WebApplication1.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _sigInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> sigInManager, RoleManager<IdentityRole> roleManager)
+        private readonly AppDbContext _db;
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> sigInManager, RoleManager<IdentityRole> roleManager, AppDbContext db)
         {
             _userManager = userManager;
             _sigInManager = sigInManager;
             _roleManager = roleManager;
+            _db = db;
         }
         public IActionResult Login()
         {
@@ -60,6 +63,16 @@ namespace WebApplication1.Controllers
                 ModelState.AddModelError("", "Email və ya Password Səhvdir");
                 return View(login);
             }
+
+            loginUser.Token = Guid.NewGuid().ToString();
+
+            await _db.SaveChangesAsync();
+
+            Response.Cookies.Append("token", loginUser.Token, new Microsoft.AspNetCore.Http.CookieOptions
+            {
+                HttpOnly = true,
+                Expires = DateTime.Now.AddYears(1)
+            });
 
             string role = (await _userManager.GetRolesAsync(loginUser))[0];
             if (role == "Admin")

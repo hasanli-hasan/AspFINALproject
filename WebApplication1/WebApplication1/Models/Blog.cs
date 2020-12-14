@@ -26,5 +26,8 @@ namespace WebApplication1.Models
 
         public ICollection<Commet> Commets { get; set; }
 
+        public string AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
+
     }
 }

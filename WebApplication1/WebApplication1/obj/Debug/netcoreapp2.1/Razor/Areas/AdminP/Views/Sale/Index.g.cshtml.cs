@@ -79,7 +79,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n<h2>Sale List</h2>\r\n\r\n");
             EndContext();
             BeginContext(231, 82, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d87326f2daf847df920d05e6b8357ccb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8bd5e84fc42f49e382d70a0803211e3f", async() => {
                 BeginContext(288, 21, true);
                 WriteLiteral("\r\n    Recived Sales\r\n");
                 EndContext();
@@ -180,7 +180,7 @@ using WebApplication1.View_Models;
             WriteLiteral("\r\n                                    </td>\r\n\r\n                                    <td>\r\n                                        ");
             EndContext();
             BeginContext(1983, 86, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eba2aa08a6b342f2ace9d405ffd041e6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ef9f0c5e17ba47b19f9727a9ffee24a8", async() => {
                 BeginContext(2054, 11, true);
                 WriteLiteral("Detail Sale");
                 EndContext();
@@ -238,7 +238,7 @@ using WebApplication1.View_Models;
             WriteLiteral("                    <li class=\"page-item disabled\">");
             EndContext();
             BeginContext(2639, 106, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "925c90fd4efa44f29458448108d1e18a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7ceb8982b2ae4fa4aca53489c1edbadf", async() => {
                 BeginContext(2740, 1, false);
 #line 92 "C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\Areas\AdminP\Views\Sale\Index.cshtml"
                                                                                                                                                   Write(i);
@@ -292,7 +292,7 @@ using WebApplication1.View_Models;
             WriteLiteral("                    <li class=\"page-item\">");
             EndContext();
             BeginContext(2854, 106, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "111582798af54b0abf12e18c8c368c8b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dcc97b0822b049848453a6a6691bac53", async() => {
                 BeginContext(2955, 1, false);
 #line 96 "C:\Users\Hasan\Desktop\final-p-asp\WebApplication1\WebApplication1\Areas\AdminP\Views\Sale\Index.cshtml"
                                                                                                                                          Write(i);

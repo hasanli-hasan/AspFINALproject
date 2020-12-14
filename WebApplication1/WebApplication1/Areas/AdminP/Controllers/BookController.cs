@@ -16,7 +16,7 @@ using WebApplication1.View_Models;
 namespace WebApplication1.Areas.AdminP.Controllers
 {
     [Area("AdminP")]
-    //[Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Admin")]
     public class BookController : Controller
     {
         private readonly AppDbContext _db;

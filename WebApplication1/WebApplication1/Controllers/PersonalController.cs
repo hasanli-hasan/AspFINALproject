@@ -97,5 +97,15 @@ namespace WebApplication1.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("Index", new { name = actUser.UserName });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UserBio(AppUser user)
+        {
+            AppUser actUser = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            actUser.Bio = user.Bio;
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Index", new { name = actUser.UserName });
+        }
     }
 }

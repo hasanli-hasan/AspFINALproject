@@ -13,9 +13,9 @@
     </div>
     <div class="blogD-about-blogAuthor">
         <div class="blogAuthor-image">
-            <img src="~/img/blgA.jpg" alt="">
+            <img style="object-fit:cover;" src="~/img/@ViewBag.WriterImage" alt="">
         </div>
-        <h1>Lynanna Stark</h1>
+        <h1>@ViewBag.WriterName</h1>
         <h3>Contacts</h3>
         <p>
             <a href="">
@@ -140,14 +140,17 @@
             axios.post('/Blog/BlogDetail', formData)
                 .then(function (res) {
 
+      console.log(res.data.commentImage)
                     var commetDiv = document.getElementById("commetDiv");
-                    
+                   
                     var commet=
                     ` <div class="commet-body">
                         <div class="commet-user-info">
                             <div class="commet-user-image">
-                                 <img  src="~/img/${res.data.commentImage}" />
-                            </div>
+
+                             <img  src="${"/img/"+ res.data.commentImage}"/>
+                             
+                             </div>
                             <div class="commet-user-name">
                                 <h5>${res.data.userName}</h5>
                             </div>

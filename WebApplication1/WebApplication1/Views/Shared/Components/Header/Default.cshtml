@@ -38,7 +38,7 @@
             <h1>Pandora</h1>
         </div>
 
-        <div style="margin-left:100px;">
+        <div style="display:flex; align-items:center;width:320px;justify-content:space-around;">
             @if (ViewBag.UserImage == null)
             {
                 <img style="width:60px; height:60px; border-radius:50%; object-fit:cover;" src="~/img/user-image.png" alt="">
@@ -48,25 +48,29 @@
                 <img style="width:60px; height:60px; border-radius:50%; object-fit:cover;" src="~/img/@ViewBag.UserImage" alt="">
             }
 
+        <div class="header-username-child-div" style="min-width:200px;">
+            <a asp-controller="Personal" asp-action="Index" asp-route-name="@User.Identity.Name"><h5 style="cursor:pointer;display:inline;margin-right:50px;">@ViewBag.UserName</h5></a>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                    <a id="userMessageIconHeader" asp-controller="ChatUsers" asp-action="MessagesIndex">
+                        <i class="fas fa-comment-dots">
+                            <sup>@ViewBag.Conv</sup>
+                        </i>
+                    </a>
+            }
+            else
+            {
+                <i class="fas fa-comment-dots">
+                    <sup></sup>
+                </i>
+            }
+        </div>
+
         </div>
              
 
-        <div class="header-username-login-side">
-            <div class="header-username-child-div">
-                <a asp-controller="Personal" asp-action="Index" asp-route-name="@User.Identity.Name"><h5 style="cursor:pointer">@ViewBag.UserName</h5></a>
-            </div>
-            <div class="header-login-show-word">
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <p><a asp-controller="Account" asp-action="Logout">Log Out</a></p>
-                }
-                else
-                {
-                    <p><a asp-controller="Account" asp-action="Login">Log In</a></p>
-                }
-
-            </div>
-        </div>
+      
     </div>
     <nav>
 
@@ -99,14 +103,29 @@
                 }
                 else
                 {
-                    <a >
-                     <i class="fas fa-shopping-bag">
-                       <sup class="basket-booksCountt">@ViewBag.BasketCount</sup>
-                     </i>
+                    <a>
+                        <i class="fas fa-shopping-bag">
+                            <sup class="basket-booksCountt">@ViewBag.BasketCount</sup>
+                        </i>
                     </a>
                 }
 
             </div>
+
+
+            <div class="header-login-show-word" style="margin-left:12px;">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <p><a asp-controller="Account" asp-action="Logout">Log Out</a></p>
+                }
+                else
+                {
+                    <p><a asp-controller="Account" asp-action="Login">Log In</a></p>
+                }
+
+            </div>
+
         </div>
+
     </nav>
 </header>

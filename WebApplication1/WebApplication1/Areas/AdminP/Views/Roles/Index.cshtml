@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminP/Views/Shared/_AdminLayout.cshtml";
+}
+
+<a asp-area="Adminp" asp-controller="Roles" asp-action="CreateRole" class="btn btn-success m-2">
+    Create New Role
+</a>
+
+    <ul class="list-group">
+        @foreach (var role in Model)
+        {
+            <li class="list-group-item">@role.Name 
+
+             <form method="post" asp-action="DeleteRole" asp-route-id="@role.Id">
+                 <button type="submit">Delete</button>
+             </form>
+
+            </li>
+        }
+
+    </ul>
+

@@ -32,7 +32,10 @@ namespace WebApplication1.Controllers
                 DiscountBooks=_db.DiscountBooks.ToList(),
                 DiscountText=_db.DiscountTexts.FirstOrDefault(),
                 Blogs=_db.Blogs.ToList(),
-                AuthorAbouts=_db.AuthorAbouts.ToList()
+                AuthorAbouts=_db.AuthorAbouts.ToList(),
+                BlogCategories=_db.BlogCategories.ToList(),
+                BookCategories=_db.BookCategories.ToList()
+               
             };
             return View(homeVM);
         }
@@ -133,11 +136,29 @@ namespace WebApplication1.Controllers
 
         public IActionResult DeleteBasket(int? id)
         {
+           
             List<BasketBookVM> books = JsonConvert.DeserializeObject<List<BasketBookVM>>(Request.Cookies["basket"]);
             books.Remove(books.Find(b => b.Id == id));
+
+            //userin cookie-deki kitablarin toplam qiymetini tapmaq
+            decimal total = 0;
+            int basketCount = 0;
+            foreach (var item in books)
+            {
+               
+                if (item.UserName==User.Identity.Name)
+                {
+                    Book book = _db.Books.FirstOrDefault(x => x.Id == item.Id);
+                    total += book.BookPrice;
+                    basketCount++;
+                }
+            }
+            decimal Total = total;
+            int Count = basketCount;
             string basket = JsonConvert.SerializeObject(books);
             Response.Cookies.Append("basket", basket, new CookieOptions { MaxAge = TimeSpan.FromDays(30) });
-            return RedirectToAction("Basket");
+
+            return Ok(new {Total=Total, basketCount= basketCount});
         }
 
         public IActionResult Decrease(int? id)

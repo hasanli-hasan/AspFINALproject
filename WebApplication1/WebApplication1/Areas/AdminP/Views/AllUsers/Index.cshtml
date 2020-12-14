@@ -61,7 +61,10 @@
                             </td>
 
                             <td>
-                                @user.Role
+                               @foreach (var item in user.Roles)
+                               {
+                                   @item
+                               }
                             </td>
 
                             @if (user.IsActivated)

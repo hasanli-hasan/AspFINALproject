@@ -5,7 +5,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Blog.cshtml";
 
-          if (ViewBag.Page == null)
+    if (ViewBag.Page == null)
     {
         ViewBag.Page = 1;
     }
@@ -49,7 +49,7 @@
 
         <!-- All  Categorys Start-->
         <div class="new-blogs-header-title selectCategory">
-            <form method="post"  >
+            <form method="post" asp-action="CategoryBlog">
                 <select name="Id">
                     <option value="">All Categories</option>
                     @foreach (var ctgry in Model.BlogCategories)
@@ -157,8 +157,10 @@
                     <span></span>
                     <span></span>
                     <span></span>
-                    <input type="email">
-                    <button type="submit">Subscribe</button>
+                    <form>
+                        <input id="inputEmail" type="email">
+                        <button id="subscribeBtn" type="submit">Subscribe</button>
+                    </form>
                 </div>
             </div>
 

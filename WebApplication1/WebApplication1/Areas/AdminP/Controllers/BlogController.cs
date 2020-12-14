@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,19 +16,41 @@ using WebApplication1.Models;
 namespace WebApplication1.Areas.AdminP.Controllers
 {
     [Area("AdminP")]
+    [Authorize(Roles = "Admin,Writer")]
     public class BlogController : Controller
     {
         private readonly AppDbContext _db;
         private readonly IHostingEnvironment _env;
-        public BlogController(AppDbContext db, IHostingEnvironment env)
+        private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public BlogController(AppDbContext db, IHostingEnvironment env, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _db = db;
             _env = env;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
-        public IActionResult Index(int? page)
+        public async Task<IActionResult> Index(int? page)
         {
             ViewBag.PageCount = Math.Ceiling((decimal)_db.Blogs.Count() / 6);
             ViewBag.Page = page;
+
+            AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            var role = (await _userManager.GetRolesAsync(existUser))[0];
+            if (role=="Writer")
+            {
+                ViewBag.PageCount = Math.Ceiling((decimal)_db.Blogs.Where(x=>x.AppUserId==existUser.Id).Count()/6);
+                ViewBag.Page = page;
+
+                if (page == null)
+                {
+                    return View(_db.Blogs.Include(c => c.BlogCategory).Where(x=>x.AppUserId==existUser.Id).OrderByDescending(b => b.Id).Take(6).ToList());
+                }
+                else
+                {
+                    return View(_db.Blogs.Include(c => c.BlogCategory).Where(x => x.AppUserId == existUser.Id).OrderByDescending(b => b.Id).Skip(((int)page - 1) * 6).Take(6).ToList());
+                }
+            }
 
             if (page == null)
             {
@@ -77,6 +101,9 @@ namespace WebApplication1.Areas.AdminP.Controllers
             string fileName = await blog.Photo.SaveImg(_env.WebRootPath, "img");
             blog.Image = fileName;
 
+            AppUser existUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            blog.AppUserId=existUser.Id;
+
             await _db.Blogs.AddAsync(blog);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
@@ -84,8 +111,10 @@ namespace WebApplication1.Areas.AdminP.Controllers
 
         public IActionResult Detail(int? id)
         {
+            
             if (id == null) return NotFound();
             Blog blog = _db.Blogs.Include(c=>c.BlogCategory).Where(b => b.Id == id).FirstOrDefault();
+           
             if (blog == null) return NotFound();
 
             return View(blog);

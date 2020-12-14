@@ -3,6 +3,11 @@
 @{
     ViewData["Title"] = "CategoryBlog";
     Layout = "~/Views/Shared/_Blog.cshtml";
+
+    if (ViewBag.Page == null)
+    {
+        ViewBag.Page = 1;
+    }
 }
 
 <!-- All  Categorys Start-->
@@ -60,4 +65,31 @@
         }
     </div>
     <!-- All Blogs End-->
+</div>
+
+<div class="blogForPagination">
+
+    <div class="blog-pagination-container">
+        <div class="row mt-2 justify-content-center w-100">
+            <nav aria-label="...">
+                <ul class="pagination pagination-sm bookPagination">
+                    @for (int i = 1; i <= ViewBag.PageCount; i++)
+                    {
+                        if (ViewBag.Page == i)
+                        {
+                            <li class="page-item disabled"><a class="page-link" asp-controller="Blog" asp-action="CategoryBlog" asp-route-page="@i">@i</a></li>
+                        }
+                        else
+                        {
+                            <li class="page-item"><a id="paginationLi" class="page-link" asp-controller="Blog" asp-action="CategoryBlog" asp-route-page="@i" data-id="@i">@i</a></li>
+                        }
+
+                    }
+                </ul>
+            </nav>
+
+        </div>
+
+    </div>
+
 </div>

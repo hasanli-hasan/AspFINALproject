@@ -1593,3 +1593,13 @@ background: rgb(179, 175, 175);
 
 /* basket  end */
 
+/*user message icon*/
+
+#userMessageIconHeader{
+    text-decoration:none;
+    color:black;
+}
+
+#userMessageIconHeader i{
+   font-size:22px;
+}

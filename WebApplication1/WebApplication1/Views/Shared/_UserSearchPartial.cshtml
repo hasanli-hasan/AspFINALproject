@@ -1,0 +1,28 @@
+﻿@model IEnumerable<AppUser>
+@{
+    Layout = null;
+}
+
+@foreach (var user in Model)
+{
+    @if (User.Identity.Name != user.UserName)
+    {
+        <div class="searchUser-info-row">
+            <div class="searchUser-image">
+                @if (user.Image == null)
+                {
+                    <img src="~/img/user-image.png" alt="">
+                }
+                else
+                {
+                    <img src="~/img/@user.Image" alt="">
+                }
+
+            </div>
+            <h3>
+                <a asp-controller="ChatUsers" asp-action="CreateConversation" asp-route-id="@user.Id">@user.UserName</a>
+            </h3>
+        </div>
+    }
+
+}

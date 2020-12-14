@@ -10,28 +10,24 @@
 <main>
   @if (User.IsInRole("Admin"))
   {
-      <h1>Salam</h1>
+      <a class="btn btn-dark" asp-area="adminp" asp-controller="dashboard" asp-action="Index">Admin Side</a>
   }
     <div class="new-books-new-blogs-showBox-container">
         <div class="showbox-blogs">
             <h3>Blogs</h3>
-            <a href="">About Blogs</a>
-            <a href="">New Blogs</a>
-            <a href="">Favorits</a>
-            <a href="">Most Readings</a>
-            <a href="">Mythology</a>
-            <a href="">Philosophy</a>
-            <a href="">Pyschology</a>
+            @foreach (var item in Model.BlogCategories.OrderByDescending(x=>x.Id).Take(10))
+            {
+                <a asp-controller="Blog" asp-action="CategoryBlog" asp-route-id="@item.Id">@item.Name</a>
+
+            }
         </div>
         <div class="showbox-categorys">
             <h3>Books</h3>
-            <a href="">About Blogs</a>
-            <a href="">New Blogs</a>
-            <a href="">Favorits</a>
-            <a href="">Most Readings</a>
-            <a href="">Mythology</a>
-            <a href="">Philosophy</a>
-            <a href="">Pyschology</a>
+            @foreach (var item in Model.BookCategories.OrderByDescending(x => x.Id).Take(10))
+            {
+                <a asp-controller="Book" asp-action="CategoryBook" asp-route-id="@item.Id">@item.CategoryName</a>
+
+            }
         </div>
 
         <div class="basket-succesfully-alert">
@@ -212,8 +208,11 @@
     <div class="subscribe-main-container">
         <p>Subscribe For New Books And Blogs</p>
         <div class="subscribe-input-button">
-            <input type="email" required placeholder="Enter Your E mail..">
-            <Button><a href=""><i class="fas fa-cannabis"></i></a></Button>
+            <form>
+                <input id="inputEmail" type="email" required placeholder="Enter Your E mail..">
+                <button id="subscribeBtn"><i class="fas fa-cannabis"></i></button>
+            </form>
+       
         </div>
 
     </div>

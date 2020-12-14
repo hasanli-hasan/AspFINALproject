@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApplication1.DAL;
 using WebApplication1.Models;
 using WebApplication1.View_Models;
@@ -11,27 +13,31 @@ using WebApplication1.View_Models;
 namespace WebApplication1.Areas.AdminP.Controllers
 {
     [Area("AdminP")]
+    [Authorize(Roles = "Admin")]
     public class AllUsersController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly AppDbContext _db;
-        public AllUsersController(UserManager<AppUser> userManager, AppDbContext db)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public AllUsersController(UserManager<AppUser> userManager, AppDbContext db,RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _db = db;
+            _roleManager = roleManager;
         }
         public async Task<IActionResult> Index(int? page)
         {
             ViewBag.PageCount = Math.Ceiling((decimal)_userManager.Users.Count() / 3);
             ViewBag.Page = page;
 
-            if (page==null)
+            if (page == null)
             {
                 List<AppUser> users = _userManager.Users.Take(3).ToList();
                 List<UserVM> usersVM = new List<UserVM>();
 
                 foreach (AppUser user in users)
                 {
+                    var userRoles = await _userManager.GetRolesAsync(user);
                     UserVM userVm = new UserVM
                     {
                         Id = user.Id,
@@ -39,7 +45,7 @@ namespace WebApplication1.Areas.AdminP.Controllers
                         Email = user.Email,
                         UserName = user.UserName,
                         IsActivated = user.IsActivated,
-                        Role = (await _userManager.GetRolesAsync(user))[0]
+                        Roles = userRoles
                     };
 
                     usersVM.Add(userVm);
@@ -56,6 +62,7 @@ namespace WebApplication1.Areas.AdminP.Controllers
 
                 foreach (AppUser user in users)
                 {
+                    var userRoles = await _userManager.GetRolesAsync(user);
                     UserVM userVm = new UserVM
                     {
                         Id = user.Id,
@@ -63,7 +70,7 @@ namespace WebApplication1.Areas.AdminP.Controllers
                         Email = user.Email,
                         UserName = user.UserName,
                         IsActivated = user.IsActivated,
-                        Role = (await _userManager.GetRolesAsync(user))[0]
+                        Roles = userRoles
                     };
 
                     usersVM.Add(userVm);
@@ -78,14 +85,14 @@ namespace WebApplication1.Areas.AdminP.Controllers
         public async Task<IActionResult> IsActivate(string id)
         {
             if (id == null) return NotFound();
-            AppUser user =await _userManager.FindByIdAsync(id);
+            AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null) return NotFound();
             return View(user);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> IsActivate(string id,bool IsActivated)
+        public async Task<IActionResult> IsActivate(string id, bool IsActivated)
         {
             if (id == null) return NotFound();
             AppUser user = await _userManager.FindByIdAsync(id);
@@ -100,13 +107,14 @@ namespace WebApplication1.Areas.AdminP.Controllers
             if (id == null) return NotFound();
             AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null) return NotFound();
+
             UserVM userVM = new UserVM
             {
                 Id = user.Id,
-                Email=user.Email,
-                UserName=user.UserName,
-                Role=(await _userManager.GetRolesAsync(user))[0],
-                Roles=new List<string> { "User","Admin"}
+                Email = user.Email,
+                UserName = user.UserName,
+                Role = (await _userManager.GetRolesAsync(user))[0],
+                Roles = new List<string> { "User", "Admin","Writer"}
             };
 
             return View(userVM);
@@ -114,16 +122,16 @@ namespace WebApplication1.Areas.AdminP.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ChangeRole(string id,string Role)
+        public async Task<IActionResult> ChangeRole(string id, string Role)
         {
             if (Role == null) return NotFound();
             if (id == null) return NotFound();
             AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null) return NotFound();
             string oldRole = (await _userManager.GetRolesAsync(user))[0];
-            await _userManager.RemoveFromRoleAsync(user,oldRole);
+            await _userManager.RemoveFromRoleAsync(user, oldRole);
             await _userManager.AddToRoleAsync(user, Role);
-          
+
             return RedirectToAction("Index");
         }
 
@@ -137,14 +145,14 @@ namespace WebApplication1.Areas.AdminP.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ChangePassword(string id,string NewPassword)
+        public async Task<IActionResult> ChangePassword(string id, string NewPassword)
         {
             if (NewPassword == null) return NotFound();
             if (id == null) return NotFound();
             AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null) return NotFound();
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-           IdentityResult identityResult= await _userManager.ResetPasswordAsync(user, token, NewPassword);
+            IdentityResult identityResult = await _userManager.ResetPasswordAsync(user, token, NewPassword);
             if (!identityResult.Succeeded)
             {
                 foreach (var error in identityResult.Errors)

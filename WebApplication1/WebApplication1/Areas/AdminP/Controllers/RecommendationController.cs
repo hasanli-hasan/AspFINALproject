@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.DAL;
@@ -12,6 +13,7 @@ using WebApplication1.Models;
 namespace WebApplication1.Areas.AdminP.Controllers
 {
     [Area("AdminP")]
+    [Authorize(Roles = "Admin")]
     public class RecommendationController : Controller
     {
         private readonly AppDbContext _db;

@@ -11,6 +11,21 @@ namespace WebApplication1.DAL
     public class AppDbContext:IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options){}
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<Conversation>()
+                .HasOne(m => m.Sender)
+                .WithMany(m => m.SenderConversation)
+                .HasForeignKey(m => m.SenderId);
+
+            builder.Entity<Conversation>()
+                .HasOne(m => m.Acceptor)
+                .WithMany(m => m.AcceptorConversation)
+                .HasForeignKey(m => m.AcceptorId);
+        }
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<BookCategory> BookCategories { get; set; }
@@ -28,5 +43,8 @@ namespace WebApplication1.DAL
         public DbSet<Sale> Sales { get; set; }
         public DbSet<SaleBook> SaleBooks { get; set; }
         public DbSet<Commet> Commets { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Conversation> Conversations { get; set; }
+        public DbSet<Subscriptions> Subscriptions { get; set; }
     }
 }

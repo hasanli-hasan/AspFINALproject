@@ -1,0 +1,145 @@
+﻿@model ChatVM
+
+@{
+    ViewData["Title"] = "MessagesIndex";
+    Layout = "~/Views/Shared/_MessageChat.cshtml";
+    Conversation conv;
+}
+
+
+
+    <div class="users-messageChat-main-container">
+
+        <div class="users-search-header-row">
+            <form>
+                <input id="userSrcForMsg" type="text" placeholder="Search">
+            </form>
+            <i id="timesSearch" class="fas fa-search"></i>
+            <i id="timesCircle" class="fas fa-times-circle"></i>
+            <span id="searchSpinner" class="spinner">Loading...</span>
+
+            <div class="message-chat-iconSet">
+                <a asp-controller="Home" asp-action="Index">
+                    <i class="fas fa-home"></i>
+                </a>
+
+                <a asp-action="MessagesIndex">
+                    <i class="fas fa-paper-plane"></i>
+                </a>
+
+                <div class="message-chatUserImageRow">
+                    @if (@ViewBag.ExistImage == null)
+                    {
+                        <img src="~/img/user-image.png" alt="">
+                    }
+                    else
+                    {
+                        <img src="~/img/@ViewBag.ExistImage" alt="">
+                    }
+
+                </div>
+            </div>
+
+
+            <!--seacrh zamani gelen userlar start-->
+            <div class="SearchUserApend-row">
+
+            </div>
+            <!--seacrh zamani gelen userlar end-->
+        </div>
+
+        <div class="usersAll-listMessages-container">
+
+            <div class="userAll-list-row">
+                <div class="existUserName-header-row">
+                    <h1>
+                        <a href="">@User.Identity.Name</a>
+                    </h1>
+                </div>
+
+                <div class="existuser-messagesOtherUsers-row">
+
+                    @foreach (var user in Model.Users)
+                    {
+                        if (User.Identity.Name != user.UserName)
+                        {
+
+                            <div class="messagesOtherUsers-row">
+                                <div class="OtherUser-image">
+                                    @if (user.Image == null)
+                                    {
+                                        <img src="~/img/user-image.png" alt="">
+                                        if (user.ConnectionId != null)
+                                        {
+                                            <i class="fas fa-circle"></i>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <img src="~/img/@user.Image" alt="">
+                                        if (user.ConnectionId != null)
+                                        {
+                                            <i class="fas fa-circle"></i>
+                                        }
+                                    }
+                                </div>
+
+                                <a id="removeA" asp-controller="ChatUsers" asp-action="RemoveConversation" asp-route-id="@user.Id">
+                                    <i id="rmvUserOther" class="fas fa-times-circle"></i>
+                                </a>
+                                <a id="showAllMessages" asp-action="MessageList" asp-route-id="@user.Id">
+                                    <div class="OtherUser-Name-row">
+                                        <h4>@user.UserName</h4>
+
+                                        @* her userin en son mesaji ve nece deqiqe once yazildigi *@
+                                        @foreach (var item in Model.EachConv)
+                                        {
+                                            if (item.AcceptorId == user.Id || item.SenderId == user.Id)
+                                            {
+                                                conv = item;
+
+                                                @foreach (var m in Model.Messages.Where(x => x.ConversationId == conv.Id).OrderByDescending(x => x.Id).Take(1))
+                                                {
+                                                    if (m.AppUserId == user.Id && m.IsRead == false)
+                                                    {
+                                                        <div id="andUserLastMessage">
+                                                            <b style="color:black">@m.Content</b>
+                                                        </div>
+                                                        <time style="font-weight:100; color:#b4b3b3;" class="timeago" datetime="@m.dateTime.ToString("MM dd yyyy HH:mm")"></time>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div id="andUserLastMessage">
+                                                            <p>@m.Content </p>
+                                                        </div>
+
+                                                        <time class="timeago" style="color:#b4b3b3;" datetime="@m.dateTime.ToString("MM dd yyyy HH:mm")"></time>
+                                                    }
+
+                                                }
+
+                                            }
+                                        }
+
+                                    </div>
+                                </a>
+                            </div>
+
+                        }
+                    }
+
+                </div>
+            </div>
+
+            <div class="ExistUser-rigthMessages-Info-row">
+
+
+                <div class="sendMessageicon">
+                    <i class="far fa-paper-plane"></i>
+                </div>
+                <p>Your Messages</p>
+                <p style="margin-top:35px;">Admin: <span style="color:orangered;">hasan-hasanli</span></p>
+            </div>
+        </div>
+
+    </div>

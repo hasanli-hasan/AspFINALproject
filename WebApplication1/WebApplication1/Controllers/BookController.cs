@@ -63,18 +63,38 @@ namespace WebApplication1.Controllers
             return View(book);
         }
 
-        public IActionResult CategoryBook(int? id)
+        public IActionResult CategoryBook(int? id,int? page)
         {
-            HomeVM homeVM = new HomeVM
+            ViewBag.PageCount = Math.Ceiling((decimal)_db.Books.Where(x => x.BookCategoryId == id).Count()/20);
+            ViewBag.Page = page;
+            if (page==null)
             {
-                Books = _db.Books.Include(x => x.BookCategory).Where(c => c.BookCategoryId == id).ToList(),
-                Authors = _db.Authors.ToList(),
-                BookCategories =_db.BookCategories.Where(x=>x.Id==id)
-               
-            };
 
-          
-            return View(homeVM);
+                HomeVM homeVM = new HomeVM
+                {
+                    Books = _db.Books.Include(x => x.BookCategory).Where(c => c.BookCategoryId == id).OrderByDescending(x=>x.Id).Take(20).ToList(),
+                    Authors = _db.Authors.ToList(),
+                    BookCategories = _db.BookCategories.Where(x => x.Id == id)
+
+                };
+
+
+                return View(homeVM);
+            }
+            else
+            {
+
+                HomeVM homeVM = new HomeVM
+                {
+                    Books = _db.Books.Include(x => x.BookCategory).Where(c => c.BookCategoryId == id).OrderByDescending(x => x.Id).Skip(((int)page - 1) * 20).Take(20),
+                    Authors = _db.Authors.ToList(),
+                    BookCategories = _db.BookCategories.Where(x => x.Id == id)
+
+                };
+
+
+                return View(homeVM);
+            }
         }
     }
 }

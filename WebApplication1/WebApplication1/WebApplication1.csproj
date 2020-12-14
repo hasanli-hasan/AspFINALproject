@@ -18,6 +18,8 @@
   <ItemGroup>
     <Folder Include="Areas\AdminP\Data\" />
     <Folder Include="Areas\AdminP\Models\" />
+    <Folder Include="wwwroot\js\vendor\" />
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ using WebApplication1.View_Models;
 namespace WebApplication1.Areas.AdminP.Controllers
 {
     [Area("AdminP")]
+    [Authorize(Roles = "Admin")]
     public class SaleController : Controller
     {
         private readonly AppDbContext _db;

@@ -25,8 +25,8 @@
 
 .last-author-container .last-author-image-row{
 position: absolute;
-width: 200px;
-height: 300px;
+width: 260px;
+height: 360px;
 top: 50px;
 left: 29%;
 }
@@ -35,6 +35,7 @@ left: 29%;
 .last-author-container .last-author-image-row img{
   width: 100%;
   height: 100%;
+  object-fit:cover;
     }
 
 .last-author-container .last-author-bio-row{
@@ -52,6 +53,7 @@ left: 29%;
     position: absolute;
     top: -18%;
     transform: rotate(20deg);
+    margin-left:15px;
 }
 
 #newAuthorBio {
@@ -60,10 +62,13 @@ left: 29%;
     overflow: hidden;
 }
 
+
+
 .last-author-container .last-author-bio-row p{
     font-size: 19px;
     padding-top: 28px;
     text-align: unset;
+    margin-left:15px;
 }
 
 .last-author-container .last-author-bio-row a{
@@ -86,7 +91,7 @@ left: 29%;
 width: 190px;
 height: 140px;
 position: absolute;
-left: 11%;
+left: 1%;
 top: 23%;
 }
 

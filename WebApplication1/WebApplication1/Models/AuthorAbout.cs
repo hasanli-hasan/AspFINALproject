@@ -18,7 +18,7 @@ namespace WebApplication1.Models
         [NotMapped]
         public IFormFile Photo { get; set; }
 
-        [MaxLength(100)]
+ 
         public string FrontTitle { get; set; }
 
         [Required]

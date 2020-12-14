@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication1.DAL;
 using WebApplication1.Helpers;
+using WebApplication1.Hubs;
 using WebApplication1.Models;
 
 namespace WebApplication1
@@ -26,6 +27,7 @@ namespace WebApplication1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSignalR();
             services.AddIdentity<AppUser, IdentityRole>(identityOptions =>
             {
                 identityOptions.Password.RequiredLength = 8;
@@ -33,7 +35,6 @@ namespace WebApplication1
                 identityOptions.Password.RequireLowercase = true;
                 identityOptions.Password.RequireUppercase = true;
                 identityOptions.Password.RequireDigit = true;
-
                 //unique email icazesi 
                 identityOptions.User.RequireUniqueEmail = true;
 
@@ -63,6 +64,11 @@ namespace WebApplication1
 
             app.UseAuthentication();
             app.UseStaticFiles();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chathub");
+            });
 
             app.UseMvc(routes=> {
 
